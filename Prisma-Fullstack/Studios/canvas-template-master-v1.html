@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Canvas · Template de Produção · PRISMA</title>
+
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  PRISMA · html-canvas-squad · Canvas Template Master v1.0       ║
+  ║  Propriedade: G Gabi Produções · Glenda Gabi                    ║
+  ║  Arquiteto: Jimmy Andrews · Jimmy Andrews Sistemas IA            ║
+  ║                                                                  ║
+  ║  DESIGN BLINDADO — RESTRIÇÕES PRISMA APLICADAS:                 ║
+  ║  ✓ Zero drop-shadow externo                                      ║
+  ║  ✓ Zero gradiente no símbolo ou headline                         ║
+  ║  ✓ Safe Zone explícita (--sz-v / --sz-h): texto jamais extrapola ║
+  ║  ✓ Noise texture 3.6% — não embutida na cor, camada separada    ║
+  ║  ✓ Vignette por radial-gradient, não por sombra                  ║
+  ║  ✓ Máximo 2 trends ativas por canvas                             ║
+  ║  ✓ IDs semânticos padronizados para injeção da copy-forense      ║
+  ╚══════════════════════════════════════════════════════════════════╝
+
+  INJEÇÃO DA COPY-FORENSE — mapa de IDs:
+  ┌──────────────────────────────────────────────────────────────────┐
+  │ ID                       Tipo      Onde                          │
+  │ ──────────────────────────────────────────────────────────────── │
+  │ cf-pre-tag               text      Pré-tag / Rótulo acima H1     │
+  │ cf-headline              innerHTML H1 principal (Bebas Neue)      │
+  │ cf-subheadline           innerHTML Subheadline (Lora Italic)      │
+  │ cf-body                  innerHTML Corpo (Poppins Light)          │
+  │ cf-cta                   innerHTML CTA / Chamada de ação          │
+  │ cf-ass-handle            text      @handle da assinatura          │
+  │ cf-ass-nome              text      Nome da marca assinatura        │
+  │ cf-ass-local             text      Localização                    │
+  │ cf-pre-tag-s2            text      Pré-tag slide 2                │
+  │ cf-headline-s2           innerHTML Headline slide 2               │
+  │ cf-body-s2               innerHTML Corpo slide 2                  │
+  │ cf-pre-tag-s3            text      Pré-tag slide 3                │
+  │ cf-headline-s3           innerHTML Headline slide 3               │
+  │ cf-body-s3               innerHTML Corpo slide 3                  │
+  └──────────────────────────────────────────────────────────────────┘
+-->
+
+<!-- Fontes do BDP — Bebas Neue · Poppins · Lora -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;1,300&family=Lora:ital@1&display=swap" rel="stylesheet">
+<!-- html2canvas para exportação PNG 1:1 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   0. RESET & TOKENS — BDP G Gabi Produções
+═══════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  /* Paleta BDP */
+  --bg:     #0A0A08;
+  --lime:   #C8F23A;
+  --rosa:   #FF4D8F;
+  --laranja:#FF7C35;
+  --off:    #F5F2EB;
+  --muted:  #5a5650;
+
+  /* UI layers */
+  --s1:#111110;
+  --s2:#181816;
+  --b1:#1e1e1c;
+  --b2:#2e2e2c;
+
+  /* Status */
+  --ok:    #4ade80;
+  --danger:#ff4d4d;
+  --warn:  #f59e0b;
+
+  /* ── Canvas dimensions (Instagram 4:5) */
+  --slide-w:  1080px;
+  --slide-h:  1350px;
+
+  /* ── Safe Zone (% do canvas) — BLINDAGEM PRISMA
+     Texto/Logo JAMAIS podem ultrapassar esses limites.
+     min 5% das bordas conforme Design Director checklist. */
+  --sz-v: 135px;   /* 12.5% de 1080 — margem vertical */
+  --sz-h:  72px;   /* 6.7% de 1080 — margem horizontal */
+
+  /* Escala preview no editor: 1080×1350 → 432×540 (scale 0.40) */
+  --preview-scale: 0.40;
+  --preview-w: 432px;
+  --preview-h: 540px;
+}
+
+body{
+  background:var(--bg);
+  color:var(--off);
+  font-family:'Poppins',sans-serif;
+  font-weight:300;
+  min-height:100vh;
+  /* PRISMA: sem overflow-x no body inteiro */
+  overflow-x:hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   1. LAYOUT DO EDITOR
+═══════════════════════════════════════════════════════ */
+.editor{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:calc(100vh - 180px);
+}
+
+@media(max-width:900px){
+  .editor{grid-template-columns:1fr;}
+  .left-panel{border-right:none;border-bottom:1px solid var(--b1);}
+}
+
+/* ─── Left Panel ─── */
+.left-panel{
+  border-right:1px solid var(--b1);
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+}
+
+.panel-body{
+  padding:16px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  overflow-y:auto;
+}
+
+.panel-footer{
+  padding:12px 16px;
+  border-top:1px solid var(--b1);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* ─── Right Panel ─── */
+.right-panel{
+  overflow:auto;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   2. HEADER & TOPBARS
+═══════════════════════════════════════════════════════ */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 28px;
+  border-bottom:1px solid var(--b1);
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.h-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;
+  letter-spacing:3px;
+  color:var(--lime);
+}
+
+.h-sub{
+  font-size:9px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 28px;
+  background:var(--s1);
+  border-bottom:1px solid var(--b1);
+  flex-wrap:wrap;
+}
+
+.topbar label{
+  font-size:9px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* ─── Badges ─── */
+.badge{
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:3px 9px;
+  border:1px solid;
+}
+.badge-lime{color:var(--lime);border-color:rgba(200,242,58,.25);background:rgba(200,242,58,.06);}
+.badge-ok{color:var(--ok);border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.06);}
+.badge-muted{color:var(--muted);border-color:var(--b2);}
+.badge-rosa{color:var(--rosa);border-color:rgba(255,77,143,.25);background:rgba(255,77,143,.06);}
+
+/* ═══════════════════════════════════════════════════════
+   3. CONTROLES DO PAINEL
+═══════════════════════════════════════════════════════ */
+.sec{
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:2px;
+}
+.sec::after{content:'';flex:1;height:1px;background:var(--b1);}
+
+.field label{
+  font-size:9px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:block;
+  margin-bottom:5px;
+}
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  background:var(--s2);
+  border:1px solid var(--b2);
+  color:var(--off);
+  font-family:'Poppins',sans-serif;
+  font-size:12px;
+  font-weight:300;
+  padding:8px 10px;
+  outline:none;
+  transition:border-color .2s;
+  resize:vertical;
+}
+.field input:focus,
+.field textarea:focus{border-color:var(--lime);}
+.field input::placeholder,
+.field textarea::placeholder{color:var(--muted);opacity:.4;}
+
+/* ─── Upload zone ─── */
+.upload-zone{
+  background:rgba(200,242,58,.04);
+  border:1px dashed rgba(200,242,58,.2);
+  padding:12px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  transition:all .2s;
+}
+.upload-zone:hover{background:rgba(200,242,58,.09);border-color:rgba(200,242,58,.4);}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
+.upload-zone p{font-size:10px;color:rgba(200,242,58,.55);}
+.upload-zone small{font-size:9px;color:var(--muted);display:block;margin-top:3px;}
+
+/* ─── Slider opacidade ─── */
+.slider-row{display:flex;align-items:center;gap:8px;}
+.slider-row label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0;}
+.slider-row input[type=range]{flex:1;accent-color:var(--lime);}
+.slider-row .val{font-size:10px;color:var(--lime);width:30px;text-align:right;}
+
+/* ─── API input ─── */
+.api-input{
+  background:var(--bg);
+  border:1px solid var(--b2);
+  color:var(--off);
+  font-family:monospace;
+  font-size:11px;
+  padding:6px 10px;
+  outline:none;
+  transition:border-color .2s;
+  width:280px;
+}
+.api-input:focus{border-color:var(--lime);}
+.api-input::placeholder{color:var(--muted);opacity:.4;}
+
+/* ═══════════════════════════════════════════════════════
+   4. BOTÕES
+═══════════════════════════════════════════════════════ */
+.btn-primary{
+  width:100%;
+  background:var(--lime);
+  color:var(--bg);
+  border:none;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:18px;
+  letter-spacing:2px;
+  padding:12px;
+  cursor:pointer;
+  /* PRISMA: opacity como hover, não box-shadow */
+  transition:opacity .2s;
+}
+.btn-primary:hover{opacity:.88;}
+.btn-primary:disabled{background:var(--b2);color:var(--muted);cursor:not-allowed;opacity:1;}
+
+.btn-secondary{
+  width:100%;
+  background:var(--s2);
+  border:1px solid var(--b2);
+  color:var(--muted);
+  font-size:11px;
+  padding:9px;
+  cursor:pointer;
+  transition:all .2s;
+  font-family:'Poppins',sans-serif;
+}
+.btn-secondary:hover{border-color:var(--lime);color:var(--lime);}
+
+.btn-export{
+  flex:1;
+  background:var(--s2);
+  border:1px solid var(--b2);
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:8px 4px;
+  cursor:pointer;
+  transition:all .2s;
+  font-family:'Poppins',sans-serif;
+  text-align:center;
+}
+.btn-export:hover{border-color:var(--lime);color:var(--lime);}
+
+.btn-export-all{
+  width:100%;
+  background:var(--s2);
+  border:1px solid rgba(200,242,58,.25);
+  color:var(--lime);
+  font-size:9px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:9px;
+  cursor:pointer;
+  font-family:'Poppins',sans-serif;
+  transition:background .2s;
+}
+.btn-export-all:hover{background:rgba(200,242,58,.08);}
+
+/* ─── Tabs ─── */
+.slide-tabs{display:flex;gap:0;margin-bottom:14px;flex-wrap:wrap;}
+.slide-tab{
+  background:var(--s2);
+  border:1px solid var(--b2);
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:7px 16px;
+  cursor:pointer;
+  transition:all .2s;
+  border-right:none;
+}
+.slide-tab:last-child{border-right:1px solid var(--b2);}
+.slide-tab.ativo{background:rgba(200,242,58,.08);border-color:var(--lime);color:var(--lime);}
+
+/* ═══════════════════════════════════════════════════════
+   5. STATUS BAR
+═══════════════════════════════════════════════════════ */
+.status-bar{height:2px;background:var(--b2);border-radius:2px;overflow:hidden;}
+.status-fill{
+  height:100%;
+  background:var(--lime);
+  width:0%;
+  transition:width .35s ease;
+  border-radius:2px;
+}
+.status-txt{
+  font-size:10px;
+  color:var(--lime);
+  min-height:16px;
+  margin-top:4px;
+  letter-spacing:.05em;
+}
+
+/* ─── Spinner ─── */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{
+  display:inline-block;
+  width:14px;height:14px;
+  border:1.5px solid rgba(200,242,58,.15);
+  border-top-color:var(--lime);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  vertical-align:middle;
+  margin-right:6px;
+  /* desativado por padrão — JS ativa */
+  visibility:hidden;
+}
+.spinner.active{visibility:visible;}
+
+/* ═══════════════════════════════════════════════════════
+   6. CANVAS (O SLIDE REAL — 1080×1350)
+═══════════════════════════════════════════════════════ */
+
+/* ─── Preview wrapper ─── */
+.canvas-wrap{
+  position:relative;
+  width:var(--preview-w);
+  height:var(--preview-h);
+  overflow:hidden;
+  border:1px solid var(--b1);
+  flex-shrink:0;
+  isolation:isolate; /* cria stacking context próprio */
+  /* Fundo igual ao slide — elimina anel duplo no preview */
+  background:var(--bg);
+}
+
+/* ─── Slide real em escala ─── */
+.slide{
+  position:absolute;
+  top:0;left:0;
+  width:var(--slide-w);
+  height:var(--slide-h);
+  transform:scale(var(--preview-scale));
+  transform-origin:top left;
+  background:var(--bg);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  /* padding = Safe Zone — BLUR PRISMA:
+     texto NEVER extrapolará esses limites */
+  padding:var(--sz-v) var(--sz-h);
+}
+
+/*
+  ── Noise texture (camada separada, 3.6%)
+  PRISMA: "Noise 3-5% — sempre como camada separada, nunca embutida na cor"
+  Trend: Noise Texture (Tier 2)
+*/
+.slide::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.036;
+  z-index:1;
+  pointer-events:none;
+}
+
+/*
+  ── Vignette (radial-gradient, NÃO box-shadow)
+  PRISMA: "Profundidade por valor — nunca por sombra"
+  Trend: Dark Depth Layers (Tier 1)
+*/
+.slide::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at center,transparent 45%,rgba(10,10,8,.65) 100%);
+  z-index:2;
+  pointer-events:none;
+}
+
+/* ─── Foto de fundo ─── */
+.slide-foto{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center top;
+  z-index:0;
+}
+
+/* ─── Overlay gradiente sobre foto (fade inferior)
+   Safe Zone: rosto do sujeito fica no terço superior
+   onde este overlay NÃO alcança (transparent até 40%) */
+.slide-overlay{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:75%;
+  /*
+    PRISMA: "Sem drop-shadow — profundidade só por valor de cor"
+    Gradiente linear para escurecer APENAS a área de texto (inferior),
+    preservando o rosto no terço superior.
+  */
+  background:linear-gradient(
+    to top,
+    rgba(10,10,8,.88) 0%,
+    rgba(10,10,8,.50) 45%,
+    transparent       100%
+  );
+  z-index:3;
+  pointer-events:none;
+  display:none; /* JS ativa quando foto presente */
+}
+
+/* ─── Conteúdo de texto — DENTRO DA SAFE ZONE ─── */
+.slide-content{
+  position:relative;
+  z-index:10;
+  width:100%;
+  /* A safe zone é garantida pelo padding do .slide.
+     Este elemento preenche 100% do espaço disponível
+     após o padding — texto sempre protegido. */
+}
+
+/*
+  ── Safe Zone Overlay Visual (modo debug)
+  Só visível quando .slide tem class .debug-sz
+*/
+.slide.debug-sz .safe-zone-marker{
+  display:block;
+}
+.safe-zone-marker{
+  display:none;
+  position:absolute;
+  inset:var(--sz-v) var(--sz-h);
+  border:1px dashed rgba(200,242,58,.35);
+  z-index:20;
+  pointer-events:none;
+}
+
+/* ═══════════════════════════════════════════════════════
+   7. TIPOGRAFIA DOS SLIDES — HIERARQUIA ARQUITETÔNICA
+   PRISMA: "Tipografia antes de efeito"
+   Trend: Typographic Contrast (Tier 1)
+═══════════════════════════════════════════════════════ */
+
+/*
+  PRÉ-TAG — Rótulo acima do headline
+  Injeta: copy-forense → cf-pre-tag
+*/
+.cf-pre-tag{
+  font-family:'Poppins',sans-serif;
+  font-size:12px;
+  font-weight:300;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+  /* Não ultrapassa safe zone — herda padding do .slide */
+}
+
+/*
+  HEADLINE — H1 principal
+  Injeta: copy-forense → cf-headline (innerHTML)
+  Trend: Typographic Contrast — peso extremo, escala dominante
+  PRISMA: "Só extremos (300 / 700+) — nunca peso médio (400-600)"
+*/
+.cf-headline{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:148px;
+  line-height:.88;
+  letter-spacing:-1px;
+  color:var(--off);
+  margin-bottom:24px;
+  /* Limita a 100% da área disponível para não vazá a safe zone */
+  max-width:100%;
+  word-break:break-word;
+}
+
+/*
+  SUBHEADLINE — Lora Italic
+  Injeta: copy-forense → cf-subheadline (innerHTML)
+  PRISMA: "Serif italiana em itálico — citações, manifesto, destaques editoriais"
+*/
+.cf-subheadline{
+  font-family:'Lora',serif;
+  font-style:italic;
+  font-size:21px;
+  line-height:1.55;
+  color:rgba(245,242,235,.8);
+  max-width:620px;
+  margin-bottom:36px;
+  padding-left:18px;
+  /* PRISMA: borda-linha em vez de sombra */
+  border-left:2px solid rgba(200,242,58,.35);
+}
+
+/*
+  CORPO — Poppins Light
+  Injeta: copy-forense → cf-body (innerHTML)
+  PRISMA: "Corpo nunca abaixo de 14px digital"
+*/
+.cf-body{
+  font-family:'Poppins',sans-serif;
+  font-size:19px;
+  font-weight:300;
+  line-height:1.7;
+  color:rgba(245,242,235,.72);
+  max-width:880px;
+  margin-bottom:36px;
+}
+
+/*
+  CTA — Chamada para ação
+  Injeta: copy-forense → cf-cta (innerHTML)
+*/
+.cf-cta{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:106px;
+  line-height:.92;
+  color:var(--off);
+  margin-bottom:28px;
+  max-width:100%;
+  word-break:break-word;
+}
+
+/* Span utilitário para cor de acento dentro de headlines */
+.lime{color:var(--lime);}
+.rosa{color:var(--rosa);}
+.laranja{color:var(--laranja);}
+
+/* ─── Separador ─── */
+.slide-sep{
+  width:36px;
+  height:2px;
+  background:var(--laranja);
+  margin-bottom:22px;
+  opacity:.8;
+  /* PRISMA: sem border-radius decorativo */
+}
+
+/* ─── Watermark decorativo (número grande) — z acima de conteúdo mas
+   sem competir: opacity muito baixa (5%) ─── */
+.slide-watermark{
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:300px;
+  line-height:1;
+  color:rgba(200,242,58,.05);
+  top:40px;
+  right:-10px;
+  z-index:3;
+  letter-spacing:-8px;
+  user-select:none;
+  pointer-events:none;
+  /* PRISMA: não interfere com safe zone — ficao fora e clipped */
+  clip-path:inset(0 0 0 0);
+}
+
+/* ═══════════════════════════════════════════════════════
+   8. PAINEL DE ASSINATURA (Slide CTA)
+   Glassmorphism condicional — Tier 2, aplicado 1 vez
+   PRISMA: "Só em 1 elemento por criativo. Nunca na headline."
+═══════════════════════════════════════════════════════ */
+.ass-panel{
+  /* Glassmorphism — backdrop-filter blur */
+  background:rgba(10,10,8,.55);
+  border:1px solid rgba(200,242,58,.12);
+  /* PRISMA: border-radius pequeno (não decorativo) */
+  border-radius:12px;
+  padding:18px 22px;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:center;
+  gap:16px;
+  /* Único elemento com backdrop-filter no slide */
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  /* PRISMA: sem box-shadow */
+}
+
+.ass-logo{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  flex-shrink:0;
+  display:none; /* JS ativa quando logo disponível */
+}
+.ass-logo.on{display:block;}
+
+.ass-info{display:flex;flex-direction:column;gap:4px;}
+
+/* Injeta: cf-ass-handle */
+.cf-ass-handle{
+  font-family:'Poppins',sans-serif;
+  font-size:13px;
+  font-weight:300;
+  color:var(--lime);
+  letter-spacing:.5px;
+}
+
+/* Injeta: cf-ass-nome */
+.cf-ass-nome{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:24px;
+  letter-spacing:2px;
+  color:var(--off);
+}
+
+/* Injeta: cf-ass-local */
+.cf-ass-local{
+  font-family:'Poppins',sans-serif;
+  font-size:11px;
+  font-weight:300;
+  color:var(--muted);
+  letter-spacing:.5px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   9. ELEMENTOS DECORATIVOS — BLINDADOS PRISMA
+   Apenas elementos geométricos sutis em opacidade baixa.
+   ZERO florescas decorativas.
+═══════════════════════════════════════════════════════ */
+
+/* Arco geométrico — topo/direita, opacity ≤ 6% */
+.deco-arc{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  border:1px solid rgba(200,242,58,.05);
+  top:-200px;right:-200px;
+  z-index:0;
+  pointer-events:none;
+}
+.deco-arc-inner{
+  position:absolute;
+  width:400px;height:400px;
+  border-radius:50%;
+  border:1px solid rgba(200,242,58,.04);
+  top:-80px;right:-80px;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* Linha diagonal de estrutura — opacidade ≤ 6% */
+.deco-line{
+  position:absolute;
+  width:900px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,242,58,.06),transparent);
+  top:38%;left:-100px;
+  transform:rotate(-10deg);
+  z-index:0;
+  pointer-events:none;
+}
+
+/* Barra vertical de acento — cor via JS (--rosa/--laranja/--lime) */
+.deco-barra{
+  position:absolute;
+  width:3px;
+  height:120px;
+  top:var(--sz-v);
+  right:var(--sz-h);
+  opacity:.45;
+  z-index:3;
+  pointer-events:none;
+}
+
+/* ═══════════════════════════════════════════════════════
+   10. FOOTER DE PROPRIEDADE
+═══════════════════════════════════════════════════════ */
+.footer-prop{
+  background:var(--s1);
+  border-top:1px solid var(--b1);
+  padding:10px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.footer-prop span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.footer-prop strong{color:var(--off);}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div>
+    <div class="h-title">CANVAS TEMPLATE · PRODUÇÃO PRISMA</div>
+    <div class="h-sub">G Gabi Produções · html-canvas-squad · Safe Zone aplicada · Pronto para copy-forense</div>
+  </div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+    <div class="badge badge-lime">BDP Blindado</div>
+    <div class="badge badge-muted" id="badge-api">API: —</div>
+    <div class="badge badge-muted" id="badge-bdp">BDP: não carregado</div>
+    <div class="badge badge-muted" id="badge-modo">Modo: Texto</div>
+  </div>
+</div>
+
+<!-- ══ TOPBAR: API + BDP ══ -->
+<div class="topbar">
+  <label>Gemini API Key</label>
+  <input type="password" class="api-input" id="apiKey"
+    placeholder="AIza... (Modo 3 — composição com IA)"
+    oninput="checkApi()">
+  <span id="api-status" style="font-size:10px;color:var(--muted);">—</span>
+  &nbsp;
+  <label style="margin-left:12px;">BDP do Cliente</label>
+  <label style="position:relative;cursor:pointer;
+    background:rgba(200,242,58,.06);border:1px dashed rgba(200,242,58,.2);
+    color:var(--lime);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 14px;transition:all .2s;" id="bdp-upload-btn">
+    Carregar BDP.md
+    <input type="file" accept=".md,.txt" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;"
+      onchange="carregarBDP(this)">
+  </label>
+  <span id="bdp-status" style="font-size:10px;color:var(--muted);">
+    Não carregado — usando defaults G Gabi Produções
+  </span>
+</div>
+
+<!-- ══ MAIN EDITOR ══ -->
+<div class="editor">
+
+  <!-- ─── LEFT PANEL: CONTROLES ─── -->
+  <div class="left-panel">
+    <div class="panel-body">
+
+      <!-- Seletor de template -->
+      <div>
+        <div class="sec">Template de Slide</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <button class="btn-secondary ativo-sel" id="tpl-0" onclick="selecionarTemplate(0)"
+            style="text-align:left;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
+            <span>Capa / Cover</span>
+            <span style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);">01</span>
+          </button>
+          <button class="btn-secondary" id="tpl-1" onclick="selecionarTemplate(1)"
+            style="text-align:left;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
+            <span>Desenvolvimento</span>
+            <span style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">02</span>
+          </button>
+          <button class="btn-secondary" id="tpl-2" onclick="selecionarTemplate(2)"
+            style="text-align:left;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
+            <span>CTA / Assinatura</span>
+            <span style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">03</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Copy Injection — seção de injeção da copy-forense -->
+      <div>
+        <div class="sec">Injeção de Copy (copy-forense)</div>
+
+        <div class="field" style="margin-bottom:8px;">
+          <label>Pré-tag <small style="font-weight:300;opacity:.5;">→ #cf-pre-tag</small></label>
+          <input type="text" id="inp-pretag"
+            placeholder="G Gabi Produções · Post Fixado 01"
+            oninput="injetarCopy()">
+        </div>
+
+        <div class="field" style="margin-bottom:8px;">
+          <label>Headline <small style="font-weight:300;opacity:.5;">→ #cf-headline (HTML permitido)</small></label>
+          <textarea id="inp-headline" rows="3"
+            placeholder="QUEM&lt;br&gt;SOU&lt;br&gt;EU."
+            oninput="injetarCopy()"></textarea>
+        </div>
+
+        <div class="field" style="margin-bottom:8px;">
+          <label>Subheadline <small style="font-weight:300;opacity:.5;">→ #cf-subheadline</small></label>
+          <textarea id="inp-subheadline" rows="2"
+            placeholder="&quot;A gente não cria quem você é.&lt;br&gt;A gente mostra.&quot;"
+            oninput="injetarCopy()"></textarea>
+        </div>
+
+        <div class="field" style="margin-bottom:8px;">
+          <label>Corpo <small style="font-weight:300;opacity:.5;">→ #cf-body</small></label>
+          <textarea id="inp-body" rows="3"
+            placeholder="Falta alguém que veja antes de você."
+            oninput="injetarCopy()"></textarea>
+        </div>
+
+        <div class="field" style="margin-bottom:8px;">
+          <label>Cor de acento</label>
+          <select id="inp-acento" onchange="aplicarAcento()">
+            <option value="var(--lime)">Lime #C8F23A</option>
+            <option value="var(--rosa)">Rosa #FF4D8F</option>
+            <option value="var(--laranja)">Laranja #FF7C35</option>
+            <option value="var(--off)">Off-white #F5F2EB</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Modo de fundo -->
+      <div>
+        <div class="sec">Fundo do canvas</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <button class="btn-secondary" id="modo-0" onclick="selecionarModo(0)"
+            style="text-align:left;font-size:10px;">
+            1 · Escuro — só texto (padrão)
+          </button>
+          <button class="btn-secondary" id="modo-1" onclick="selecionarModo(1)"
+            style="text-align:left;font-size:10px;">
+            2 · Foto manual (upload + opacidade)
+          </button>
+          <button class="btn-secondary" id="modo-2" onclick="selecionarModo(2)"
+            style="text-align:left;font-size:10px;">
+            3 · Gemini IA (composição automática)
+          </button>
+        </div>
+      </div>
+
+      <!-- Área de foto (Modos 2 e 3) -->
+      <div id="foto-area" style="display:none;">
+
+        <!-- Modo 2: upload -->
+        <div id="modo2-area" style="display:none;">
+          <div class="sec">Foto</div>
+          <label class="upload-zone">
+            <input type="file" accept="image/*" onchange="carregarFotoManual(this)">
+            <p id="upload-lbl">Upload da foto</p>
+            <small>PNG ou JPG · rosto/sujeito</small>
+          </label>
+          <img id="preview-foto" src="" style="width:100%;height:60px;object-fit:cover;display:none;margin-top:4px;background:var(--s2);">
+          <div id="opacidade-row" style="display:none;margin-top:8px;" class="slider-row">
+            <label>Opacidade</label>
+            <input type="range" min="5" max="100" value="60"
+              oninput="atualizarOpacidade(this.value)">
+            <span class="val" id="op-val">60%</span>
+          </div>
+        </div>
+
+        <!-- Modo 3: Gemini -->
+        <div id="modo3-area" style="display:none;">
+          <div class="sec">Composição Gemini</div>
+
+          <!-- Aviso de preservação — crítico para o PRISMA -->
+          <div style="background:rgba(200,242,58,.05);border:1px solid rgba(200,242,58,.15);
+            padding:10px 12px;margin-bottom:10px;">
+            <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+              color:var(--lime);margin-bottom:6px;">⚠ Regras de preservação</div>
+            <div style="font-size:10px;color:rgba(245,242,235,.65);line-height:1.6;">
+              O Gemini <strong style="color:var(--off);">preserva integralmente:</strong><br>
+              · Rosto, fisionomia e expressão<br>
+              · Gestos, tatuagens, biotipo<br>
+              · <strong style="color:var(--rosa);">Mão no rosto → exatamente como fotografado</strong><br>
+              <span style="font-size:9px;color:var(--muted);display:block;margin-top:3px;">
+                Alterar a posição da mão muda o rosto. Preservação é inegociável.
+              </span>
+            </div>
+          </div>
+
+          <label class="upload-zone">
+            <input type="file" accept="image/*" onchange="carregarFotoGemini(this)">
+            <p id="gemini-lbl">Upload da foto da cliente</p>
+            <small>PNG ou JPG — qualidade alta</small>
+          </label>
+          <img id="gemini-prev" src=""
+            style="width:100%;height:60px;object-fit:cover;display:none;margin-top:4px;background:var(--s2);">
+          <button id="btn-gemini" onclick="processarGemini()" disabled
+            style="width:100%;background:var(--rosa);color:#fff;border:none;
+            font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1.5px;
+            padding:9px;cursor:pointer;opacity:.4;transition:all .2s;margin-top:8px;">
+            ✦ COMPOR COM GEMINI
+          </button>
+          <div id="gemini-status" style="font-size:10px;color:var(--lime);min-height:16px;margin-top:4px;"></div>
+        </div>
+      </div>
+
+      <!-- Debug Safe Zone -->
+      <div>
+        <div class="sec">Debug</div>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:10px;color:var(--muted);">
+          <input type="checkbox" id="chk-safezone" onchange="toggleSafeZone()"
+            style="accent-color:var(--lime);">
+          Mostrar Safe Zone
+        </label>
+      </div>
+
+      <!-- Status -->
+      <div>
+        <div class="status-bar"><div class="status-fill" id="status-fill"></div></div>
+        <div class="status-txt" id="status-txt"></div>
+      </div>
+
+    </div><!-- /panel-body -->
+
+    <!-- Botões de export -->
+    <div class="panel-footer">
+      <div style="display:flex;gap:6px;">
+        <button class="btn-export" onclick="exportSlide()">↓ PNG 1080×1350</button>
+        <button class="btn-export" onclick="copiarHTML()">⎘ Copiar HTML</button>
+      </div>
+      <button class="btn-primary" id="btn-gerar" onclick="processarGemini()" disabled>
+        ✦ GERAR COM GEMINI
+      </button>
+    </div>
+  </div><!-- /left-panel -->
+
+  <!-- ─── RIGHT PANEL: CANVAS PREVIEW ─── -->
+  <div class="right-panel">
+
+    <!-- Tabs de navegação -->
+    <div class="slide-tabs">
+      <div class="slide-tab ativo" id="tab-0" onclick="verSlide(0)">Slide 1 · Capa</div>
+      <div class="slide-tab" id="tab-1" onclick="verSlide(1)">Slide 2 · Dev</div>
+      <div class="slide-tab" id="tab-2" onclick="verSlide(2)">Slide 3 · CTA</div>
+    </div>
+
+    <!-- ══════════════════════════════
+         SLIDE 0 — CAPA
+    ══════════════════════════════ -->
+    <div class="canvas-wrap" id="wrap-0">
+      <div class="slide" id="slide-0">
+
+        <!-- Camada: foto de fundo -->
+        <div class="slide-foto" id="foto-bg-0"></div>
+        <!-- Camada: overlay gradiente (ativa quando foto presente) -->
+        <div class="slide-overlay" id="overlay-0"></div>
+
+        <!-- Elementos decorativos geométricos — PRISMA blindado -->
+        <div class="deco-arc"></div>
+        <div class="deco-arc-inner"></div>
+
+        <!-- Marcador visual da Safe Zone (modo debug) -->
+        <div class="safe-zone-marker"></div>
+
+        <!-- CONTEÚDO — dentro da safe zone -->
+        <div class="slide-content">
+          <!--
+            PRÉ-TAG
+            copy-forense injeta via: document.getElementById('cf-pre-tag').textContent = '...'
+          -->
+          <div class="cf-pre-tag" id="cf-pre-tag">G Gabi Produções · Post Fixado 01</div>
+
+          <!--
+            HEADLINE
+            copy-forense injeta via: document.getElementById('cf-headline').innerHTML = '...'
+            Spans .lime/.rosa/.laranja permitidos internamente.
+          -->
+          <div class="cf-headline" id="cf-headline" style="color:var(--lime);">
+            QUEM<br>SOU<br>EU.
+          </div>
+
+          <!--
+            SUBHEADLINE
+            copy-forense injeta via: document.getElementById('cf-subheadline').innerHTML = '...'
+          -->
+          <div class="cf-subheadline" id="cf-subheadline">
+            "A gente não cria quem você é.<br>A gente mostra."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         SLIDE 1 — DESENVOLVIMENTO
+    ══════════════════════════════ -->
+    <div class="canvas-wrap" id="wrap-1" style="display:none;">
+      <div class="slide" id="slide-1">
+
+        <div class="slide-foto" id="foto-bg-1"></div>
+        <div class="slide-overlay" id="overlay-1"></div>
+
+        <!-- Watermark numérico — opacidade muito baixa (5%) -->
+        <div class="slide-watermark">01</div>
+
+        <!-- Decorações mínimas -->
+        <div class="deco-line"></div>
+        <div class="deco-barra" id="deco-barra-1" style="background:var(--laranja);"></div>
+
+        <div class="safe-zone-marker"></div>
+
+        <div class="slide-content">
+          <!--
+            PRÉ-TAG slide 2
+            copy-forense injeta: cf-pre-tag-s2
+          -->
+          <div class="cf-pre-tag" id="cf-pre-tag-s2" style="color:var(--lime);">O que eu faço</div>
+
+          <!--
+            HEADLINE slide 2
+            copy-forense injeta: cf-headline-s2
+          -->
+          <div class="cf-headline" id="cf-headline-s2" style="font-size:96px;line-height:.93;color:var(--off);">
+            VOCÊ JÁ TEM<br>
+            <span class="lime">O QUE PRECISA</span><br>
+            PARA SER RECONHECIDO.
+          </div>
+
+          <!-- Separador — cor de acento -->
+          <div class="slide-sep" id="sep-1"></div>
+
+          <!--
+            CORPO slide 2
+            copy-forense injeta: cf-body-s2
+          -->
+          <div class="cf-body" id="cf-body-s2">
+            Falta alguém que veja antes de você.<br>
+            Eu organizo o que você já é — e transformo em presença<br>
+            que atrai o cliente certo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         SLIDE 2 — CTA / ASSINATURA
+    ══════════════════════════════ -->
+    <div class="canvas-wrap" id="wrap-2" style="display:none;">
+      <div class="slide" id="slide-2">
+
+        <div class="slide-foto" id="foto-bg-2"></div>
+        <div class="slide-overlay" id="overlay-2"></div>
+
+        <div class="deco-barra" id="deco-barra-2" style="background:var(--rosa);"></div>
+
+        <div class="safe-zone-marker"></div>
+
+        <div class="slide-content">
+          <!--
+            PRÉ-TAG slide 3
+            copy-forense injeta: cf-pre-tag-s3
+          -->
+          <div class="cf-pre-tag" id="cf-pre-tag-s3">Próximo passo</div>
+
+          <!--
+            CTA / HEADLINE CTA
+            copy-forense injeta: cf-headline-s3
+          -->
+          <div class="cf-cta" id="cf-headline-s3" style="color:var(--off);">
+            ME CHAMA.<br>
+            <span class="lime">PRIMEIRA<br>CONVERSA</span><br>
+            É DIAGNÓSTICO.
+          </div>
+
+          <!--
+            CORPO slide 3
+            copy-forense injeta: cf-body-s3
+          -->
+          <div class="cf-body" id="cf-body-s3" style="font-size:18px;line-height:1.65;color:rgba(245,242,235,.65);">
+            Sem precisar se explicar do zero toda vez.<br>
+            Sem performance. Sem criar quem você não é.
+          </div>
+
+          <!--
+            PAINEL DE ASSINATURA — Glassmorphism (1 elemento, Tier 2)
+            Logo injetada via JS quando BDP.logo_b64 disponível.
+            Assinatura injeta: cf-ass-handle / cf-ass-nome / cf-ass-local
+          -->
+          <div class="ass-panel">
+            <img class="ass-logo" id="ass-logo" src="" alt="Logo G Gabi Produções">
+            <div class="ass-info">
+              <span class="cf-ass-handle" id="cf-ass-handle">↓ @ggabiproducoes</span>
+              <span class="cf-ass-nome" id="cf-ass-nome">G GABI PRODUÇÕES</span>
+              <span class="cf-ass-local" id="cf-ass-local">Campo Grande, MS · Produção criativa com propósito</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /right-panel -->
+</div><!-- /editor -->
+
+<!-- ══ FOOTER DE PROPRIEDADE ══ -->
+<div class="footer-prop">
+  <span>Proprietária do PRISMA: <strong>G Gabi Produções · Glenda Gabi</strong></span>
+  <span>Arquiteto: <strong>Jimmy Andrews · Jimmy Andrews Sistemas IA</strong></span>
+  <span>Canvas Template Master · html-canvas-squad · v1.0</span>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   CANVAS TEMPLATE MASTER — Runtime
+   html-canvas-squad · PRISMA
+═══════════════════════════════════════════════════════════ */
+
+// ── Estado global ──────────────────────────────────────────
+const STATE = {
+  slideAtivo:  0,
+  template:    0,
+  modo:        0,    // 0=texto, 1=foto manual, 2=gemini
+  foto:        null, // data URL da foto manual
+  fotoGemini:  null, // data URL da foto gemini (original)
+  opacidade:   60,
+  acento:      'var(--lime)',
+};
+
+// ── BDP com defaults G Gabi ────────────────────────────────
+let BDP = {
+  nome:           'G Gabi Produções',
+  arquetipo:      'Criador + Sábio',
+  paleta:         '#C8F23A, #FF4D8F, #FF7C35, #0A0A08',
+  estilo:         'Dark editorial, contraste tipográfico extremo, noise texture, vignette, zero sombra',
+  rejeita:        'genérico, pastel, drop-shadow, gradiente no símbolo, glow excessivo, 3D decorativo',
+  trueline:       'Você já tem o que precisa para ser reconhecido. Falta alguém que veja antes de você.',
+  manifesto_curto:'A gente não cria quem você é. A gente mostra.',
+  logo_b64:       '',
+};
+
+// ── Auto-carregar key do localStorage (PRISMA Config) ──────
+(function(){
+  const k = localStorage.getItem('prisma_key_gemini');
+  if(k && k.startsWith('AIza')){
+    document.getElementById('apiKey').value = k;
+    checkApi();
+  }
+})();
+
+// ── Verificar API ──────────────────────────────────────────
+function checkApi(){
+  const k   = document.getElementById('apiKey').value.trim();
+  const el  = document.getElementById('api-status');
+  const btn = document.getElementById('btn-gerar');
+  const ok  = k.startsWith('AIza') && k.length > 20;
+
+  if(ok){
+    el.textContent = '✓ Key válida';
+    el.style.color = 'var(--ok)';
+    document.getElementById('badge-api').textContent = 'API ✓';
+    document.getElementById('badge-api').className   = 'badge badge-ok';
+    // Salvar no localStorage para compartilhar entre studios
+    localStorage.setItem('prisma_key_gemini', k);
+  } else {
+    el.textContent = '—';
+    el.style.color = '';
+    document.getElementById('badge-api').textContent = 'API: —';
+    document.getElementById('badge-api').className   = 'badge badge-muted';
+  }
+
+  btn.disabled = !(ok && STATE.fotoGemini && STATE.modo === 2);
+}
+
+// ── Carregar BDP ───────────────────────────────────────────
+function carregarBDP(input){
+  if(!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const txt = e.target.result;
+    const b   = {};
+    txt.split('\n').forEach(l => {
+      const m = l.match(/^([a-zA-Z_0-9]+)\s*[=:]\s*(.+)$/);
+      if(m) b[m[1].trim().toLowerCase()] = m[2].trim();
+    });
+
+    BDP = {
+      nome:           b.nome || b.cliente || BDP.nome,
+      arquetipo:      b.arquetipo || b.arquétipo || BDP.arquetipo,
+      paleta:         b.paleta || BDP.paleta,
+      estilo:         b.estilo || b.estilo_visual || BDP.estilo,
+      rejeita:        b.rejeita || BDP.rejeita,
+      trueline:       b.trueline || BDP.trueline,
+      manifesto_curto:b.manifesto_curto || BDP.manifesto_curto,
+      logo_b64:       b.logo_aprovada_base64 || '',
+    };
+
+    // Atualizar badges
+    const st = document.getElementById('bdp-status');
+    st.textContent = `✓ ${input.files[0].name} — ${BDP.nome}`;
+    st.style.color = 'var(--lime)';
+
+    document.getElementById('badge-bdp').textContent = `BDP: ${BDP.nome}`;
+    document.getElementById('badge-bdp').className   = 'badge badge-ok';
+
+    // Renderizar logo no painel de assinatura
+    renderLogo();
+    setStatus(`BDP carregado: ${BDP.nome}`, false);
+  };
+  reader.readAsText(input.files[0]);
+}
+
+function renderLogo(){
+  const el = document.getElementById('ass-logo');
+  if(!el) return;
+  if(BDP.logo_b64 && BDP.logo_b64.length > 100 && BDP.logo_b64 !== 'LOGO_B64_PLACEHOLDER'){
+    el.src = 'data:image/png;base64,' + BDP.logo_b64;
+    el.classList.add('on');
+  } else {
+    el.src = '';
+    el.classList.remove('on');
+  }
+}
+
+// ── Injeção de copy (copy-forense trigger) ─────────────────
+/**
+ * PONTO DE INJEÇÃO PRIMÁRIO DA COPY-FORENSE.
+ *
+ * A copy-forense pode chamar esta função diretamente
+ * ou injetar nos IDs individualmente:
+ *
+ *   // Exemplo de injeção externa:
+ *   document.getElementById('cf-headline').innerHTML = 'NOVO<br>GANCHO.';
+ *   document.getElementById('cf-subheadline').innerHTML = '"Frase de impacto."';
+ *   document.getElementById('cf-body-s2').innerHTML = 'Corpo do desenvolvimento.';
+ *   injetarCopy(); // atualiza o canvas
+ */
+function injetarCopy(){
+  const pretag      = document.getElementById('inp-pretag').value;
+  const headline    = document.getElementById('inp-headline').value;
+  const subheadline = document.getElementById('inp-subheadline').value;
+  const body        = document.getElementById('inp-body').value;
+
+  if(pretag)      setById('cf-pre-tag', pretag, 'text');
+  if(headline)    setById('cf-headline', headline, 'html');
+  if(subheadline) setById('cf-subheadline', subheadline, 'html');
+  if(body)        setById('cf-body', body, 'html');
+}
+
+/**
+ * API pública para injeção externa por ID.
+ * @param {string} id   - ID do elemento alvo
+ * @param {string} val  - Conteúdo a injetar
+ * @param {string} type - 'text' | 'html' (default: 'html')
+ */
+function injetarPorId(id, val, type = 'html'){
+  setById(id, val, type);
+}
+
+function setById(id, val, type){
+  const el = document.getElementById(id);
+  if(!el) return;
+  if(type === 'text') el.textContent = val;
+  else el.innerHTML = val;
+}
+
+function aplicarAcento(){
+  const acento = document.getElementById('inp-acento').value;
+  STATE.acento = acento;
+
+  // Aplica o acento na pre-tag do slide ativo
+  const preTags = document.querySelectorAll('.cf-pre-tag');
+  preTags.forEach(el => el.style.color = acento);
+
+  // Aplica nas barras decorativas
+  ['deco-barra-1','deco-barra-2'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.background = acento;
+  });
+}
+
+// ── Seletor de template ────────────────────────────────────
+function selecionarTemplate(idx){
+  STATE.template = idx;
+
+  // Highlight no botão selecionado
+  [0,1,2].forEach(i => {
+    const btn = document.getElementById(`tpl-${i}`);
+    if(!btn) return;
+    btn.style.borderColor = i === idx ? 'var(--lime)' : 'var(--b2)';
+    btn.style.color       = i === idx ? 'var(--lime)' : 'var(--muted)';
+  });
+
+  // Ir para o slide correspondente
+  verSlide(idx);
+}
+
+// ── Modo de fundo ──────────────────────────────────────────
+function selecionarModo(idx){
+  STATE.modo = idx;
+
+  [0,1,2].forEach(i => {
+    const btn = document.getElementById(`modo-${i}`);
+    if(!btn) return;
+    btn.style.borderColor = i === idx ? 'var(--lime)' : 'var(--b2)';
+    btn.style.color       = i === idx ? 'var(--lime)' : 'var(--muted)';
+  });
+
+  document.getElementById('badge-modo').textContent =
+    ['Modo: Texto','Modo: Foto','Modo: Gemini'][idx];
+
+  const fotoArea  = document.getElementById('foto-area');
+  const modo2Area = document.getElementById('modo2-area');
+  const modo3Area = document.getElementById('modo3-area');
+  const btnGerar  = document.getElementById('btn-gerar');
+
+  fotoArea.style.display  = idx >= 1 ? 'block' : 'none';
+  modo2Area.style.display = idx === 1 ? 'block' : 'none';
+  modo3Area.style.display = idx === 2 ? 'block' : 'none';
+
+  // Modo 0 (texto): limpar fotos
+  if(idx === 0){
+    limparFotos();
+    btnGerar.disabled = true;
+  }
+
+  // Modo 2 (Gemini): botão depende de foto + API
+  if(idx === 2){
+    checkApi();
+  }
+}
+
+// ── Foto manual ───────────────────────────────────────────
+function carregarFotoManual(input){
+  if(!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    STATE.foto = e.target.result;
+    document.getElementById('upload-lbl').textContent = '✓ Foto carregada';
+    const prev = document.getElementById('preview-foto');
+    prev.src = e.target.result;
+    prev.style.display = 'block';
+    document.getElementById('opacidade-row').style.display = 'flex';
+    aplicarFotoManual();
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function atualizarOpacidade(val){
+  STATE.opacidade = parseInt(val);
+  document.getElementById('op-val').textContent = val + '%';
+  aplicarFotoManual();
+}
+
+function aplicarFotoManual(){
+  if(!STATE.foto) return;
+  const op = STATE.opacidade / 100;
+  [0,1,2].forEach(i => {
+    const fotoEl    = document.getElementById(`foto-bg-${i}`);
+    const overlayEl = document.getElementById(`overlay-${i}`);
+    if(fotoEl){
+      fotoEl.style.backgroundImage = `url('${STATE.foto}')`;
+      fotoEl.style.opacity         = op;
+    }
+    if(overlayEl) overlayEl.style.display = 'block';
+  });
+}
+
+function limparFotos(){
+  [0,1,2].forEach(i => {
+    const fotoEl    = document.getElementById(`foto-bg-${i}`);
+    const overlayEl = document.getElementById(`overlay-${i}`);
+    if(fotoEl){ fotoEl.style.backgroundImage = ''; fotoEl.style.opacity = 1; }
+    if(overlayEl) overlayEl.style.display = 'none';
+  });
+}
+
+// ── Foto Gemini ────────────────────────────────────────────
+function carregarFotoGemini(input){
+  if(!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    STATE.fotoGemini = e.target.result;
+    document.getElementById('gemini-lbl').textContent = '✓ Foto carregada';
+    const prev = document.getElementById('gemini-prev');
+    prev.src = e.target.result;
+    prev.style.display = 'block';
+    // Verificar se pode habilitar o botão
+    checkApi();
+    // Habilitar botão local do modo3
+    const gBtn = document.getElementById('btn-gemini');
+    if(gBtn){ gBtn.disabled = false; gBtn.style.opacity = '1'; }
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+// ── Processamento Gemini ───────────────────────────────────
+async function processarGemini(){
+  const key = document.getElementById('apiKey').value.trim();
+  if(!key.startsWith('AIza')){
+    setStatus('Insira a Gemini API key.', false);
+    return;
+  }
+  if(!STATE.fotoGemini){
+    setStatus('Faça o upload da foto primeiro (Modo 3).', false);
+    return;
+  }
+
+  setStatus('Gemini compondo...', true);
+  const btnPrimary = document.getElementById('btn-gerar');
+  const btnGemini  = document.getElementById('btn-gemini');
+  btnPrimary.disabled = true;
+  if(btnGemini){ btnGemini.disabled = true; btnGemini.textContent = '⟳ Processando...'; }
+
+  const prompt = buildGeminiPrompt();
+  const b64    = STATE.fotoGemini.split(',')[1];
+  const mime   = STATE.fotoGemini.split(':')[1].split(';')[0];
+
+  try{
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${key}`,
+      {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          contents:[{parts:[
+            {inline_data:{mime_type:mime,data:b64}},
+            {text:prompt}
+          ]}],
+          generationConfig:{responseModalities:['TEXT','IMAGE']}
+        })
+      }
+    );
+
+    if(!res.ok){
+      const errBody = await res.json().catch(()=>({}));
+      throw new Error(errBody.error?.message || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    let imgData = null;
+    for(const p of (data.candidates?.[0]?.content?.parts || [])){
+      if(p.inlineData?.mimeType?.startsWith('image/')){ imgData = p.inlineData.data; break; }
+    }
+    if(!imgData) throw new Error('Gemini não retornou imagem.');
+
+    const url = `data:image/png;base64,${imgData}`;
+
+    // Aplicar a imagem gerada como fundo dos 3 slides
+    [0,1,2].forEach(i => {
+      const fotoEl    = document.getElementById(`foto-bg-${i}`);
+      const overlayEl = document.getElementById(`overlay-${i}`);
+      if(fotoEl){
+        fotoEl.style.backgroundImage = `url('${url}')`;
+        fotoEl.style.opacity = '1';
+      }
+      if(overlayEl) overlayEl.style.display = 'block';
+    });
+
+    setStatus('✓ Composição Gemini aplicada nos 3 slides.', false);
+    if(btnGemini){ btnGemini.disabled=false; btnGemini.textContent='✦ REGERAR COM GEMINI'; }
+    btnPrimary.disabled = false;
+
+  } catch(err){
+    setStatus(`Erro: ${err.message}`, false);
+    if(btnGemini){ btnGemini.disabled=false; btnGemini.textContent='✦ COMPOR COM GEMINI'; }
+    btnPrimary.disabled = false;
+  }
+}
+
+/**
+ * Prompt Gemini — baseado no Design Director do PRISMA.
+ * Preservação de identidade física é NÃO NEGOCIÁVEL.
+ */
+function buildGeminiPrompt(){
+  const palCores = BDP.paleta.split(',').map(c=>c.trim());
+  const primaria = palCores[0] || '#C8F23A';
+  const secund   = palCores[1] || '#FF4D8F';
+  const terciaria= palCores[2] || '#FF7C35';
+
+  return `You are a Senior Art Director compositing for the brand "${BDP.nome}".
+Recompose this photo of the client into the brand's editorial visual environment.
+
+━━━ PRESERVATION RULES (NON-NEGOTIABLE) ━━━
+PRESERVE ABSOLUTELY:
+- Face, facial features, skin tone, expression, proportions
+- Body type, weight, posture — NEVER slim, alter or "beautify"
+- All gestures and body language exactly as photographed
+- All tattoos — exact placement, design, and size
+- Hand near face / hand on face → preserve EXACTLY as photographed
+  (moving the hand changes the face — it will no longer be the same person)
+NEVER: beautify, slim, alter face, remove tattoos, change hand positions, add makeup.
+
+━━━ BRAND DNA — ${BDP.nome} ━━━
+Archetype: ${BDP.arquetipo}
+Brand soul: ${BDP.trueline}
+Manifesto: ${BDP.manifesto_curto}
+Visual style: ${BDP.estilo}
+Palette: ${BDP.paleta}
+Never use: ${BDP.rejeita}
+
+━━━ BACKGROUND ENVIRONMENT ━━━
+Build a background embodying the brand identity:
+- Base: deep dark #0A0A08 — 100% solid, no texture variation
+- Grain/noise texture overlay: 3-4% (separate layer, not embedded in color)
+- Lighting: cold dramatic side lighting — primary color ${primaria}
+- Secondary light accents: ${secund} and ${terciaria} (very subtle)
+- Atmosphere: editorial revelation — the moment clarity emerges from darkness
+- Archetype energy (${BDP.arquetipo}): the scene must feel like the brand's soul made visible
+- Depth: bokeh or dark geometric shapes in background, never competing with subject
+- Vignette: subtle dark edges (radial, not shadow) drawing focus to subject
+- The background must feel PHOTOGRAPHED — not generated, not artificial
+- DO NOT add drop shadows, glow effects, or gradients inside any symbol
+
+━━━ COMPOSITION & SAFE ZONE ━━━
+- Subject positioned to leave text safe zone clear (bottom 60% of frame)
+- Glassmorphism panel allowed ONLY behind text area: rgba(10,10,8,0.55), blur 8px
+- Text area: bottom 60% of frame — NEVER over face or tattoos
+- Output: 1080×1350px vertical (Instagram 4:5)
+- Premium editorial quality — someone stops scrolling
+
+━━━ STRICT RESTRICTIONS ━━━
+DO NOT: alter face, gestures, or body proportions of subject.
+DO NOT: add drop shadows, glow effects, or gradients on symbols.
+DO NOT: place any element inside the subject's personal space without editorial intent.
+DO NOT: use more than 3 colors from the brand palette.
+DO NOT: make background compete visually with subject.
+MOOD: ${BDP.arquetipo === 'Criador + Sábio' ? 'authority that reveals — not impresses' : 'brand archetype energy made visible'}`;
+}
+
+// ── Navegação de slides ────────────────────────────────────
+function verSlide(idx){
+  STATE.slideAtivo = idx;
+
+  [0,1,2].forEach(i => {
+    const wrap = document.getElementById(`wrap-${i}`);
+    const tab  = document.getElementById(`tab-${i}`);
+    if(wrap) wrap.style.display  = i === idx ? 'block' : 'none';
+    if(tab)  tab.classList.toggle('ativo', i === idx);
+  });
+}
+
+// ── Debug Safe Zone ────────────────────────────────────────
+function toggleSafeZone(){
+  const on = document.getElementById('chk-safezone').checked;
+  document.querySelectorAll('.slide').forEach(s => {
+    s.classList.toggle('debug-sz', on);
+  });
+}
+
+// ── Export PNG ────────────────────────────────────────────
+async function exportSlide(){
+  const idx   = STATE.slideAtivo;
+  const slide = document.getElementById(`slide-${idx}`);
+  if(!slide){ setStatus('Slide não encontrado.', false); return; }
+
+  setStatus(`Exportando slide ${idx+1}...`, true);
+
+  // Mostrar o wrap temporariamente (garante renderização correta)
+  const wrap = document.getElementById(`wrap-${idx}`);
+  const origDisplay = wrap.style.display;
+  wrap.style.display = 'block';
+
+  // Clonar e desenhar em 1080×1350 real
+  const clone = slide.cloneNode(true);
+  clone.style.cssText = `
+    position:fixed;top:-9999px;left:-9999px;
+    width:1080px;height:1350px;
+    transform:none;overflow:hidden;
+    padding:${getComputedStyle(document.documentElement).getPropertyValue('--sz-v').trim()}
+            ${getComputedStyle(document.documentElement).getPropertyValue('--sz-h').trim()};
+  `;
+  document.body.appendChild(clone);
+
+  try{
+    const canvas = await html2canvas(clone, {
+      width:1080, height:1350, scale:1,
+      useCORS:true, backgroundColor:'#0A0A08', logging:false
+    });
+
+    const a = document.createElement('a');
+    a.href     = canvas.toDataURL('image/png');
+    a.download = `prisma-canvas-slide-${idx+1}-${Date.now()}.png`;
+    a.click();
+
+    setStatus(`✓ Slide ${idx+1} exportado — 1080×1350px`, false);
+    setTimeout(() => setStatus('', false), 3500);
+
+  } catch(err){
+    setStatus(`Erro na exportação: ${err.message}`, false);
+  } finally{
+    document.body.removeChild(clone);
+    wrap.style.display = origDisplay;
+  }
+}
+
+// ── Copiar HTML do slide ──────────────────────────────────
+function copiarHTML(){
+  const idx   = STATE.slideAtivo;
+  const slide = document.getElementById(`slide-${idx}`);
+  if(!slide) return;
+  const html = slide.outerHTML;
+  navigator.clipboard.writeText(html).then(() => {
+    setStatus('✓ HTML do slide copiado para a área de transferência.', false);
+    setTimeout(() => setStatus('', false), 2500);
+  }).catch(() => {
+    setStatus('Erro ao copiar — tente manualmente.', false);
+  });
+}
+
+// ── Status bar ────────────────────────────────────────────
+function setStatus(txt, loading){
+  document.getElementById('status-txt').textContent = txt;
+  const fill = document.getElementById('status-fill');
+  if(loading){
+    fill.style.width = '70%';
+  } else {
+    fill.style.width = txt ? '100%' : '0%';
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────────
+verSlide(0);
+selecionarModo(0);
+selecionarTemplate(0);
+renderLogo();
+setStatus('Canvas pronto — carregue um BDP ou injete a copy.', false);
+setTimeout(() => setStatus('', false), 3000);
+
+/* ─────────────────────────────────────────────────────────
+   GUIA DE INJEÇÃO EXTERNA (copy-forense → gabiOS API)
+   ─────────────────────────────────────────────────────────
+   // Slide 1 (Capa):
+   injetarPorId('cf-pre-tag', 'Fixado 01 · G Gabi Produções', 'text');
+   injetarPorId('cf-headline', 'QUEM<br><span class="lime">SOU</span><br>EU.', 'html');
+   injetarPorId('cf-subheadline', '"A gente não cria quem você é.<br>A gente mostra."', 'html');
+
+   // Slide 2 (Dev):
+   injetarPorId('cf-pre-tag-s2', 'O que eu faço', 'text');
+   injetarPorId('cf-headline-s2', 'VOCÊ JÁ TEM<br><span class="lime">O QUE PRECISA</span><br>PARA SER RECONHECIDO.', 'html');
+   injetarPorId('cf-body-s2', 'Falta alguém que veja antes de você.', 'html');
+
+   // Slide 3 (CTA):
+   injetarPorId('cf-pre-tag-s3', 'Próximo passo', 'text');
+   injetarPorId('cf-headline-s3', 'ME CHAMA.<br><span class="lime">PRIMEIRA<br>CONVERSA</span><br>É DIAGNÓSTICO.', 'html');
+   injetarPorId('cf-body-s3', 'Sem precisar se explicar do zero toda vez.', 'html');
+
+   // Assinatura:
+   injetarPorId('cf-ass-handle', '↓ @ggabiproducoes', 'text');
+   injetarPorId('cf-ass-nome', 'G GABI PRODUÇÕES', 'text');
+   injetarPorId('cf-ass-local', 'Campo Grande, MS · Produção criativa com propósito', 'text');
+   ───────────────────────────────────────────────────────── */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio 1 · Exploração de Logo · PRISMA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0A0A08;--lime:#C8F23A;--rosa:#FF4D8F;--laranja:#FF7C35;
+  --offwhite:#F5F2EB;--muted:#5a5650;--s1:#111110;--s2:#181816;
+  --b1:#1e1e1c;--b2:#2e2e2c;--ok:#4ade80;--danger:#ff4d4d;--warn:#f59e0b;
+}
+body{background:var(--bg);color:var(--offwhite);font-family:'Poppins',sans-serif;font-weight:300;min-height:100vh;}
+
+/* HEADER */
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--b1);flex-wrap:wrap;gap:12px;}
+.h-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--lime);}
+.h-sub{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+.badge{font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid;}
+.badge-lime{color:var(--lime);border-color:rgba(200,242,58,.25);background:rgba(200,242,58,.06);}
+.badge-ok{color:var(--ok);border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.06);}
+.badge-muted{color:var(--muted);border-color:var(--b2);}
+
+/* ETAPAS */
+.etapas{display:flex;align-items:center;gap:0;padding:0 32px;border-bottom:1px solid var(--b1);background:var(--s1);}
+.etapa{display:flex;align-items:center;gap:10px;padding:14px 24px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid transparent;transition:all .2s;}
+.etapa.ativa{color:var(--lime);border-bottom-color:var(--lime);}
+.etapa.concluida{color:var(--ok);border-bottom-color:transparent;}
+.etapa-num{width:20px;height:20px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+.etapa-seta{color:var(--b2);padding:0 8px;}
+
+/* API BAR */
+.api-bar{display:flex;align-items:center;gap:12px;padding:10px 32px;background:var(--bg);border-bottom:1px solid var(--b1);flex-wrap:wrap;}
+.api-bar label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.api-input{flex:1;min-width:200px;background:var(--s1);border:1px solid var(--b2);color:var(--offwhite);font-family:monospace;font-size:12px;padding:7px 12px;outline:none;transition:border-color .2s;}
+.api-input:focus{border-color:var(--lime);}
+.api-input::placeholder{color:var(--muted);opacity:.4;}
+
+/* LAYOUT */
+.main{display:grid;grid-template-columns:300px 1fr;min-height:calc(100vh - 140px);}
+.left{border-right:1px solid var(--b1);display:flex;flex-direction:column;}
+.right{padding:28px;overflow-y:auto;}
+
+/* PAINEL CONTROLES */
+.panel{padding:20px;flex:1;display:flex;flex-direction:column;gap:14px;overflow-y:auto;}
+.sec{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;margin-bottom:2px;}
+.sec::after{content:'';flex:1;height:1px;background:var(--b1);}
+.field label{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px;}
+.field input,.field textarea,.field select{width:100%;background:var(--s2);border:1px solid var(--b2);color:var(--offwhite);font-family:'Poppins',sans-serif;font-size:12px;font-weight:300;padding:8px 12px;outline:none;transition:border-color .2s;resize:none;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--lime);}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted);opacity:.4;}
+
+/* BDP UPLOAD */
+.bdp-upload{background:rgba(200,242,58,.04);border:1px dashed rgba(200,242,58,.2);padding:12px 16px;cursor:pointer;position:relative;transition:all .2s;display:flex;align-items:center;gap:10px;}
+.bdp-upload:hover{background:rgba(200,242,58,.08);border-color:rgba(200,242,58,.35);}
+.bdp-upload input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.bdp-upload-icon{font-size:18px;opacity:.4;}
+.bdp-upload-txt{font-size:11px;color:rgba(200,242,58,.6);}
+.bdp-upload-hint{font-size:10px;color:var(--muted);margin-top:2px;}
+
+/* CONCEITOS */
+.conceito-item{background:var(--s2);border:1px solid var(--b2);padding:12px;cursor:pointer;transition:all .2s;position:relative;}
+.conceito-item:hover{border-color:rgba(200,242,58,.3);}
+.conceito-item.selecionado{border-color:var(--lime);background:rgba(200,242,58,.06);}
+.conceito-item.selecionado::before{content:'✦';position:absolute;top:8px;right:10px;color:var(--lime);font-size:12px;}
+.conceito-num{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:4px;}
+.conceito-nome{font-size:12px;font-weight:400;color:var(--offwhite);margin-bottom:3px;}
+.conceito-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* BOTÕES */
+.btn-gerar{width:100%;background:var(--lime);color:var(--bg);border:none;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;padding:14px;cursor:pointer;transition:opacity .2s;}
+.btn-gerar:hover{opacity:.88;}
+.btn-gerar:disabled{background:var(--b2);color:var(--muted);cursor:not-allowed;}
+.btn-sec{width:100%;background:var(--s2);color:var(--muted);border:1px solid var(--b2);font-size:11px;padding:10px;cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif;}
+.btn-sec:hover{border-color:var(--lime);color:var(--lime);}
+.btn-aprovar{width:100%;background:rgba(200,242,58,.1);color:var(--lime);border:1px solid var(--lime);font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;padding:14px;cursor:pointer;transition:all .2s;display:none;}
+.btn-aprovar:hover{background:rgba(200,242,58,.2);}
+
+.err-box{background:rgba(255,77,77,.08);border:1px solid rgba(255,77,77,.3);padding:9px 12px;font-size:12px;color:var(--danger);display:none;line-height:1.5;}
+.err-box.on{display:block;}
+
+/* GRID DE 4 LOGOS */
+.logos-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.logo-card{background:var(--s1);border:2px solid var(--b1);display:flex;flex-direction:column;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.logo-card:hover{border-color:rgba(200,242,58,.3);}
+.logo-card.selecionado{border-color:var(--lime);box-shadow:0 0 24px rgba(200,242,58,.12);}
+.logo-card.selecionado .card-badge{display:flex;}
+.card-badge{display:none;position:absolute;top:10px;right:10px;background:var(--lime);color:var(--bg);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1px;padding:3px 8px;z-index:10;}
+.card-imagem{background:var(--bg);display:flex;align-items:center;justify-content:center;min-height:220px;position:relative;}
+.card-imagem img{width:85%;max-height:200px;object-fit:contain;}
+.card-loading{position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.spinner{width:24px;height:24px;border:2px solid rgba(200,242,58,.15);border-top-color:var(--lime);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner-txt{font-size:10px;color:rgba(200,242,58,.5);letter-spacing:.15em;text-transform:uppercase;}
+.card-info{padding:14px 16px;border-top:1px solid var(--b1);}
+.card-num{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:3px;}
+.card-nome{font-size:13px;font-weight:400;color:var(--offwhite);margin-bottom:4px;}
+.card-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.card-actions{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--b1);}
+.card-btn{flex:1;background:none;border:1px solid var(--b2);color:var(--muted);font-size:10px;padding:7px;cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif;}
+.card-btn:hover{border-color:var(--lime);color:var(--lime);}
+.card-btn.select{border-color:var(--lime);color:var(--lime);background:rgba(200,242,58,.06);}
+.card-btn.dl{border-color:var(--b2);}
+
+/* EMPTY */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:400px;opacity:.2;text-align:center;}
+.empty-state p{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+
+/* ETAPA 2 */
+.etapa2-wrap{display:none;}
+.selected-preview{background:var(--s1);border:1px solid var(--b1);padding:24px;display:flex;gap:24px;align-items:center;margin-bottom:20px;}
+.selected-preview img{width:120px;height:120px;object-fit:contain;background:var(--bg);padding:8px;}
+.selected-info{flex:1;}
+.selected-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
+.selected-nome{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--offwhite);margin-bottom:4px;}
+.selected-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+.btn-voltar{background:none;border:1px solid var(--b2);color:var(--muted);font-size:10px;padding:8px 16px;cursor:pointer;margin-bottom:16px;transition:all .2s;}
+.btn-voltar:hover{border-color:var(--lime);color:var(--lime);}
+
+/* PROGRESS */
+.progress-bar{height:3px;background:var(--b2);margin-top:8px;display:none;}
+.progress-fill{height:100%;background:var(--lime);width:0%;transition:width .3s;}
+.progress-bar.on{display:block;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="h-title">STUDIO 1 · EXPLORAÇÃO DE LOGO</div>
+    <div class="h-sub">PRISMA · 4 Conceitos simultâneos · Curadoria → System Logo</div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <div class="badge badge-lime">Gemini 3.1 Flash</div>
+    <div class="badge badge-muted" id="badge-api">API não configurada</div>
+    <div class="badge badge-muted" id="badge-bdp">BDP não carregado</div>
+  </div>
+</div>
+
+<!-- ETAPAS -->
+<div class="etapas">
+  <div class="etapa ativa" id="etapa1-tab">
+    <div class="etapa-num">1</div>
+    <span>Exploração · 4 conceitos</span>
+  </div>
+  <div class="etapa-seta">→</div>
+  <div class="etapa" id="etapa2-tab">
+    <div class="etapa-num">2</div>
+    <span>Refinamento · System Logo</span>
+  </div>
+</div>
+
+<!-- API BAR -->
+<div class="api-bar">
+  <label>Gemini API Key</label>
+  <input type="password" class="api-input" id="geminiKey" placeholder="AIza..." oninput="checkApi()" style="max-width:360px;">
+  <label style="margin-left:16px;">remove.bg API Key (Etapa 2)</label>
+  <input type="password" class="api-input" id="removebgKey" placeholder="Cole sua remove.bg key..." oninput="checkApi()" style="max-width:360px;">
+</div>
+
+<div class="main">
+
+  <!-- ESQUERDA -->
+  <div class="left">
+    <div class="panel">
+
+      <!-- BDP UPLOAD -->
+      <div>
+        <div class="sec">BDP do Cliente</div>
+        <label class="bdp-upload">
+          <input type="file" accept=".md,.txt" onchange="carregarBDP(this)">
+          <div class="bdp-upload-icon">📄</div>
+          <div>
+            <div class="bdp-upload-txt">Carregar BDP.md</div>
+            <div class="bdp-upload-hint">Preenche os campos automaticamente</div>
+          </div>
+        </label>
+      </div>
+
+      <!-- CAMPOS -->
+      <div>
+        <div class="sec">Briefing</div>
+        <div class="field" style="margin-bottom:10px;">
+          <label>Nome da marca</label>
+          <input type="text" id="f-nome" placeholder="Ex: G Gabi Produções" oninput="atualizarConceitos()">
+        </div>
+        <div class="field" style="margin-bottom:10px;">
+          <label>Arquétipo</label>
+          <input type="text" id="f-arq" placeholder="Ex: Criador + Sábio" oninput="atualizarConceitos()">
+        </div>
+        <div class="field" style="margin-bottom:10px;">
+          <label>Paleta (hex por vírgula)</label>
+          <input type="text" id="f-paleta" placeholder="#C8F23A, #FF4D8F, #FF7C35, #0A0A08">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>Rejeita</label>
+          <input type="text" id="f-rejeita" placeholder="Ex: genérico, pastel, gradiente">
+        </div>
+      </div>
+
+      <!-- SELEÇÃO DE CONCEITOS -->
+      <div id="conceitos-wrap">
+        <div class="sec">4 Conceitos a explorar</div>
+        <div style="display:flex;flex-direction:column;gap:6px;" id="conceitos-list">
+          <!-- gerados por JS -->
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-top:8px;line-height:1.5;">
+          Cada conceito gera uma direção visual distinta. Todos gerados simultaneamente.
+        </div>
+      </div>
+
+      <div class="err-box" id="err-box"></div>
+
+    </div>
+
+    <!-- BOTÕES -->
+    <div style="padding:16px 20px;border-top:1px solid var(--b1);display:flex;flex-direction:column;gap:8px;">
+      <button class="btn-gerar" id="btn-gerar" onclick="explorar()" disabled>
+        ✦ EXPLORAR 4 CONCEITOS
+      </button>
+      <div class="progress-bar" id="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <button class="btn-aprovar" id="btn-aprovar" onclick="irEtapa2()">
+        APROVAR E GERAR SYSTEM LOGO →
+      </button>
+      <button class="btn-sec" id="btn-nova" onclick="explorar()" style="display:none;">
+        ↻ Gerar 4 novos conceitos
+      </button>
+    </div>
+  </div>
+
+  <!-- DIREITA -->
+  <div class="right">
+
+    <!-- ETAPA 1 — EMPTY -->
+    <div id="empty-state" class="empty-state">
+      <div style="font-size:48px;">◎</div>
+      <p>Configure o briefing e explore os 4 conceitos</p>
+    </div>
+
+    <!-- ETAPA 1 — GRID DE LOGOS -->
+    <div id="logos-grid" class="logos-grid" style="display:none;">
+      <!-- 4 cards gerados por JS -->
+    </div>
+
+    <!-- ETAPA 2 -->
+    <div id="etapa2-wrap" class="etapa2-wrap">
+      <!-- Logo selecionada -->
+      <button class="btn-voltar" onclick="voltarEtapa1()">← Voltar e escolher outro conceito</button>
+      <div class="selected-preview" id="selected-preview">
+        <img id="selected-img" src="" alt="">
+        <div class="selected-info">
+          <div class="selected-label">Conceito aprovado para refinamento</div>
+          <div class="selected-nome" id="selected-nome"></div>
+          <div class="selected-desc" id="selected-desc"></div>
+        </div>
+      </div>
+
+      <!-- Logo Processor embutido -->
+      <div style="background:var(--s1);border:1px solid var(--b1);padding:24px;">
+        <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:16px;">Etapa 2 · Processar e gerar System Logo</div>
+
+        <!-- Status pipeline -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:11px;">
+            <div class="spinner" id="sp-removebg"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--muted);flex-shrink:0;" id="dot-removebg"></div>
+            <span id="txt-removebg">remove.bg — aguardando aprovação</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:11px;">
+            <div class="spinner" id="sp-system"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--muted);flex-shrink:0;" id="dot-system"></div>
+            <span id="txt-system">System Logo — aguardando</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:11px;">
+            <div class="spinner" id="sp-bdp"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--muted);flex-shrink:0;" id="dot-bdp"></div>
+            <span id="txt-bdp">BDP.md — aguardando</span>
+          </div>
+        </div>
+
+        <button class="btn-gerar" id="btn-processar" onclick="processarEtapa2()" style="margin-bottom:12px;">
+          ✦ PROCESSAR NO REMOVE.BG
+        </button>
+
+        <!-- Downloads (aparecem após processar) -->
+        <div id="dl-wrap" style="display:none;">
+          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:10px;">Downloads — System Logo completo</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px;">
+            <button class="card-btn dl" onclick="dlFile('dark')">↓ Fundo Escuro</button>
+            <button class="card-btn dl" onclick="dlFile('light')">↓ Fundo Claro</button>
+            <button class="card-btn dl" onclick="dlFile('transparent')">↓ Transparente</button>
+            <button class="card-btn dl" onclick="dlFile('mono_pos')">↓ Mono Positiva</button>
+            <button class="card-btn dl" onclick="dlFile('mono_neg')">↓ Mono Negativa</button>
+            <button class="card-btn dl" onclick="dlFile('avatar')">↓ Avatar 512px</button>
+          </div>
+          <button class="card-btn dl" onclick="dlTodos()" style="width:100%;margin-bottom:8px;border-color:rgba(200,242,58,.3);color:var(--lime);">↓ Baixar todos os PNGs (6 arquivos)</button>
+          <button class="btn-gerar" onclick="dlBDP()" style="font-size:14px;padding:12px;">↓ Baixar BDP.md atualizado</button>
+          <div style="font-size:11px;color:var(--ok);text-align:center;margin-top:8px;min-height:18px;" id="dl-feedback"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+// ─── Carregar keys do PRISMA Config ──────────────────────
+(function() {
+  const map = {
+    'geminiKey':    'prisma_key_gemini',
+    'removebgKey':  'prisma_key_removebg',
+    'anthropicKey': 'prisma_key_anthropic',
+  };
+  Object.entries(map).forEach(([inputId, storageKey]) => {
+    const el = document.getElementById(inputId);
+    if (el && !el.value) {
+      const val = localStorage.getItem(storageKey);
+      if (val) { el.value = val; el.dispatchEvent(new Event('input')); }
+    }
+  });
+})();
+// ─── Estado global ────────────────────────────────────────
+let BDP = {};
+let state = {
+  logosSelecionadas: {}, // {idx: {b64, nome, desc}}
+  logoAprovada: null,    // {b64, nome, desc, idx}
+  logoTransp: null,      // canvas após remove.bg
+  canvases: {}
+};
+
+const CONCEITOS_BASE = [
+  {
+    id: 0,
+    nome: 'Revelação',
+    desc: 'G como arco aberto · Raios em leque · Ponto de luz',
+    prompt: (b) => `Create a brand logo symbol for "${b.nome}".
+SOUL: revelation — something hidden finally becoming visible. The exact moment light breaks through.
+Archetype: ${b.arq} — the symbol embodies this energy.
+SYMBOL: Letter G as an open arc that does NOT close completely (270° arc). Variable stroke weight — thicker at the ends. Inner depth: gradient from bright ${b.primaria} to darker internally. A single bright point of origin at the gap — the moment of revelation. From that point: a dense fan of 12-15 rays spanning 180°. Rays gradient continuously from deep pink #FF4D8F (near center) to warm orange #FF7C35 (outer tips). Rays vary in thickness — wider at origin, tapering to fine points. Subtle atmospheric glow around the G.
+TECHNICAL: Background 100% solid uniform ${b.bg} — zero texture. Flat vector quality. Symbol occupies 82% of frame. No text, no wordmark.
+AVOID: ${b.rejeita}. Never: drop shadows, 3D extrusion, decorative frames.
+THE FEELING: clarity emerging from darkness. Charged, alive, inevitable.`
+  },
+  {
+    id: 1,
+    nome: 'Construção',
+    desc: 'G geométrico · Grid modular · Linhas que convergem',
+    prompt: (b) => `Create a brand logo symbol for "${b.nome}".
+SOUL: construction — precision with purpose. Every line placed with intention.
+Archetype: ${b.arq} — systematic wisdom made visible.
+SYMBOL: Letter G constructed entirely from geometric grid lines and modular shapes. Sharp 90° angles and precise circles. G built from a combination of straight lines and quarter-circles on a visible grid structure. Primary color ${b.primaria} for the main structure. Accent lines in #FF4D8F and #FF7C35 marking the key construction points. The terminal of the G ends in a precise geometric marker — a small circle or diamond.
+TECHNICAL: Background 100% solid uniform ${b.bg} — zero texture. Clean flat vector. Symbol occupies 82% of frame. No text, no wordmark.
+AVOID: ${b.rejeita}. Never: organic curves, glow effects, drop shadows.
+THE FEELING: confidence built from structure. Mastery made visible.`
+  },
+  {
+    id: 2,
+    nome: 'Autoridade',
+    desc: 'G tipográfico bold · Minimalista · Força sem ornamento',
+    prompt: (b) => `Create a brand logo symbol for "${b.nome}".
+SOUL: authority without performance. Presence that doesn't need to explain itself.
+Archetype: ${b.arq} — knowledge distilled to its purest form.
+SYMBOL: A single bold, perfectly crafted letter G. Custom typography — neither serif nor sans-serif but a hybrid with character. Extremely thick strokes creating maximum mass. The G terminal has a unique custom detail: a small accent mark or cut that becomes the signature element. Color: solid ${b.primaria} with a subtle inner shadow creating depth — no gradients, just light and shadow. The letter should feel like it was carved, not drawn.
+TECHNICAL: Background 100% solid uniform ${b.bg} — zero texture. Symbol occupies 85% of frame. Bold, dominant. No text, no wordmark.
+AVOID: ${b.rejeita}. Never: thin strokes, decorative elements, complexity.
+THE FEELING: unmistakable. The room goes quiet when this logo enters.`
+  },
+  {
+    id: 3,
+    nome: 'Movimento',
+    desc: 'G dinâmico · Traço gestual · Energia em expansão',
+    prompt: (b) => `Create a brand logo symbol for "${b.nome}".
+SOUL: movement — energy that cannot be contained. Transformation in progress.
+Archetype: ${b.arq} — the creator in motion, the sage in flow.
+SYMBOL: Letter G expressed as a single fluid gestural stroke — as if drawn in one continuous confident movement. The stroke starts thin, builds to maximum thickness, then tapers again at the terminal. The terminal of the G releases into space — trailing off into 3-4 energy lines in #FF4D8F and #FF7C35 that suggest speed and direction. The main stroke is ${b.primaria}. The entire symbol conveys kinetic energy — frozen mid-motion.
+TECHNICAL: Background 100% solid uniform ${b.bg} — zero texture. Symbol occupies 82% of frame. No text, no wordmark.
+AVOID: ${b.rejeita}. Never: symmetrical/static compositions, drop shadows, 3D.
+THE FEELING: caught in the act of becoming. Unstoppable forward motion.`
+  }
+];
+
+let conceitosAtivos = [0,1,2,3];
+
+// ─── BDP ─────────────────────────────────────────────────
+function carregarBDP(input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    BDP = parseBDP(e.target.result);
+    preencherCampos();
+    document.getElementById('badge-bdp').textContent = `BDP: ${BDP.nome || '—'} ✓`;
+    document.getElementById('badge-bdp').className = 'badge badge-ok';
+  };
+  reader.readAsText(input.files[0]);
+}
+
+function parseBDP(txt) {
+  const b = {};
+  txt.split('\n').forEach(l => {
+    const m = l.match(/^([a-zA-Z_]+)\s*[=:]\s*(.+)$/);
+    if (m) b[m[1].trim().toLowerCase()] = m[2].trim();
+  });
+  return {
+    nome: b.nome || b.cliente || '',
+    arq: b.arquetipo || b.arquétipo || '',
+    paleta: b.paleta || '',
+    rejeita: b.rejeita || '',
+    trueline: b.trueline || '',
+    raw: txt
+  };
+}
+
+function preencherCampos() {
+  const set = (id, val) => { if (val) document.getElementById(id).value = val; };
+  set('f-nome', BDP.nome);
+  set('f-arq', BDP.arq);
+  set('f-paleta', BDP.paleta);
+  set('f-rejeita', BDP.rejeita);
+  atualizarConceitos();
+  verificarPronto();
+}
+
+// ─── API ─────────────────────────────────────────────────
+function checkApi() {
+  const key = document.getElementById('geminiKey').value.trim();
+  const badge = document.getElementById('badge-api');
+  if (key.startsWith('AIza') && key.length > 20) {
+    badge.textContent = 'Gemini ✓'; badge.className = 'badge badge-ok';
+  } else {
+    badge.textContent = 'API não configurada'; badge.className = 'badge badge-muted';
+  }
+  verificarPronto();
+}
+
+function verificarPronto() {
+  const temApi = document.getElementById('geminiKey').value.trim().startsWith('AIza');
+  const temNome = document.getElementById('f-nome').value.trim().length > 0;
+  document.getElementById('btn-gerar').disabled = !(temApi && temNome);
+}
+
+// ─── Briefing helper ─────────────────────────────────────
+function getBriefing() {
+  const paleta = document.getElementById('f-paleta').value || '#C8F23A,#FF4D8F,#FF7C35,#0A0A08';
+  const cores = paleta.split(',').map(c=>c.trim());
+  const bg = cores.find(c=>{const h=c.replace('#','');return(parseInt(h.substr(0,2),16)+parseInt(h.substr(2,2),16)+parseInt(h.substr(4,2),16))<200;})||'#0A0A08';
+  const primaria = cores.find(c=>c!==bg)||'#C8F23A';
+  return {
+    nome: document.getElementById('f-nome').value.trim() || 'Marca',
+    arq: document.getElementById('f-arq').value.trim() || 'Criador',
+    paleta, bg, primaria,
+    rejeita: document.getElementById('f-rejeita').value.trim() || 'genérico, pastel'
+  };
+}
+
+// ─── Conceitos UI ────────────────────────────────────────
+function atualizarConceitos() {
+  const list = document.getElementById('conceitos-list');
+  list.innerHTML = CONCEITOS_BASE.map((c,i) => `
+    <div class="conceito-item ${conceitosAtivos.includes(i)?'selecionado':''}" onclick="toggleConceito(${i})">
+      <div class="conceito-num">Conceito 0${i+1}</div>
+      <div class="conceito-nome">${c.nome}</div>
+      <div class="conceito-desc">${c.desc}</div>
+    </div>
+  `).join('');
+}
+
+function toggleConceito(idx) {
+  // Sempre mantém todos 4 ativos — são gerados simultaneamente
+  // Pode ser expandido para permitir seleção personalizada
+}
+
+// ─── EXPLORAR ────────────────────────────────────────────
+async function explorar() {
+  const key = document.getElementById('geminiKey').value.trim();
+  if (!key.startsWith('AIza')) { showErr('Insira a Gemini API key.'); return; }
+  clearErr();
+
+  const b = getBriefing();
+
+  // Montar grid de 4 cards em loading
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('logos-grid').style.display = 'grid';
+  document.getElementById('btn-aprovar').style.display = 'none';
+  document.getElementById('btn-nova').style.display = 'none';
+  document.getElementById('btn-gerar').disabled = true;
+
+  const grid = document.getElementById('logos-grid');
+  grid.innerHTML = CONCEITOS_BASE.map((c,i) => `
+    <div class="logo-card" id="card-${i}">
+      <div class="card-badge">✦ SELECIONADO</div>
+      <div class="card-imagem">
+        <div class="card-loading" id="loading-${i}">
+          <div class="spinner"></div>
+          <div class="spinner-txt">Gerando ${c.nome}...</div>
+        </div>
+        <img id="img-${i}" src="" style="display:none;">
+      </div>
+      <div class="card-info">
+        <div class="card-num">CONCEITO 0${i+1}</div>
+        <div class="card-nome">${c.nome}</div>
+        <div class="card-desc">${c.desc}</div>
+      </div>
+      <div class="card-actions">
+        <button class="card-btn select" id="btn-sel-${i}" onclick="selecionarLogo(${i})" disabled>Selecionar</button>
+        <button class="card-btn dl" id="btn-dl-${i}" onclick="dlConceito(${i})" disabled>↓ Baixar</button>
+      </div>
+    </div>
+  `).join('');
+
+  // Progress
+  const progressBar = document.getElementById('progress-bar');
+  const progressFill = document.getElementById('progress-fill');
+  progressBar.classList.add('on');
+  let concluidos = 0;
+
+  // Gerar 4 em paralelo
+  const promessas = CONCEITOS_BASE.map(async (conceito, i) => {
+    try {
+      const prompt = conceito.prompt(b);
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image-preview:generateContent?key=${key}`,
+        {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({
+            contents: [{parts:[{text: prompt}]}],
+            generationConfig: {
+              responseModalities: ['TEXT','IMAGE'],
+              imageConfig: { aspectRatio: '1:1', imageSize: '1K' }
+            }
+          })
+        }
+      );
+
+      if (!res.ok) { const e = await res.json(); throw new Error(e.error?.message || `HTTP ${res.status}`); }
+      const data = await res.json();
+      let imgData = null;
+      for (const p of (data.candidates?.[0]?.content?.parts||[])) {
+        if (p.inlineData?.mimeType?.startsWith('image/')) { imgData = p.inlineData.data; break; }
+      }
+      if (!imgData) throw new Error('Sem imagem');
+
+      // Atualizar card
+      document.getElementById(`loading-${i}`).style.display = 'none';
+      const img = document.getElementById(`img-${i}`);
+      img.src = `data:image/png;base64,${imgData}`;
+      img.style.display = 'block';
+      document.getElementById(`btn-sel-${i}`).disabled = false;
+      document.getElementById(`btn-dl-${i}`).disabled = false;
+      document.getElementById(`card-${i}`).onclick = () => selecionarLogo(i);
+
+      state.logosSelecionadas[i] = { b64: imgData, nome: conceito.nome, desc: conceito.desc };
+
+    } catch(e) {
+      document.getElementById(`loading-${i}`).innerHTML = `
+        <div style="font-size:10px;color:var(--danger);text-align:center;padding:16px;">${e.message}</div>`;
+    } finally {
+      concluidos++;
+      progressFill.style.width = `${(concluidos/4)*100}%`;
+      if (concluidos === 4) {
+        document.getElementById('btn-gerar').disabled = false;
+        document.getElementById('btn-nova').style.display = 'block';
+        progressBar.classList.remove('on');
+      }
+    }
+  });
+
+  await Promise.allSettled(promessas);
+}
+
+// ─── Selecionar logo ─────────────────────────────────────
+function selecionarLogo(idx) {
+  // Desselecionar todos
+  CONCEITOS_BASE.forEach((_,i) => {
+    document.getElementById(`card-${i}`)?.classList.remove('selecionado');
+  });
+  // Selecionar este
+  document.getElementById(`card-${idx}`)?.classList.add('selecionado');
+  state.logoAprovada = { ...state.logosSelecionadas[idx], idx };
+  document.getElementById('btn-aprovar').style.display = 'block';
+}
+
+// ─── Etapa 2 ─────────────────────────────────────────────
+function irEtapa2() {
+  if (!state.logoAprovada) return;
+
+  // Atualizar abas
+  document.getElementById('etapa1-tab').className = 'etapa concluida';
+  document.getElementById('etapa2-tab').className = 'etapa ativa';
+
+  // Esconder etapa 1, mostrar etapa 2
+  document.getElementById('logos-grid').style.display = 'none';
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('etapa2-wrap').style.display = 'block';
+
+  // Preencher preview da selecionada
+  document.getElementById('selected-img').src = `data:image/png;base64,${state.logoAprovada.b64}`;
+  document.getElementById('selected-nome').textContent = state.logoAprovada.nome;
+  document.getElementById('selected-desc').textContent = state.logoAprovada.desc;
+}
+
+function voltarEtapa1() {
+  document.getElementById('etapa1-tab').className = 'etapa ativa';
+  document.getElementById('etapa2-tab').className = 'etapa';
+  document.getElementById('logos-grid').style.display = 'grid';
+  document.getElementById('etapa2-wrap').style.display = 'none';
+}
+
+// ─── Processar Etapa 2 ───────────────────────────────────
+async function processarEtapa2() {
+  const key = document.getElementById('removebgKey').value.trim();
+  if (!key || key.length < 8) {
+    alert('Insira a remove.bg API key na barra superior.');
+    return;
+  }
+
+  const btn = document.getElementById('btn-processar');
+  btn.disabled = true; btn.textContent = 'Processando...';
+
+  try {
+    // remove.bg
+    setDot('removebg', 'active', 'remove.bg removendo fundo...');
+    const transpCanvas = await chamarRemoveBg(state.logoAprovada.b64, key);
+    setDot('removebg', 'ok', '✓ Fundo removido');
+    state.logoTransp = transpCanvas;
+
+    // System Logo
+    setDot('system', 'active', 'Gerando System Logo...');
+    gerarCanvases(transpCanvas);
+    setDot('system', 'ok', '✓ System Logo gerado');
+
+    // BDP
+    setDot('bdp', 'active', 'Atualizando BDP.md...');
+    gerarBDP(transpCanvas);
+    setDot('bdp', 'ok', '✓ BDP.md atualizado');
+
+    document.getElementById('dl-wrap').style.display = 'block';
+    btn.textContent = '✓ Processado — baixe os arquivos';
+
+  } catch(e) {
+    setDot('removebg', 'warn', 'Erro: ' + e.message);
+    btn.disabled = false;
+    btn.textContent = '✦ Tentar novamente';
+  }
+}
+
+async function chamarRemoveBg(b64, key) {
+  const byteStr = atob(b64);
+  const arr = new Uint8Array(byteStr.length);
+  for (let i=0;i<byteStr.length;i++) arr[i]=byteStr.charCodeAt(i);
+  const blob = new Blob([arr],{type:'image/png'});
+  const form = new FormData();
+  form.append('image_file', blob, 'logo.png');
+  form.append('size','auto');
+  const res = await fetch('https://api.remove.bg/v1.0/removebg',{method:'POST',headers:{'X-Api-Key':key},body:form});
+  if (!res.ok) { const e=await res.json().catch(()=>({})); throw new Error(e.errors?.[0]?.title||`remove.bg ${res.status}`); }
+  const buffer = await res.arrayBuffer();
+  const bytes = new Uint8Array(buffer);
+  let bin=''; for (let i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+  const rb64=btoa(bin);
+  return new Promise(resolve=>{
+    const img=new Image();
+    img.onload=()=>{const c=document.createElement('canvas');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);resolve(c);};
+    img.src=`data:image/png;base64,${rb64}`;
+  });
+}
+
+function gerarCanvases(transp) {
+  const mk=(src,bg,size,inv=false)=>{
+    const c=document.createElement('canvas');c.width=size;c.height=size;
+    const ctx=c.getContext('2d');
+    if(bg!=='transparent'){ctx.fillStyle=bg;ctx.fillRect(0,0,size,size);}
+    const s=size*.80,off=(size-s)/2;
+    if(inv){
+      const tmp=document.createElement('canvas');tmp.width=src.width;tmp.height=src.height;
+      const tctx=tmp.getContext('2d');tctx.drawImage(src,0,0);
+      const d=tctx.getImageData(0,0,tmp.width,tmp.height);const px=d.data;
+      const [r,g,b]=inv==='black'?[10,10,8]:[255,255,255];
+      for(let i=0;i<px.length;i+=4){if(px[i+3]>10){px[i]=r;px[i+1]=g;px[i+2]=b;}}
+      tctx.putImageData(d,0,0);ctx.drawImage(tmp,off,off,s,s);
+    } else { ctx.drawImage(src,off,off,s,s); }
+    return c;
+  };
+  state.canvases={
+    dark: mk(transp,'#0A0A08',1024),
+    light: mk(transp,'#F5F2EB',1024),
+    transparent: transp,
+    avatar: mk(transp,'#0A0A08',512),
+    mono_pos: mk(transp,'#ffffff',512,'black'),
+    mono_neg: mk(transp,'#0A0A08',512,'white'),
+  };
+}
+
+function gerarBDP(transp) {
+  const b64 = transp.toDataURL('image/png').split(',')[1];
+  const bdpBase = `# BDP — G Gabi Produções
+# Brand Data Package · PRISMA · Fase 02
+# Versão: 2.2 · Atualizado em: 22 Março 2026 · logo aprovada incorporada
+# Status: Studio 0 ✅ · Studio 1 ⏳ aguardando aprovação de logo
+
+nome: G Gabi Produções
+cliente: Glenda Gabi
+handle: @ggabiproducoes
+cidade: Campo Grande, MS
+descricao: Produção criativa com propósito
+
+# ─── IDENTIDADE ───────────────────────────────────────────
+
+arquetipo: Criador + Sábio
+arquetipo_primario: Criador
+arquetipo_secundario: Sábio
+
+posicionamento: Para profissionais que dominam o que fazem mas não sabem como aparecer, a G Gabi Produções é a produtora criativa que revela quem você já é — e garante que o mercado reconheça isso antes que você precise se explicar.
+
+trueline: Você já tem o que precisa para ser reconhecido. Falta alguém que veja antes de você.
+
+manifesto_curto: A gente não cria quem você é. A gente mostra.
+
+manifesto_completo: Tem gente que é boa no que faz — mas o mundo ainda não sabe disso. Não porque o trabalho seja ruim. Porque a comunicação nunca foi feita para mostrar o que realmente vale.
+
+transformacao: De 'não sei como me mostrar' para 'as pessoas certas me encontram porque sabem exatamente o que entrego.'
+
+# ─── PALETA ───────────────────────────────────────────────
+
+paleta: #0A0A08, #C8F23A, #FF4D8F, #FF7C35, #F5F2EB, #5a5650
+cor_background: #0A0A08
+cor_primaria: #C8F23A
+cor_secundaria: #FF4D8F
+cor_terciaria: #FF7C35
+cor_corpo: #F5F2EB
+cor_muted: #5a5650
+cor_nome_background: Preto Quente
+cor_nome_primaria: Lime Elétrico
+cor_nome_secundaria: Rosa Neon
+cor_nome_terciaria: Laranja
+cor_nome_corpo: Off-white
+cor_nome_muted: Muted
+
+# ─── TIPOGRAFIA ───────────────────────────────────────────
+
+tipografia: Bebas Neue display · Poppins Light corpo · Lora Italic destaque
+font_display: Bebas Neue
+font_display_uso: ALL CAPS · Bold · Lime #C8F23A · ganchos, títulos, covers
+font_corpo: Poppins Light
+font_corpo_peso: 300
+font_corpo_uso: textos de apoio, legendas, corpo · off-white #F5F2EB
+font_destaque: Lora Italic
+font_destaque_uso: citações, manifesto, frases de transformação · nunca ALL CAPS
+
+# ─── REJEITA ──────────────────────────────────────────────
+
+rejeita: genérico, corporativo frio, pastel, sombra drop-shadow, gradiente no símbolo, glow excessivo, 3D decorativo, clutter sem intenção, viral pelo viral, tendência sem arquétipo
+
+# ─── CONCEITO DO LOGO ─────────────────────────────────────
+
+conceito_logo: G como arco aberto que não fecha completamente, sugerindo revelação. Raios de luz saindo do ponto de abertura em rosa neon #FF4D8F e laranja #FF7C35. Lime elétrico #C8F23A como cor principal do arco. Fundo preto quente #0A0A08 100% uniforme e sólido — zero textura, zero gradiente, zero variação (crítico para remoção de fundo). Símbolo isolado, centralizado, limpo, flat vector 2D, escalável de favicon a billboard. Fills sólidos apenas — zero gradiente dentro do símbolo. Bordas nítidas com máximo contraste.
+conceito_logo_arquetipo: Archetype character: Criador + Sábio — the symbol must embody this energy visually. Criador: original, autoral, ocupa espaço com intenção. Sábio: clareza, profundidade, revelação. O símbolo não impressiona — revela.
+conceito_logo_essencia: Brand essence: "Você já tem o que precisa para ser reconhecido. Falta alguém que veja antes de você." — the symbol should visually suggest revelation, clarity, and seeing. O arco aberto é a metáfora visual: algo que está prestes a se revelar completamente.
+logo_prompt_restricoes: NO gradient fills inside symbol. NO glow effects or neon halos. NO drop shadows. NO 3D effects or extrusion. NO text or wordmark. NO decorative frames. NO background texture — pure flat #0A0A08. One single symbol only. Avoid: genérico, corporativo frio, pastel, sombra drop-shadow, gradiente no símbolo, glow excessivo, 3D decorativo.
+conceito_logo_arquetipo: Archetype character: Criador + Sábio — the symbol must embody this energy visually.
+conceito_logo_essencia: Brand essence: "Você já tem o que precisa para ser reconhecido. Falta alguém que veja antes de você." — the symbol should visually suggest revelation, clarity, and seeing.
+
+estilo_visual: editorial escuro, contraste tipográfico extremo, headline bold lime vs body light off-white, noise texture 3-4%, overlay rgba na área de texto, vignette sutil, sem sombras, sem glow, sem gradiente no símbolo, autoridade sem performance
+
+# ─── VOICE TRAITS — OPERADORA ─────────────────────────────
+
+voice_trait_01: Organizadora de caos com calma — "Você já tem tudo. A gente só vai organizar."
+voice_trait_02: Visual com intenção — nunca só estética — "Isso não é só uma cor — é a energia que você quer que as pessoas sintam quando te veem."
+voice_trait_03: Presença que liberta — "Aqui você não precisa ser outra versão de você. Só a real."
+voice_trait_04: Construtora — não executora — "Não quero que você dependa de mim pra sempre."
+
+# ─── GANCHOS APROVADOS (Handoff 03) ──────────────────────
+
+gancho_01: Você é bom no que faz. Só falta aparecer do jeito certo.
+gancho_02: Para de gastar energia se explicando. É hora de ser encontrado pelo cliente certo.
+gancho_03: Eu vejo o que você ainda não consegue ver em você mesmo — e coloco isso no mundo.
+
+# ─── BIOS APROVADAS ───────────────────────────────────────
+
+bio_instagram_curta: Revelo quem você já é — e coloco isso onde as pessoas certas vão encontrar. 📍 Campo Grande · Produção criativa com propósito
+bio_instagram_longa: Você é bom no que faz. Só ainda não aparece como deveria. Eu organizo o que você já é — e transformo em presença que atrai o cliente certo. Sem precisar se explicar do zero toda vez. 👇 Me chama — primeira conversa é diagnóstico
+bio_linkedin: Produtora criativa especializada em revelar a identidade de quem domina o que faz — e garantir que o mercado reconheça isso. Trabalho com profissionais liberais, empresários e figuras públicas que querem construir presença digital com estratégia — não só conteúdo. G Gabi Produções · Campo Grande, MS
+
+# ─── STORY ARC ────────────────────────────────────────────
+
+story_arc_01: O Mundo Ordinário — profissional bom, vive se explicando
+story_arc_02: O Chamado — gente menos preparada se destaca mais
+story_arc_03: A Toca do Coelho — primeiro contato com a Glenda
+story_arc_04: Testes e Revelações — co-construção, descoberta
+story_arc_05: A Transformação — grava sem medo, aparece sem performance
+story_arc_06: O Retorno — presença consolidada, leads chegam entendendo o valor
+
+# ─── COPY FORENSE ─────────────────────────────────────────
+
+verbos_funcionam: revelar, mostrar, ver, enxergar, organizar, construir
+verbos_enfraquecem: criar, produzir, fazer, transformar (quando seguido de entregável)
+estrutura_converte: [valida o ICP] + [nomeia a dor sem culpar] + [promessa de revelação]
+
+# ─── DESIGN SYSTEM ────────────────────────────────────────
+
+mood_visual: Autoridade que revela — não que impressiona. Profundidade que convida — não que intimida.
+referencia_mental: Annie Leibovitz encontra uma capa da Wired
+trends_aprovadas: Typographic Contrast Extremo, Dark Depth Layers, Glassmorphism (condicional), Noise Texture
+trends_rejeitadas: Aurora/Mesh Gradient, Retro/Y2K, Typography Collage, Naive Design/Doodles, Bento Grid (para covers)
+
+# ─── LOGO — preenchido pelo Studio 1 após aprovação ───────
+
+logo_aprovada_base64: LOGO_B64_PLACEHOLDER
+logo_bg_escuro: #0A0A08
+logo_cor_primaria: #C8F23A
+logo_arquivo_original: logo-ggabi-2048px.png
+logo_arquivo_transparente: logo-ggabi-transparente.png
+logo_aprovada_por: Glenda Gabi · G Gabi Produções
+logo_aprovada_em: 22 Março 2026
+
+# ─── STATUS DOS STUDIOS ───────────────────────────────────
+
+studio_0_status: aprovado
+studio_0_handoff: Handoff 02 v2.0 · relatorio-design-director-ggabi-v2.html
+studio_1_status: aprovado · logo oficial incorporada
+studio_2_status: aprovado · Gate QA ✅
+studio_3_status: substituído por carousel-ggabi · aprovado Gate QA ✅
+studio_3_fixados: Quem Sou Eu ✅ · Como Trabalho ✅ · Resultados ✅
+studio_4_status: pendente construção
+post_ggabi_status: construído · aguardando teste com logo aprovada
+
+# ─── REFERÊNCIAS DE ARQUIVOS ──────────────────────────────
+
+arquivo_relatorio_fase01: relatorio-fase01-ggabi-2026-03.html
+arquivo_relatorio_fase02: relatorio-fase02-ggabi-2026-03.html
+arquivo_design_director: relatorio-design-director-ggabi-v2.html
+arquivo_copies: copies-aprovadas-ggabi-handoff03.md
+arquivo_voice_guide: voice-ggabi.md (v2.0 · três dimensões)
+arquivo_carousel_fixado1: carousel-quem-sou-eu-v3-gemini.html
+arquivo_carousel_fixado2: carousel-como-trabalho-ggabi.html
+arquivo_carousel_fixado3: carousel-resultados-ggabi.html
+arquivo_post_template: post-template-ggabi.html
+`;
+  state.bdpFinal = bdpBase
+    .replace('LOGO_B64_PLACEHOLDER', b64)
+    .replace(/# Versão:.*/,`# Versão: 2.3 · Conceito aprovado: ${state.logoAprovada?.nome||'—'} · ${new Date().toLocaleDateString('pt-BR')}`);
+}
+
+function dlFile(tipo) {
+  const c=state.canvases[tipo]; if(!c) return;
+  const nomes={dark:'escuro-2k',light:'claro-2k',transparent:'transparente',avatar:'avatar-512',mono_pos:'mono-positiva',mono_neg:'mono-negativa'};
+  const slug=(document.getElementById('f-nome').value||'marca').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download=`${slug}-logo-${nomes[tipo]}.png`;a.click();
+}
+
+function dlTodos() {
+  ['dark','light','transparent','avatar','mono_pos','mono_neg'].forEach((t,i)=>setTimeout(()=>dlFile(t),i*500));
+  const fb=document.getElementById('dl-feedback');
+  fb.textContent='↓ Baixando 6 arquivos...';
+  setTimeout(()=>{fb.textContent='✓ Todos os arquivos baixados';},3500);
+  setTimeout(()=>{fb.textContent='';},6000);
+}
+
+function dlBDP() {
+  if (!state.bdpFinal) return;
+  const blob=new Blob([state.bdpFinal],{type:'text/markdown'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='bdp-cliente.md';a.click();
+  URL.revokeObjectURL(url);
+  const fb=document.getElementById('dl-feedback');
+  fb.textContent='✓ BDP.md baixado — carregue no Studio 4';
+  setTimeout(()=>{fb.textContent='';},3000);
+}
+
+function dlConceito(idx) {
+  const logo=state.logosSelecionadas[idx]; if(!logo) return;
+  const slug=(document.getElementById('f-nome').value||'logo').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  const a=document.createElement('a');a.href=`data:image/png;base64,${logo.b64}`;
+  a.download=`${slug}-conceito-0${idx+1}-${logo.nome.toLowerCase()}.png`;a.click();
+}
+
+function setDot(id, type, txt) {
+  const dot=document.getElementById(`dot-${id}`);
+  const sp=document.getElementById(`sp-${id}`);
+  const label=document.getElementById(`txt-${id}`);
+  const cores={ok:'var(--ok)',warn:'var(--warn)',active:'var(--lime)',muted:'var(--muted)'};
+  if(dot) dot.style.background=cores[type]||cores.muted;
+  if(sp) sp.classList.toggle('on', type==='active');
+  if(label) label.textContent=txt;
+}
+
+function showErr(m){const b=document.getElementById('err-box');b.textContent=m;b.classList.add('on');}
+function clearErr(){document.getElementById('err-box').classList.remove('on');}
+
+// Init
+atualizarConceitos();
+</script>
+
+  <!-- PROPRIEDADE PRISMA -->
+  <div style="background:#0a0a08;border-top:2px solid #1e1e1c;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#c8f23a;margin-bottom:3px;">Proprietária do PRISMA</div>
+      <div style="font-size:12px;color:#f5f2eb;">G Gabi Produções · Glenda Gabi</div>
+      <div style="font-size:9px;color:#5a5650;margin-top:1px;">Dona integral do método, Studios, Skills e sistema completo</div>
+    </div>
+    <div style="width:1px;height:36px;background:#1e1e1c;"></div>
+    <div>
+      <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#5a5650;margin-bottom:3px;">Arquiteto — somente arquiteto</div>
+      <div style="font-size:12px;color:#f5f2eb;">Jimmy Andrews · Jimmy Andrews Sistemas IA</div>
+      <div style="font-size:9px;color:#5a5650;margin-top:1px;">Traduziu a operação da G Gabi em sistema replicável com IA</div>
+    </div>
+    <div>
+      <div style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#5a5650;margin-bottom:3px;">Sistema em construção</div>
+      <div style="font-size:11px;color:#5a5650;">skill-squad-prisma-fullstack</div>
+    </div>
+  </div>
+</body>
+</html>

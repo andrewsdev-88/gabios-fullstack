@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#0e0e0e",
+                    "error": "#ff7351",
+                    "inverse-on-surface": "#565554",
+                    "on-primary": "#536600",
+                    "on-primary-fixed": "#3b4a00",
+                    "on-primary-fixed-variant": "#556800",
+                    "on-background": "#ffffff",
+                    "surface": "#0e0e0e",
+                    "on-tertiary-fixed": "#483d00",
+                    "on-error-container": "#ffd2c8",
+                    "secondary-fixed": "#e2e2e2",
+                    "secondary-dim": "#d4d4d4",
+                    "primary": "#f4ffc7",
+                    "on-tertiary-fixed-variant": "#695900",
+                    "on-secondary-fixed-variant": "#5a5c5c",
+                    "surface-bright": "#2c2c2c",
+                    "on-secondary-fixed": "#3e4040",
+                    "primary-fixed": "#d0fc00",
+                    "primary-container": "#d0fc00",
+                    "tertiary-dim": "#efd138",
+                    "tertiary-fixed": "#fedf46",
+                    "outline-variant": "#494847",
+                    "on-tertiary": "#675800",
+                    "secondary-container": "#454747",
+                    "surface-tint": "#f4ffc7",
+                    "on-tertiary-container": "#5e4f00",
+                    "surface-variant": "#262626",
+                    "inverse-primary": "#536600",
+                    "tertiary-fixed-dim": "#efd138",
+                    "tertiary-container": "#fedf46",
+                    "surface-container-high": "#201f1f",
+                    "on-error": "#450900",
+                    "on-surface": "#ffffff",
+                    "secondary-fixed-dim": "#d4d4d4",
+                    "surface-container-low": "#131313",
+                    "secondary": "#e2e2e2",
+                    "error-container": "#b92902",
+                    "on-secondary-container": "#d0d0d0",
+                    "outline": "#777575",
+                    "surface-container-highest": "#262626",
+                    "primary-dim": "#c5f000",
+                    "on-primary-container": "#4c5e00",
+                    "surface-container-lowest": "#000000",
+                    "background": "#0e0e0e",
+                    "surface-container": "#1a1919",
+                    "tertiary": "#ffeeac",
+                    "error-dim": "#d53d18",
+                    "on-surface-variant": "#adaaaa",
+                    "primary-fixed-dim": "#c3ed00",
+                    "inverse-surface": "#fcf8f8",
+                    "on-secondary": "#505252"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #0e0e0e; color: #ffffff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .skew-marquee { transform: skewY(-2deg); }
+        .liquid-shadow { filter: drop-shadow(0 0 20px rgba(210, 255, 0, 0.3)); }
+        .chrome-card { background: linear-gradient(135deg, rgba(38,38,38,0.4) 0%, rgba(20,20,20,0.4) 100%); backdrop-filter: blur(20px); }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee { animation: marquee 30s linear infinite; }
+    </style>
+</head>
+<body class="font-body selection:bg-primary selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e0e0e]/40 backdrop-blur-xl shadow-[0_0_40px_rgba(210,255,0,0.05)]">
+<div class="flex justify-between items-center px-8 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black italic tracking-tighter text-[#d2ff00] font-['Space_Grotesk']">
+                G Gabi Produções
+            </div>
+<div class="hidden md:flex items-center gap-10 font-['Space_Grotesk'] font-bold tracking-tight italic">
+<a class="text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Work</a>
+<a class="text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Expertise</a>
+<a class="text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Process</a>
+<a class="text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Network</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold uppercase text-xs tracking-widest hover:scale-x-105 transition-transform duration-300">
+                Start Project
+            </button>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Title Section -->
+<section class="px-8 mb-24 relative overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col gap-2">
+<span class="font-label text-primary uppercase tracking-[0.3em] text-sm mb-4">Core Infrastructure</span>
+<h1 class="font-headline font-black italic text-7xl md:text-9xl leading-[0.85] tracking-tighter text-white">
+                        THE SOCIAL <br/> <span class="text-primary-container">ENGINE</span>
+</h1>
+</div>
+<div class="mt-12 md:max-w-xl">
+<p class="text-lg text-on-surface-variant font-medium leading-relaxed border-l-2 border-primary pl-6">
+                        Architecture for virality. We don't post content; we deploy high-velocity digital assets that dominate algorithms and convert attention into capital.
+                    </p>
+</div>
+</div>
+<!-- Decorative Liquid Orb -->
+<div class="absolute -right-20 top-0 w-96 h-96 bg-primary-container/10 blur-[120px] rounded-full -z-10"></div>
+</section>
+<!-- Metric Counters (Sprouting Liquid Drops) -->
+<section class="px-8 py-24 bg-surface-container-low relative">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Metric 1 -->
+<div class="group relative py-12 px-8 chrome-card rounded-xl overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative z-10">
+<div class="text-xs font-label text-white/40 mb-2 uppercase tracking-widest">Global Reach</div>
+<div class="font-headline font-black italic text-6xl md:text-7xl text-primary leading-none liquid-shadow">
+                            8M+
+                        </div>
+<div class="text-xl font-headline font-bold text-white mt-4 italic">Alcance Mensal</div>
+<div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-1000 ease-out"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="group relative py-12 px-8 chrome-card rounded-xl overflow-hidden mt-8 md:mt-16">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative z-10">
+<div class="text-xs font-label text-white/40 mb-2 uppercase tracking-widest">Conversion Velocity</div>
+<div class="font-headline font-black italic text-6xl md:text-7xl text-white leading-none">
+                            124%
+                        </div>
+<div class="text-xl font-headline font-bold text-white mt-4 italic">ROI Growth</div>
+<div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-1000 ease-out"></div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="group relative py-12 px-8 chrome-card rounded-xl overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative z-10">
+<div class="text-xs font-label text-white/40 mb-2 uppercase tracking-widest">Asset Lifecycle</div>
+<div class="font-headline font-black italic text-6xl md:text-7xl text-primary leading-none liquid-shadow">
+                            24/7
+                        </div>
+<div class="text-xl font-headline font-bold text-white mt-4 italic">Content Pulse</div>
+<div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-1000 ease-out"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Infinite Marquee Feed -->
+<section class="py-32 overflow-hidden bg-background">
+<div class="skew-marquee flex flex-col gap-8">
+<!-- Row 1: Testimonials -->
+<div class="flex whitespace-nowrap animate-marquee gap-8">
+<div class="flex gap-8 items-center">
+<div class="chrome-card px-10 py-8 rounded-full flex items-center gap-6 min-w-[500px]">
+<img class="w-16 h-16 rounded-full grayscale hover:grayscale-0 transition-all duration-500 object-cover border-2 border-primary" data-alt="professional portrait of a male tech executive with sharp facial features and modern lighting on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7xuLemFrunlqtSqUtTMCOOJwoftnpxYZ32AWlABcSyTQnNYxAGExtx74DJgbxoFBa7WqXXCgdNbiFaV82DmkmC2LWkTrRJULGT6P85BGt6ZIasF6QbYZ8acaDsJG5bBBuOe1bqd_205M0SnXT0F8IF5CJFWfYT4GSPNQ35iHl847eobKxsKpNm4qFS0EpArQZYAve46g-1MpIOYT3dDxGVMlgKI2kSNFcLFOt1IjiFgmLDVOoSw3LP-ev56w84UzdIrcRet1UA-o"/>
+<div>
+<p class="text-white italic font-medium">"A G Gabi transformou nossa percepção de marca em 30 dias."</p>
+<span class="text-primary font-label text-[10px] uppercase tracking-widest">Tech Founder / London</span>
+</div>
+</div>
+<div class="chrome-card px-10 py-8 rounded-full flex items-center gap-6 min-w-[500px]">
+<img class="w-16 h-16 rounded-full grayscale hover:grayscale-0 transition-all duration-500 object-cover border-2 border-primary" data-alt="close up headshot of a stylish female creative director with vibrant lighting and contemporary look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSchPzC32cpZfLtpscqMVWXb273pI1JIfjt1ZaCkjcps85VYfnLddUXaUMHdRiwwJonZZI1zgYLJcM2AEX6y1GWGX7TuNCpt6ARrh8FP2RjqFNGIjCbLpciiBa-_p-ajl8dBrE--MkVYscygNkv2xRDQYK0LryKt5i_UTwg7kAyZojPS7EtKKslqi-jiIKcrUCj4AW55A9e3djmiN6a3QIolgieIYezYGysOq2ocVv9aivmVthtWh5P8dcCT2N2rY7536axtm8eCo"/>
+<div>
+<p class="text-white italic font-medium">"Escalamos de 0 a 1M de seguidores com precisão cirúrgica."</p>
+<span class="text-primary font-label text-[10px] uppercase tracking-widest">Fashion Curator / Paris</span>
+</div>
+</div>
+<div class="chrome-card px-10 py-8 rounded-full flex items-center gap-6 min-w-[500px]">
+<img class="w-16 h-16 rounded-full grayscale hover:grayscale-0 transition-all duration-500 object-cover border-2 border-primary" data-alt="headshot of a male influencer with short hair and confident expression in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAekzUDkFx-QqzkBYyJ9ib72CEZmUhiSpt8i7ztSu-Ydbk1dErxjR7leyptnoH1MBLwX4cDc5A2IEBAX6AW6PvGhh02wRzURYJQjgee5z12lXOB1lDGM_KtywQBHvCqx8KGWJ6xbuJA4HOfVe3_fcwLQlMI8gErhATZLiSyObBglt9tgNXzTkuLprm8cvUIFehF8ae27VHrWq7FjrtmkOzAaPV67B-BRFF3LmH5agqirnW_GPjJlxfOPecqzWCn5fmQPFYN4z3xpJI"/>
+<div>
+<p class="text-white italic font-medium">"O motor de resultados deles é incomparável no mercado."</p>
+<span class="text-primary font-label text-[10px] uppercase tracking-widest">Growth Expert / São Paulo</span>
+</div>
+</div>
+</div>
+<!-- Repeated for infinite effect -->
+<div class="flex gap-8 items-center">
+<div class="chrome-card px-10 py-8 rounded-full flex items-center gap-6 min-w-[500px]">
+<img class="w-16 h-16 rounded-full grayscale hover:grayscale-0 transition-all duration-500 object-cover border-2 border-primary" data-alt="professional portrait of a male tech executive with sharp facial features and modern lighting on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcIY3Su_POJIM7Xsu1IbzOq2bT2IpaZSW0ii4-Kws3PjNvn_gPJe0Fo-XTkQUhXQzeTYJzG40FLzb6CjMa4WzS_FdI55tb0Vacyd_w9_GewDVxNM8l7BbC0XhTtVYdXGLDoMaYMoqIHCiFsEEJbS_tBtEtHNtsLa7snroleZSuRvxLM6X_8XF-IaLs-IjHXm2vfyG4DqCIPVXySRe65ZfqMdvUq25Kjm3B6nREl75Jtyvx63Sgp1dCk51pCcM1__CYCiprQgboi7Q"/>
+<div>
+<p class="text-white italic font-medium">"A G Gabi transformou nossa percepção de marca em 30 dias."</p>
+<span class="text-primary font-label text-[10px] uppercase tracking-widest">Tech Founder / London</span>
+</div>
+</div>
+<div class="chrome-card px-10 py-8 rounded-full flex items-center gap-6 min-w-[500px]">
+<img class="w-16 h-16 rounded-full grayscale hover:grayscale-0 transition-all duration-500 object-cover border-2 border-primary" data-alt="close up headshot of a stylish female creative director with vibrant lighting and contemporary look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0gcrjJ_NxlLgerLWVW0JPHbqaVcD0-UdDqCtt6JGjEQlXw80IPbTiCssoZSFEddCN-2Vjv7Cb_5RMyprjWBEpfX_2yV92DidjRoFnr7MZEw1ac5dneND2ZCej5IafFVXMDZBdd5VjMOJ-FQm_u_c4z16PJweiRleLU8aYfPyXZiDDvhIYfGf-wIifPznEO8K42qRFl3AqJoF4F_E_SMZ6ZP3A4uXZpayEug6RwFxi7GsiUiCixws4WUiWNHUXOQ3UUM_KehMiSAM"/>
+<div>
+<p class="text-white italic font-medium">"Escalamos de 0 a 1M de seguidores com precisão cirúrgica."</p>
+<span class="text-primary font-label text-[10px] uppercase tracking-widest">Fashion Curator / Paris</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 2: Viral Metrics -->
+<div class="flex whitespace-nowrap animate-marquee gap-8" style="animation-direction: reverse;">
+<div class="flex gap-8 items-center">
+<div class="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-headline font-bold text-2xl italic">+450k Shares</span>
+</div>
+<div class="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="font-headline font-bold text-2xl italic">12M Views / Week</span>
+</div>
+<div class="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-headline font-bold text-2xl italic">98% Positive Sentiment</span>
+</div>
+<div class="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-headline font-bold text-2xl italic">Viral Velocity Index: 9.8</span>
+</div>
+</div>
+<!-- Repeated for infinite effect -->
+<div class="flex gap-8 items-center">
+<div class="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-headline font-bold text-2xl italic">+450k Shares</span>
+</div>
+<div class="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="font-headline font-bold text-2xl italic">12M Views / Week</span>
+</div>
+<div class="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-headline font-bold text-2xl italic">98% Positive Sentiment</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Result Focused CTA -->
+<section class="px-8 py-32">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="font-headline font-black italic text-5xl md:text-7xl mb-12">PRONTO PARA <br/><span class="text-primary-container">DOMINAR O FEED?</span></h2>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<button class="bg-primary text-on-primary-container px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform duration-500">
+                        Analyze My Strategy
+                    </button>
+<button class="border border-white/20 px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all duration-500">
+                        View Portfolio
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 border-t border-white/5 bg-black">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full">
+<div class="text-lg font-bold text-white font-headline">
+                G Gabi Produções
+            </div>
+<div class="flex flex-wrap justify-center gap-10 font-['Inter'] text-xs uppercase tracking-[0.1em]">
+<a class="text-white/40 hover:text-white transition-colors" href="#">Instagram</a>
+<a class="text-white/40 hover:text-white transition-colors" href="#">LinkedIn</a>
+<a class="text-white/40 hover:text-white transition-colors" href="#">Behance</a>
+<a class="text-white/40 hover:text-white transition-colors" href="#">Privacy</a>
+</div>
+<div class="font-['Inter'] text-xs uppercase tracking-[0.1em] text-white/40">
+                © 2024 G Gabi Produções. High-Velocity Digital Architecture.
+            </div>
+</div>
+</footer>
+</body></html>

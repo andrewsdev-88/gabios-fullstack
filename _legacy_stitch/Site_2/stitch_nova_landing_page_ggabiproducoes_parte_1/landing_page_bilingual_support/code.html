@@ -1,0 +1,466 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ccff00",
+                        "accent-pink": "#FF007F",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#000000",
+                        "neutral-900": "#0a0a0a",
+                        "neutral-800": "#141414",
+                        "neutral-700": "#1f1f1f",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(204, 255, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-slate-100 selection:bg-primary selection:text-black">
+<!-- Fixed Header -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+<span class="text-xl font-black tracking-tighter uppercase italic">GGABIPRODUCOES</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#metodo">Método PRISMA</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#processo">Processo</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#casos">Casos</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#faq">FAQ</a>
+</nav>
+<div class="flex items-center gap-3 mr-4 text-xs font-bold tracking-widest">
+<button class="text-primary hover:text-white transition-colors">PT</button>
+<span class="text-white/20">/</span>
+<button class="text-slate-500 hover:text-primary transition-colors">EN</button>
+</div><button class="bg-primary text-black px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                Quero meu diagnóstico
+            </button>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-6">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-black"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 blur-[120px] bg-primary rounded-full"></div>
+</div>
+<div class="relative z-10 max-w-5xl text-center">
+<span class="inline-block border border-primary/30 bg-primary/10 px-4 py-1 rounded-full text-primary text-xs font-bold tracking-widest uppercase mb-8">Posicionamento de Alto Impacto</span>
+<h1 class="text-5xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8 italic uppercase"><span class="block" lang="pt">
+    Seu concorrente mediano aparece mais porque você ainda comunica no <span class="text-primary">improviso.</span>
+</span>
+<span class="hidden block" lang="en">
+    Your average competitor shows up more because you're still communicating by <span class="text-primary">improvisation.</span>
+</span></h1>
+<p class="text-lg md:text-2xl text-slate-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed"><span class="block" lang="pt">
+    Transforme sua autoridade técnica em um ecossistema editorial de elite. Saia do ruído e domine o mercado com o Método PRISMA.
+</span>
+<span class="hidden block" lang="en">
+    Transform your technical authority into an elite editorial ecosystem. Step out of the noise and dominate the market with the PRISMA Method.
+</span></p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-black px-10 py-5 rounded-full font-black text-lg hover:bg-white transition-colors flex items-center justify-center gap-2"><span class="flex items-center gap-2" lang="pt">
+    QUERO MEU DIAGNÓSTICO
+    <span class="material-symbols-outlined">trending_flat</span>
+</span>
+<span class="hidden flex items-center gap-2" lang="en">
+    GET MY DIAGNOSIS
+    <span class="material-symbols-outlined">trending_flat</span>
+</span></button>
+<button class="border border-white/20 hover:bg-white/10 text-white px-10 py-5 rounded-full font-bold text-lg transition-colors">
+                        Ver Portfólio
+                    </button>
+</div>
+</div>
+</section>
+<!-- Pain Diagnosis -->
+<section class="py-24 px-6 border-y border-white/5">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-16 border-l-4 border-primary pl-6">Sintomas de uma marca que está perdendo mercado:</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-all group">
+<span class="material-symbols-outlined text-accent-pink text-4xl mb-6">timer_off</span>
+<h3 class="text-xl font-bold mb-3">Inconstância</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Você posta quando "sobra tempo" e nunca mantém o ritmo necessário para o algoritmo te notar.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-all group">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">visibility_off</span>
+<h3 class="text-xl font-bold mb-3">Falta de Clareza</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Sua audiência gosta do seu conteúdo, mas não entende exatamente o que você vende ou por que custa caro.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-all group">
+<span class="material-symbols-outlined text-accent-pink text-4xl mb-6">bar_chart_4_bars</span>
+<h3 class="text-xl font-bold mb-3">Baixo Engajamento</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Muito esforço na produção para curtidas irrelevantes e zero directs de interessados no seu serviço.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-all group">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">videocam_off</span>
+<h3 class="text-xl font-bold mb-3">Dificuldade Técnica</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Gasta horas editando vídeos que, no final, parecem amadores e não condizem com sua senioridade.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Reframe Section -->
+<section class="py-32 bg-primary flex items-center justify-center overflow-hidden">
+<div class="max-w-5xl text-center px-6">
+<h2 class="text-4xl md:text-7xl font-black text-black leading-tight uppercase tracking-tighter">
+                    O problema não é falta de talento. É falta de <span class="bg-black text-white px-4">método,</span> clareza e direção.
+                </h2>
+</div>
+</section>
+<!-- PRISMA Method -->
+<section class="py-32 px-6" id="metodo">
+<div class="max-w-7xl mx-auto">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="text-primary font-mono tracking-widest mb-4 block">THE FRAMEWORK</span>
+<h2 class="text-5xl md:text-6xl font-black italic mb-10 leading-none uppercase">Método PRISMA</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<span class="text-4xl font-black text-white/20">01</span>
+<div>
+<h4 class="text-2xl font-bold mb-2">Propósito</h4>
+<p class="text-slate-400">Extração da sua verdade e definição clara do objetivo de negócio por trás de cada conteúdo.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-4xl font-black text-white/20">02</span>
+<div>
+<h4 class="text-2xl font-bold mb-2">Refração</h4>
+<p class="text-slate-400">Análise do mercado e posicionamento contra-intuitivo para te destacar da massa.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-4xl font-black text-white/20">03</span>
+<div>
+<h4 class="text-2xl font-bold mb-2">Identidade</h4>
+<p class="text-slate-400">Definição dos pilares visuais e tom de voz que tornam sua marca inconfundível.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="aspect-[3/4] bg-neutral-900 rounded-2xl overflow-hidden relative group border border-white/5">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Abstract gradient light refraction pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlHdlMWbKgvUgxZ08dN-a7BlhokIY14451pGgpLuS5opHE9agUmFz6BmmFZ8w1PkNiayVtCZ8dE05KZh7l2jc63zg8j0JFMi5-V2sahCABHW9eYNdyZ0XM--B3AllFYVZC71zYp7CjOTagnHjJza-QUDBUU0_fgfxVoHOG2yx5vWe1Zvs3MXlFZzxnGFeJ3AtC5FkF09TT4PT93GSOmVtoz-lBy8Qh4Sq-lYpqjDt2-LT5H_065aa2Sj2tYjDIyw7Gnzu6eNbw_j8"/>
+<div class="absolute bottom-6 left-6">
+<p class="text-xl font-bold italic">SÍNTESE</p>
+</div>
+</div>
+<div class="aspect-[1/1] bg-primary flex items-center justify-center rounded-2xl">
+<span class="material-symbols-outlined text-black text-6xl">filter_center_focus</span>
+</div>
+</div>
+<div class="space-y-4 pt-12">
+<div class="aspect-[1/1] bg-neutral-900 rounded-2xl flex items-center justify-center border border-white/5">
+<span class="text-primary font-black text-2xl uppercase tracking-tighter">Mapeamento</span>
+</div>
+<div class="aspect-[3/4] bg-neutral-900 rounded-2xl overflow-hidden relative group border border-white/5">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Dark aesthetic creative studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABx3AsgxET-_dnZGNHOh4fjjnI9tyGG15hksm-AHcnlFFUP2c3rR2_-my-nmegUgvctgQMuS6466LKG3kawtj_R5YgW9BN00CUSI8xJcyBZpoxjOJG3EPIXh1aFkhGu6qLwoL4egy3H4nLWeNu9BjfgRziQrOTBvC6sKU6q07a-DD0151Rx4kdgTTiZu-lubEW5BffSKxivJYqB-qK5rQ29T3xgcwmnnv9a92NWAs0BxroZ7Qk_uhMSopKwBCtcvMDKU5agE8rq9A"/>
+<div class="absolute bottom-6 left-6">
+<p class="text-xl font-bold italic">APLICAÇÃO</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Deliverables -->
+<section class="py-24 bg-neutral-900 px-6">
+<div class="max-w-7xl mx-auto text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black mb-4 uppercase">Sua prateleira de conteúdo</h2>
+<p class="text-slate-400">Tudo o que você precisa para dominar o feed mensalmente.</p>
+</div>
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-black/40 border border-white/5 p-8 rounded-xl text-center">
+<span class="text-5xl font-black text-primary block mb-2">08</span>
+<span class="text-sm font-bold uppercase tracking-widest text-slate-400 italic">Reels Estratégicos</span>
+</div>
+<div class="bg-black/40 border border-white/5 p-8 rounded-xl text-center">
+<span class="text-5xl font-black text-primary block mb-2">04</span>
+<span class="text-sm font-bold uppercase tracking-widest text-slate-400 italic">Carrosséis de Autoridade</span>
+</div>
+<div class="bg-black/40 border border-white/5 p-8 rounded-xl text-center">
+<span class="text-5xl font-black text-primary block mb-2">12</span>
+<span class="text-sm font-bold uppercase tracking-widest text-slate-400 italic">Posts Estáticos</span>
+</div>
+<div class="bg-black/40 border border-white/5 p-8 rounded-xl text-center">
+<span class="text-5xl font-black text-primary block mb-2">∞</span>
+<span class="text-sm font-bold uppercase tracking-widest text-slate-400 italic">Direção de Arte</span>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-32 px-6" id="processo">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-5xl md:text-7xl font-black italic leading-[1.1] mb-12">
+                    "Você me entrega sete dias. Eu devolvo <span class="text-primary underline decoration-2">um mês</span> de conteúdo pronto."
+                </h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-12 mt-20">
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">video_camera_front</span>
+</div>
+<p class="font-bold">Gravação Intensiva</p>
+<p class="text-slate-500 text-sm mt-2">Um dia de set comigo</p>
+</div>
+<div class="hidden md:block w-20 h-px bg-white/10"></div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">architecture</span>
+</div>
+<p class="font-bold">Pós-Produção Elite</p>
+<p class="text-slate-500 text-sm mt-2">Edição, design e legendas</p>
+</div>
+<div class="hidden md:block w-20 h-px bg-white/10"></div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-black">rocket_launch</span>
+</div>
+<p class="font-bold">Postagem &amp; Análise</p>
+<p class="text-slate-500 text-sm mt-2">Distribuição estratégica</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Qualification -->
+<section class="py-24 px-6 border-t border-white/5">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+<div class="bg-neutral-900 p-10 rounded-2xl">
+<h3 class="text-2xl font-bold mb-8 flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">check_circle</span>
+                        É para você se:
+                    </h3>
+<ul class="space-y-4 text-slate-300">
+<li class="flex gap-3">
+<span class="text-primary opacity-50">•</span>
+                            Você é um especialista senior que não tem tempo para editar vídeo.
+                        </li>
+<li class="flex gap-3">
+<span class="text-primary opacity-50">•</span>
+                            Seu ticket médio é alto e sua imagem precisa condizer com isso.
+                        </li>
+<li class="flex gap-3">
+<span class="text-primary opacity-50">•</span>
+                            Você busca um posicionamento editorial, não apenas "diquinhas".
+                        </li>
+</ul>
+</div>
+<div class="bg-black border border-white/10 p-10 rounded-2xl">
+<h3 class="text-2xl font-bold mb-8 flex items-center gap-2 text-accent-pink">
+<span class="material-symbols-outlined">cancel</span>
+                        NÃO é para você se:
+                    </h3>
+<ul class="space-y-4 text-slate-300">
+<li class="flex gap-3">
+<span class="text-accent-pink opacity-50">•</span>
+                            Você está procurando por "fórmulas mágicas" de viralização vazia.
+                        </li>
+<li class="flex gap-3">
+<span class="text-accent-pink opacity-50">•</span>
+                            Você não tem disposição para investir no seu branding pessoal.
+                        </li>
+<li class="flex gap-3">
+<span class="text-accent-pink opacity-50">•</span>
+                            Você está satisfeito sendo apenas "mais um" no seu nicho.
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Case Studies -->
+<section class="py-32 px-6" id="casos">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="text-primary font-mono tracking-widest mb-4 block">RESULTS</span>
+<h2 class="text-5xl font-black uppercase italic">Casos de Sucesso</h2>
+</div>
+<button class="hidden md:block border-b-2 border-primary text-primary font-bold pb-1 hover:text-white transition-colors">Ver todos os projetos</button>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Case Card 1 -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-800">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Professional woman entrepreneur in studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyU5Xis37mz6mJ3wxmTh37b3uqlDq44wbJEyETub3fT2CZ9zHTERPLrgH6zT81_y2WpJRUd5BkmKjzs-j4lLRVeeJaDNJi1MzD9sN3k-DykV1rSeb3kzUIHkH32c0Ct23QBxCJz1VYdxG_yCPnkthHglE6YN6Tb23P9xVS2CFBap93w4cqRNiFy4RODaUOS0YiqY17nLGPWBRrxHdxvSsm1U25nUsmqspDli0slFEG4QFJSSoHBaGVboC_1PJKYYRdI7FDmDfBZZU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 p-8">
+<span class="bg-primary text-black text-[10px] font-black px-2 py-1 uppercase mb-3 inline-block">Mentoria de Negócios</span>
+<h4 class="text-2xl font-bold mb-2">De 10k a 100k seguidores em 90 dias</h4>
+<p class="text-slate-300 text-sm">Faturamento triplicado com funil de Reels.</p>
+</div>
+</div>
+<!-- Case Card 2 -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-800">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Luxury real estate professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUmkMYVplKe40Y1c9p6Qge0kZUfWbAv9XrdtkzjaekL6XG201I1bSUHyvTblevnwmSdaYDWQLp0AAua9cI09yt779btgi6s6LylLMeW20J_dV_8ItJyT6IwfoLmGNTu63v1EuVn2hBK6ZH7_zFwU6iNh3GWsXl7EY9Duao8pcF5JZaX7N569EOyFVdj5sZuOfTrvTGMyvOR1_jNCBbailry4ayf5HTDSs6Kz9UgYeUz0bb-sdBCJBE2nxWbzPWuMH_mYNx21nPeK4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 p-8">
+<span class="bg-primary text-black text-[10px] font-black px-2 py-1 uppercase mb-3 inline-block">Mercado Imobiliário</span>
+<h4 class="text-2xl font-bold mb-2">Venda de Imóvel de 5M pelo Direct</h4>
+<p class="text-slate-300 text-sm">Posicionamento magnético para alta renda.</p>
+</div>
+</div>
+<!-- Case Card 3 -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-800">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Medical professional aesthetic branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEcMDza_oI4rf8wkAWQ3-d89izmWEU-3Z-aORyKvOOu-31KyjaQv655qzrVRpJlqXFruh-cHJHxgvraSXMTOhFWBRpHFLYQtfEBc_-qyJvdP40OXludHQTtAMoRTwDIwZcOB0luyvQvjsywMvYEUhHTids9TJrcoL2bQbBixqnuHN8FmlOyxAtkxM3mJ__3wf3yPUHEAzRd2QOU6MsdKz76HHzsiI_d1WlNggNn9cESpXkoU_i1-zyiBnF6trWbKjhZAClGQPwMeE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 p-8">
+<span class="bg-primary text-black text-[10px] font-black px-2 py-1 uppercase mb-3 inline-block">Medicina Estética</span>
+<h4 class="text-2xl font-bold mb-2">Autoridade que converte em agenda</h4>
+<p class="text-slate-300 text-sm">Aumento de 400% na percepção de valor.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 px-6 bg-neutral-900" id="faq">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-4xl font-black mb-16 text-center italic uppercase">Perguntas Frequentes</h2>
+<div class="space-y-4">
+<div class="border-b border-white/10 pb-4">
+<button class="w-full flex justify-between items-center text-left py-4 hover:text-primary transition-colors">
+<span class="text-xl font-bold italic">Como funciona a consultoria inicial?</span>
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="border-b border-white/10 pb-4">
+<button class="w-full flex justify-between items-center text-left py-4 hover:text-primary transition-colors">
+<span class="text-xl font-bold italic">Eu preciso morar em São Paulo para gravar?</span>
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="border-b border-white/10 pb-4">
+<button class="w-full flex justify-between items-center text-left py-4 hover:text-primary transition-colors">
+<span class="text-xl font-bold italic">Quanto tempo leva para ver os primeiros resultados?</span>
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="border-b border-white/10 pb-4">
+<button class="w-full flex justify-between items-center text-left py-4 hover:text-primary transition-colors">
+<span class="text-xl font-bold italic">Vocês fazem apenas edição ou estratégia também?</span>
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA & Lead Form -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="text-5xl md:text-7xl font-black leading-[0.9] italic uppercase mb-8">
+                        Chega de parecer <span class="text-accent-pink">menor</span> do que a qualidade do seu trabalho.
+                    </h2>
+<p class="text-xl text-slate-400 font-light mb-12">
+                        O mercado não perdoa o amadorismo. Reserve seu diagnóstico agora e descubra como elevar sua régua editorial.
+                    </p>
+<div class="flex items-center gap-6">
+<div class="flex -space-x-4">
+<img class="w-12 h-12 rounded-full border-2 border-black" data-alt="Customer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU6P4Cye3qLwFxyhXKanNIE5BhNNHUDDcrNBXrH01yncY2rv7H6RgOJZpvPnwiOqZYqpnDHf2wiPiH-QxXx_ZKlivxgW_wfSsrRGWOxkW6rq-T32aIlQepSoftjbwPJlXgifuDU776i1wdbAtz_mitxjpUUHFIseNBJxs5ZbG3nMjji4-JryGWdUFI73JQl3H8T0LbMaA7jRiTHHK37ItufYwJb17GLd9UpT92lyPDzua0XJaudFTTiADiZ-i45ZCCVjNogMMaJa8"/>
+<img class="w-12 h-12 rounded-full border-2 border-black" data-alt="Customer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkWu0_JalvwBz0U_5wdxsqeW5Qlq3jCZEc6kAs4pUMlpWuFnFKiAMGDYdTm1SJRlCFh6hBL-2p5pAtHUY7pmE0Xb27YTX-dxhu6gy3X5b6gxm8sG8R6TAWAUf2EB0SdQIvCOD7OcfXYfdiHwHVZcuY_VMC7nvKBDC6AX4pnrUyjd7V14jyyYnE1W7FoOg2S3RxAe6RUNesAtyF7GwSARvsxvAJleBxUFFGUiebTpp5TYW8u0trBWoph2FOTKTpMZPyrsseUAW8l5w"/>
+<img class="w-12 h-12 rounded-full border-2 border-black" data-alt="Customer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqIj4qnaxncvy19jWMIyvzkeveu99FuacuFqezYrr9E7_qS6V8R5iJAse_POupSug9S5I55PXc1cAprUBzzZPnMK9xgKa2d4BgZN0N6F_DLZ4E5PCpJeybPVkNZwFkAHKLPcgNU8wwA6MyQgg6c_Ahd-fAK_qG_mCtu1XOZUSqxSgc5CKDkkI2R9d-1Bl3Tw4TNDFmPzGpWrSHAWoIZHBeAz9n5x86KtHCNuT4OHqNfn0Vs_Rp0Jkm1qFp_YQiPM61i2VXfARRe58"/>
+</div>
+<p class="text-sm font-medium text-slate-400">+200 profissionais escalaram suas marcas conosco.</p>
+</div>
+</div>
+<div class="bg-neutral-900 p-8 md:p-12 rounded-3xl border border-white/5">
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="text-xs font-black uppercase tracking-widest text-primary">Seu Nome Completo</label>
+<input class="w-full bg-black border border-white/10 rounded-lg px-4 py-4 focus:border-primary outline-none transition-all" placeholder="Ex: Gabi Produções" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-xs font-black uppercase tracking-widest text-primary">@ Instagram</label>
+<input class="w-full bg-black border border-white/10 rounded-lg px-4 py-4 focus:border-primary outline-none transition-all" placeholder="@seuusuario" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-black uppercase tracking-widest text-primary">Nicho</label>
+<input class="w-full bg-black border border-white/10 rounded-lg px-4 py-4 focus:border-primary outline-none transition-all" placeholder="Ex: Advocacia" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-black uppercase tracking-widest text-primary">Principal dificuldade hoje</label>
+<textarea class="w-full bg-black border border-white/10 rounded-lg px-4 py-4 focus:border-primary outline-none transition-all" placeholder="O que te impede de postar?" rows="3"></textarea>
+</div>
+<button class="w-full bg-primary text-black py-5 rounded-lg font-black text-lg hover:scale-[1.02] transition-transform" type="submit">
+                            SOLICITAR DIAGNÓSTICO
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black border-t border-white/5 pt-24 pb-12 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid md:grid-cols-4 gap-12 mb-20">
+<div class="col-span-2">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+<span class="text-2xl font-black tracking-tighter uppercase italic">GGABIPRODUCOES</span>
+</div>
+<p class="text-slate-500 max-w-sm">
+                        Especialistas em transformar experts em marcas de luxo através de ecossistemas editoriais de alta performance.
+                    </p>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6">Navegação</h5>
+<ul class="space-y-4 text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">O Método</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Projetos</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog Editorial</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contato</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6">Social</h5>
+<ul class="space-y-4 text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Instagram</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">YouTube</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">LinkedIn</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pinterest</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-600 text-xs font-medium uppercase tracking-widest">
+<p>© 2024 GGABIPRODUCOES. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="#">Políticas de Privacidade</a>
+<a class="hover:text-white transition-colors" href="#">Termos de Uso</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

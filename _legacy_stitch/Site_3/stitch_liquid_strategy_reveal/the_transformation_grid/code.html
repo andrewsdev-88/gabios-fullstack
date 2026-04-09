@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#0e0e0e",
+                    "error": "#ff7351",
+                    "inverse-on-surface": "#565554",
+                    "on-primary": "#536600",
+                    "on-primary-fixed": "#3b4a00",
+                    "on-primary-fixed-variant": "#556800",
+                    "on-background": "#ffffff",
+                    "surface": "#0e0e0e",
+                    "on-tertiary-fixed": "#483d00",
+                    "on-error-container": "#ffd2c8",
+                    "secondary-fixed": "#e2e2e2",
+                    "secondary-dim": "#d4d4d4",
+                    "primary": "#f4ffc7",
+                    "on-tertiary-fixed-variant": "#695900",
+                    "on-secondary-fixed-variant": "#5a5c5c",
+                    "surface-bright": "#2c2c2c",
+                    "on-secondary-fixed": "#3e4040",
+                    "primary-fixed": "#d0fc00",
+                    "primary-container": "#d0fc00",
+                    "tertiary-dim": "#efd138",
+                    "tertiary-fixed": "#fedf46",
+                    "outline-variant": "#494847",
+                    "on-tertiary": "#675800",
+                    "secondary-container": "#454747",
+                    "surface-tint": "#f4ffc7",
+                    "on-tertiary-container": "#5e4f00",
+                    "surface-variant": "#262626",
+                    "inverse-primary": "#536600",
+                    "tertiary-fixed-dim": "#efd138",
+                    "tertiary-container": "#fedf46",
+                    "surface-container-high": "#201f1f",
+                    "on-error": "#450900",
+                    "on-surface": "#ffffff",
+                    "secondary-fixed-dim": "#d4d4d4",
+                    "surface-container-low": "#131313",
+                    "secondary": "#e2e2e2",
+                    "error-container": "#b92902",
+                    "on-secondary-container": "#d0d0d0",
+                    "outline": "#777575",
+                    "surface-container-highest": "#262626",
+                    "primary-dim": "#c5f000",
+                    "on-primary-container": "#4c5e00",
+                    "surface-container-lowest": "#000000",
+                    "background": "#0e0e0e",
+                    "surface-container": "#1a1919",
+                    "tertiary": "#ffeeac",
+                    "error-dim": "#d53d18",
+                    "on-surface-variant": "#adaaaa",
+                    "primary-fixed-dim": "#c3ed00",
+                    "inverse-surface": "#fcf8f8",
+                    "on-secondary": "#505252"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-hover .after-image { opacity: 0; filter: blur(10px) brightness(0.5); transition: all 0.6s cubic-bezier(0.8, 0, 0.2, 1); }
+        .liquid-hover:hover .after-image { opacity: 1; filter: blur(0px) brightness(1); transform: scale(1.02); }
+        .liquid-hover:hover .before-label { opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; }
+        .viral-pulse {
+            background: radial-gradient(circle at 50% 50%, rgba(210, 255, 0, 0.03) 0%, rgba(14, 14, 14, 1) 70%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+        .glass-chrome {
+            background: rgba(38, 38, 38, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
+<!-- Viral Pulse Background Overlay -->
+<div class="viral-pulse"></div>
+<!-- Navigation Shell -->
+<nav class="bg-[#0e0e0e]/40 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_0_40px_rgba(210,255,0,0.05)]">
+<div class="flex justify-between items-center px-8 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black italic tracking-tighter text-[#d2ff00] font-['Space_Grotesk']">
+                G Gabi Produções
+            </div>
+<div class="hidden md:flex items-center gap-10 font-['Space_Grotesk'] font-bold tracking-tight italic">
+<a class="text-[#f4ffc7] border-b-2 border-[#d2ff00] pb-1 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 cubic-bezier(0.8,0,0.2,1) hover:skew-x-[-12deg]" href="#">Work</a>
+<a class="text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 cubic-bezier(0.8,0,0.2,1) hover:skew-x-[-12deg]" href="#">Expertise</a>
+<a class="text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 cubic-bezier(0.8,0,0.2,1) hover:skew-x-[-12deg]" href="#">Process</a>
+<a class="text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 cubic-bezier(0.8,0,0.2,1) hover:skew-x-[-12deg]" href="#">Network</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold uppercase text-xs tracking-widest hover:scale-x-105 transition-transform duration-300 cubic-bezier(0.8,0,0.2,1)">
+                Start Project
+            </button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-[1440px] mx-auto">
+<!-- Section Header -->
+<header class="mb-20 space-y-4">
+<div class="flex items-center gap-4">
+<div class="h-px w-12 bg-primary"></div>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-primary">Case Studies</span>
+</div>
+<h1 class="font-headline text-6xl md:text-8xl font-black italic tracking-tighter uppercase leading-none">
+                A METAMORFOSE
+            </h1>
+<p class="max-w-xl text-on-surface-variant text-lg leading-relaxed font-light">
+                From raw capture to digital domination. We transform static identities into high-velocity digital assets that glitch the status quo.
+            </p>
+</header>
+<!-- Transformation Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="liquid-hover group relative aspect-[3/4] overflow-hidden bg-surface-container-high rounded-lg cursor-pointer">
+<!-- Before State (Base) -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale opacity-40" data-alt="raw studio footage of a content creator sitting in a simple white room with basic lighting and no production value" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIAZiT_ZN2oMVxSJjKeH5rnTJjrQ7n91osSNHLAVfUirZYPuygTjRcR5IKIOz0xbiW7g82A-FviuwvM3nXwEnWE5Fn1BFTyAT8jLwwXDi6k6LIHTYU1qzoBb-aNq4pXu8tlK0JNlMWIAfNGgbbOzxea3r6iBgjiQZzkFiTUUq-Kj01bb-vYkZQgK-EMTYFbURAfziWSgbCSIgbQJJZJVm4AYCMwESrGhBnYzvHc2ZxgtlUNt2zhT5QpbcuXl6FNEFRAX69-dr6t5I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+</div>
+<!-- After State (Liquid Reveal) -->
+<div class="after-image absolute inset-0 z-10">
+<img class="w-full h-full object-cover" data-alt="highly polished cinematic video edit with neon lighting accents, dynamic motion blur, and professional color grading" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-H1H-z37yskIRFPWuYwX8iuEmut3JM4FwBQnlmBYsE_K-wd5GUkEe6NbEAZ1AeN2YdDSGIdUIE6ZMcMtmyg2P-CFjIte7BkXOE5lsc5nRs9Wl1D1FM1ITUJ_ILQPhmdAT755sfgd7pyZgEQWxrv99uzG7y0MLhn83jqtxnDgBX6bmBj8M7mIx-awbBVgLi-W1UAx07cxqv59mR8_xml_5TAi7d1WDq8zBOKyqTV_XIIZJviFN0jVGQGiu2TZxtgn1JT5I9qpE5SY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<!-- Metric Overlays -->
+<div class="absolute top-6 left-6 flex flex-col gap-2">
+<div class="glass-chrome px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="text-primary font-bold text-sm tracking-tight">+420k Views</span>
+</div>
+<div class="glass-chrome px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-primary font-bold text-sm tracking-tight">+12k New Fans</span>
+</div>
+</div>
+</div>
+<!-- Labels -->
+<div class="absolute bottom-8 left-8 right-8 z-20">
+<div class="before-label mb-2">
+<span class="font-label text-[10px] uppercase tracking-widest text-white/50 bg-white/10 px-2 py-0.5 rounded">Raw State</span>
+</div>
+<h3 class="font-headline text-3xl font-bold italic text-white group-hover:text-primary transition-colors">THE NOIR TECH</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center justify-between">
+<span class="font-label text-xs uppercase tracking-tighter text-secondary">Creative Direction</span>
+<span class="material-symbols-outlined text-primary">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="liquid-hover group relative aspect-[3/4] overflow-hidden bg-surface-container-high rounded-lg cursor-pointer">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale opacity-40" data-alt="static office workspace with basic sunlight and flat lighting during a casual corporate interview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxuzSXtKwPucveSO5_ruGfQ5zTgGvSyGX6mgnhC_UZgFSFt2qX7OewgQCxz9pLrjVT8uM1-HDzmaS-Wz4CpSdWXbAXHfYwKIciu_f9zixRKqF7pf-MMG-z8wswoPe3KNuna3Ei9lgFE5cYIBEkTHzUY0sCvQi9Nm9vH1QadjPrTI_kzr3CiwsGMAKDL9nqbR3lxp8Z6s3ud7geJgsrJr3quPJUnlHbzl83QBzS2X-E5kHd4U8sOiZUP_7od2n9O_8EfS3RQHHsUzs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+</div>
+<div class="after-image absolute inset-0 z-10">
+<img class="w-full h-full object-cover" data-alt="futuristic digital workspace with chrome surfaces, glowing screens, and high-contrast editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy1fbNaU4spD5YTX4biBZzaiiYzBcynd87oT-kSBaG0_vkt5Evf2xH4JlwRhG4vsF61dWdrrUf1m_-YiLsCBaGo4XIX2JumdjipmUiFsUZQg7VIHA3HQofGUBFIj46JaKEPKiAaFCWfPtEexCtR6Re66jN_2L4YPFZh-nMQeKPuHbUzBkBNuYhtAmsx-_UmoEl1rNLjZYpj0gyoLMhGwwx-Yvq8ZY1a0X7YEK_cOCiBZPck7VPNj01h3z7JxrpQ9U8if99Z6D5f_0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-6 left-6 flex flex-col gap-2">
+<div class="glass-chrome px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-primary font-bold text-sm tracking-tight">8.4% ER</span>
+</div>
+<div class="glass-chrome px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">share</span>
+<span class="text-primary font-bold text-sm tracking-tight">Viral Loop</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 left-8 right-8 z-20">
+<div class="before-label mb-2">
+<span class="font-label text-[10px] uppercase tracking-widest text-white/50 bg-white/10 px-2 py-0.5 rounded">Standard List</span>
+</div>
+<h3 class="font-headline text-3xl font-bold italic text-white group-hover:text-primary transition-colors">CHROME VISION</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center justify-between">
+<span class="font-label text-xs uppercase tracking-tighter text-secondary">Visual Architecture</span>
+<span class="material-symbols-outlined text-primary">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="liquid-hover group relative aspect-[3/4] overflow-hidden bg-surface-container-high rounded-lg cursor-pointer">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale opacity-40" data-alt="outdoor casual portrait photo taken on a smartphone with natural but uninspiring daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmc0KZ6QRMn11PvK-xyGlPvxVrdLGJkK0ZjSEN8ha9GEkBkXzHW3IW1iy0UKKZhEjRZdAkt8oewoEYv7On4WwK55a4KqFsTTu9biT58fAo5LSRXUykoFEaJPSzYzz0tWAVJG-e4x5yod0Ws67JYTY6KEhZWSaLnMtRl_HhKRP9VjgGuE40QXSj7UdmqV36C7-OkYcMYcN73hDODfF2tZLLW2pn1hcYG4B8E-XlxlksjgzGhaw72i3UIdI1XY9FDWmkszq4n0Xeh-k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+</div>
+<div class="after-image absolute inset-0 z-10">
+<img class="w-full h-full object-cover" data-alt="high-fashion editorial photography with vibrant color grading, sharp focus, and electric lime light leaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO19u0PsGiADtCj9uzS2JG7V9Ptw7ec-nT1XGF9_uqQDKpwd7VkXYsSZ8b3vRW6l7D0kTtWvXvPaOzuiZTTxHVYSD5j4ZdJMs9SK3k4U6_QEi9WzmiWx8zw6URjGaMqRvun6d48xJF9UCYTAxB6tG2FwDUZaMojKh_-mV8BpciLYAdxjH26jWDJptj_67j722hLjWLVLkwauIxZVq174HmnZU-NaH7x2v2Lryi_W1RErI4ajErlCPEMZRa_121HlNE6oOwAkEd2Bw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-6 left-6 flex flex-col gap-2">
+<div class="glass-chrome px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="text-primary font-bold text-sm tracking-tight">+2.4M Reach</span>
+</div>
+<div class="glass-chrome px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-primary font-bold text-sm tracking-tight">85k Likes</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 left-8 right-8 z-20">
+<div class="before-label mb-2">
+<span class="font-label text-[10px] uppercase tracking-widest text-white/50 bg-white/10 px-2 py-0.5 rounded">Default Flow</span>
+</div>
+<h3 class="font-headline text-3xl font-bold italic text-white group-hover:text-primary transition-colors">LIME PULSE</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center justify-between">
+<span class="font-label text-xs uppercase tracking-tighter text-secondary">Kinetic Post-Production</span>
+<span class="material-symbols-outlined text-primary">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Capability Grid (Bento Style) -->
+<section class="mt-40 grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-high rounded-xl p-10 flex flex-col justify-between border border-white/5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -mr-32 -mt-32 transition-all duration-700 group-hover:bg-primary/20"></div>
+<div class="space-y-6 relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-headline text-4xl font-bold italic tracking-tighter uppercase leading-tight">The Viral<br/>Mechanism</h2>
+<p class="text-on-surface-variant max-w-sm">We don't just edit videos. We engineer emotional triggers through liquid physics and sound design that demands attention in the first 0.3 seconds.</p>
+</div>
+<button class="flex items-center gap-4 text-primary font-bold italic uppercase tracking-widest text-sm relative z-10">
+                    Learn the science <span class="material-symbols-outlined">east</span>
+</button>
+</div>
+<div class="bg-surface-container-highest rounded-xl p-8 flex flex-col justify-center border border-white/5 group hover:bg-primary/5 transition-colors">
+<span class="text-primary font-bold font-headline text-5xl italic tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">94%</span>
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">Avg retention rate</span>
+</div>
+<div class="bg-surface-container-highest rounded-xl p-8 flex flex-col justify-center border border-white/5 group hover:bg-primary/5 transition-colors">
+<span class="text-primary font-bold font-headline text-5xl italic tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">12M+</span>
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">Combined Impressions</span>
+</div>
+<div class="md:col-span-2 bg-primary-container p-8 rounded-xl flex items-center justify-between group cursor-pointer overflow-hidden">
+<div class="space-y-1">
+<h4 class="text-on-primary-container font-headline text-2xl font-black italic uppercase tracking-tighter">Liquid Workflow</h4>
+<p class="text-on-primary-container/70 text-sm">Synchronize your brand heartbeat with our production engine.</p>
+</div>
+<span class="material-symbols-outlined text-on-primary-container text-4xl transform group-hover:rotate-45 transition-transform">bolt</span>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 px-8 border-t border-white/5 bg-black">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-[1920px] mx-auto">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-lg font-bold text-white font-['Space_Grotesk'] tracking-tighter">G Gabi Produções</div>
+<p class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] text-white/40">© 2024 G Gabi Produções. High-Velocity Digital Architecture.</p>
+</div>
+<div class="flex gap-8 font-['Inter'] text-xs uppercase tracking-[0.1em]">
+<a class="text-white/40 hover:text-white transition-colors" href="#">Instagram</a>
+<a class="text-white/40 hover:text-white transition-colors" href="#">LinkedIn</a>
+<a class="text-white/40 hover:text-white transition-colors" href="#">Behance</a>
+<a class="text-white/40 hover:text-white transition-colors" href="#">Privacy</a>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Systems Active</span>
+</div>
+</div>
+</footer>
+</body></html>

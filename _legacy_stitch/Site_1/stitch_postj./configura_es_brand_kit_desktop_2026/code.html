@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostJá.io - Brand Kit &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d1ff00", // Neon Lime Green
+                        "background-dark": "#080C14",
+                        "surface-dark": "#111827",
+                        "border-dark": "#1f2937",
+                    },
+                    fontFamily: {
+                        "display": ["Syne", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .oklch-preview {
+            background-color: oklch(0.65 0.25 35);
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/></head>
+<body class="bg-background-dark text-slate-100 font-body min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="h-16 border-b border-border-dark flex items-center justify-between px-8 sticky top-0 bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary size-8 rounded flex items-center justify-center text-black" style="background-color: #d1ff00;">
+<span class="material-symbols-outlined font-bold">bolt</span>
+</div>
+<h2 class="text-slate-100 text-xl font-extrabold tracking-tight font-display">PostJá.io</h2>
+</div>
+<div class="hidden md:flex items-center relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="bg-surface-dark border-border-dark rounded-lg py-1.5 pl-9 pr-4 text-xs text-slate-200 focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search settings..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden xl:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="hover:text-primary transition-colors" href="#">Projects</a>
+<a class="hover:text-primary transition-colors" href="#">Templates</a>
+<a class="text-primary" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary hover:brightness-110 text-black px-5 py-2 rounded-lg text-xs font-bold transition-all shadow-[0_0_15px_rgba(209,255,0,0.3)] uppercase tracking-wider" style="background-color: #d1ff00;">
+                        Upgrade
+                    </button>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-9 rounded-full border border-border-dark bg-surface-dark overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoh5XJ3kQ8ZDP0hDPOUzrfwnnkbfkb7Nn3lcDcO2BnDQ20f2R52HwlC4GcbL7JRORE30JJxRAMMwoLHgG0RSxNVMucyxnfJQT2oZRT4u_kpJhWd7tZVdjUF2byPBUWSMPTzdyR8Rxs5pwKNczHgLROUeVIiwK3y3GnESUw5fYfG9h4kTD69oQCnP0H6A4cJ8bDZBR099Fy16tYhtgt574y4yJAuIjJu2abTsVGNPYUz9AwncgaVbE1YcP-xXPZ4n_kcxELBL9O6BU"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 flex-col lg:flex-row w-full max-w-[1600px] mx-auto">
+<aside class="w-64 flex-shrink-0 border-r border-border-dark bg-background-dark flex flex-col justify-between p-4">
+<div class="flex flex-col gap-8">
+<div>
+<h3 class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4 px-3">Workspace</h3>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">General</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+<span class="text-sm font-bold">Brand Kit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span class="text-sm font-medium">Billing</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium">Team Members</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="text-sm font-medium">API Tokens</span>
+</a>
+</nav>
+</div>
+</div>
+<div class="bg-surface-dark p-5 rounded-xl border border-border-dark">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Credits</span>
+<span class="text-xs text-slate-100 font-bold">850/1000</span>
+</div>
+<div class="w-full bg-border-dark h-1.5 rounded-full overflow-hidden mb-4">
+<div class="bg-primary h-full w-[85%]" style="background-color: #d1ff00;"></div>
+</div>
+<button class="w-full py-2 bg-primary text-black text-[10px] font-bold rounded-lg hover:brightness-110 transition-all uppercase tracking-widest" style="background-color: #d1ff00;">
+                        Upgrade Now
+                    </button>
+</div>
+</aside>
+<section class="flex-1 p-6 lg:p-12 overflow-y-auto">
+<div class="mb-10">
+<h1 class="text-4xl font-black tracking-tight mb-2 font-display">Brand Kit</h1>
+<p class="text-slate-500 dark:text-slate-400">Configure your global identity system for consistent automated content creation.</p>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<div class="bg-white dark:bg-slate-900/50 p-8 rounded-3xl border border-primary/10 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">colorize</span>
+<h3 class="text-xl font-bold">Color Palette (OKLCH)</h3>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="space-y-2">
+<div class="aspect-square rounded-2xl bg-primary shadow-inner cursor-pointer group flex items-center justify-center" style="background-color: #d1ff00;">
+<span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
+</div>
+<p class="text-xs font-bold text-center">Primary</p>
+<p class="text-[10px] text-slate-400 text-center uppercase tracking-wider">0.65 0.25 35</p>
+</div>
+<div class="space-y-2">
+<div class="aspect-square rounded-2xl bg-[#00f2ff] shadow-inner cursor-pointer group flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
+</div>
+<p class="text-xs font-bold text-center">Accent</p>
+<p class="text-[10px] text-slate-400 text-center uppercase tracking-wider">0.85 0.15 190</p>
+</div>
+<div class="space-y-2">
+<div class="aspect-square rounded-2xl bg-[#b100ff] shadow-inner cursor-pointer group flex items-center justify-center">
+<span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
+</div>
+<p class="text-xs font-bold text-center">Secondary</p>
+<p class="text-[10px] text-slate-400 text-center uppercase tracking-wider">0.55 0.28 300</p>
+</div>
+<div class="space-y-2">
+<div class="aspect-square rounded-2xl bg-slate-200 dark:bg-slate-700 border-2 border-dashed border-primary/30 flex items-center justify-center cursor-pointer hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+<p class="text-xs font-bold text-center text-slate-400">Add Color</p>
+</div>
+</div>
+<div class="pt-4 border-t border-primary/5">
+<label class="text-sm font-semibold block mb-3">Color Mode Logic</label>
+<div class="flex gap-4">
+<button class="flex-1 py-2 rounded-xl bg-primary/10 border border-primary text-primary text-sm font-bold">Dark Preferred</button>
+<button class="flex-1 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-transparent text-slate-500 text-sm font-bold">Light Preferred</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/50 p-8 rounded-3xl border border-primary/10 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">text_fields</span>
+<h3 class="text-xl font-bold">Typography</h3>
+</div>
+<div class="space-y-6">
+<div>
+<label class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Display Font</label>
+<div class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-primary/5">
+<span class="text-lg font-bold">Public Sans</span>
+<button class="text-primary text-sm font-bold flex items-center gap-1">Change <span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</div>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Body Font</label>
+<div class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-primary/5">
+<span class="text-lg font-normal">Inter</span>
+<button class="text-primary text-sm font-bold flex items-center gap-1">Change <span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-primary/5 border border-primary/10">
+<p class="text-3xl font-bold mb-2">Aa</p>
+<p class="text-sm italic text-slate-500">The quick brown fox jumps over the lazy dog.</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/50 p-8 rounded-3xl border border-primary/10 shadow-sm xl:col-span-2">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">image</span>
+<h3 class="text-xl font-bold">Brand Logos</h3>
+</div>
+<button class="bg-primary/10 text-primary px-4 py-2 rounded-xl text-sm font-bold border border-primary/20 hover:bg-primary/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">upload</span> Upload New Asset
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="relative group p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/30 border border-primary/5 flex flex-col items-center justify-center gap-4 hover:border-primary/20 transition-all">
+<div class="h-20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl">rocket_launch</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold">Primary Logo</p>
+<p class="text-[10px] text-slate-400 uppercase">SVG • 24 KB</p>
+</div>
+<button class="absolute top-4 right-4 p-1.5 rounded-lg bg-red-500/10 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="relative group p-6 rounded-3xl bg-slate-900 border border-primary/5 flex flex-col items-center justify-center gap-4 hover:border-primary/20 transition-all">
+<div class="h-20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-6xl">rocket_launch</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold text-white">Logo (Light Variation)</p>
+<p class="text-[10px] text-slate-500 uppercase">SVG • 22 KB</p>
+</div>
+<button class="absolute top-4 right-4 p-1.5 rounded-lg bg-red-500/10 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="relative group p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/30 border border-primary/5 flex flex-col items-center justify-center gap-4 hover:border-primary/20 transition-all">
+<div class="h-20 flex items-center justify-center">
+<div class="size-16 bg-primary rounded-xl flex items-center justify-center" style="background-color: #d1ff00;">
+<span class="material-symbols-outlined text-white text-3xl">rocket_launch</span>
+</div>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold">App Icon</p>
+<p class="text-[10px] text-slate-400 uppercase">PNG • 1024x1024</p>
+</div>
+<button class="absolute top-4 right-4 p-1.5 rounded-lg bg-red-500/10 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-end gap-4">
+<button class="px-8 py-3 rounded-2xl bg-slate-200 dark:bg-slate-800 font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">Discard Changes</button>
+<button class="px-8 py-3 rounded-xl bg-primary text-black font-bold shadow-lg shadow-primary/10 hover:brightness-110 active:scale-95 transition-all uppercase tracking-wider text-sm" style="background-color: #d1ff00;">Save Brand Kit</button>
+</div>
+</section>
+</main>
+<footer class="border-t border-primary/10 py-8 px-12 bg-background-light dark:bg-background-dark/50">
+<div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2 text-primary opacity-50">
+<span class="material-symbols-outlined text-xl">rocket_launch</span>
+<span class="font-bold text-sm tracking-tighter">PostJá.io</span>
+</div>
+<p class="text-xs text-slate-500">© 2026 PostJá.io AI Content Solutions. All rights reserved.</p>
+<div class="flex gap-6 text-xs text-slate-500 font-bold">
+<a class="hover:text-primary" href="#">Terms</a>
+<a class="hover:text-primary" href="#">Privacy</a>
+<a class="hover:text-primary" href="#">Support</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

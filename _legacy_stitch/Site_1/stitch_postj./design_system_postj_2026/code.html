@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Public+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c1ff00", // Neon Lime equivalent
+                        "secondary": "#d900ff", // Vibrant Violet equivalent
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#080c14",
+                        "surface-dark": "#0d1421",
+                        "border-dark": "#1e293b"
+                    },
+                    fontFamily: {
+                        "display": ["Syne", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "sans": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Modern Neon Glows using OKLCH logic via HEX/Opacity for Tailwind 3 compatibility */
+        .neon-border-primary {
+            box-shadow: 0 0 15px rgba(193, 255, 0, 0.3);
+        }
+        .neon-text-primary {
+            text-shadow: 0 0 8px rgba(193, 255, 0, 0.5);
+        }
+        .bg-oklch-primary { background-color: #c1ff00; }
+        .bg-oklch-secondary { background-color: #d900ff; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-body transition-colors duration-300">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-border-dark px-6 md:px-20 py-4 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">bolt</span>
+</div>
+<h2 class="text-xl font-display font-extrabold tracking-tight">PostJá <span class="text-primary">2026</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#colors">Cores</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#typography">Tipografia</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#components">Componentes</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#grid">Layout</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-slate-100 dark:bg-surface-dark border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Buscar no sistema..."/>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-background-dark px-5 py-2 rounded-xl text-sm font-bold transition-all transform hover:scale-105">
+                        Documentação
+                    </button>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-6 md:px-20 py-12">
+<!-- Hero Section -->
+<section class="mb-20">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+<span class="material-symbols-outlined text-xs">rocket_launch</span> v1.0.26 Final
+                    </div>
+<h1 class="text-5xl md:text-7xl font-display font-extrabold mb-6 leading-none">Design <span class="text-primary">System</span></h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg max-w-2xl leading-relaxed">
+                        Guia de estilo tecnológico e ultra-moderno para o ecossistema PostJá 2026. Construído com foco em alta performance visual e legibilidade neon.
+                    </p>
+</section>
+<!-- 1. Cores -->
+<section class="mb-24" id="colors">
+<div class="flex items-center gap-3 mb-10">
+<span class="text-primary material-symbols-outlined">palette</span>
+<h2 class="text-3xl font-display font-bold">Sistema de Cores</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Primary -->
+<div class="group">
+<div class="h-40 rounded-2xl bg-oklch-primary neon-border-primary mb-4 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
+</div>
+<h3 class="font-bold">Verde Limão Neon</h3>
+<p class="text-xs text-slate-500 font-mono">oklch(85% 0.25 150)</p>
+</div>
+<!-- Secondary -->
+<div class="group">
+<div class="h-40 rounded-2xl bg-oklch-secondary mb-4 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
+</div>
+<h3 class="font-bold">Violeta Vibrante</h3>
+<p class="text-xs text-slate-500 font-mono">oklch(60% 0.3 300)</p>
+</div>
+<!-- Surface 1 -->
+<div class="group">
+<div class="h-40 rounded-2xl bg-[#080C14] border border-border-dark mb-4 relative overflow-hidden"></div>
+<h3 class="font-bold">Dark Surface 01</h3>
+<p class="text-xs text-slate-500 font-mono">#080C14</p>
+</div>
+<!-- Surface 2 -->
+<div class="group">
+<div class="h-40 rounded-2xl bg-[#0D1421] border border-border-dark mb-4 relative overflow-hidden"></div>
+<h3 class="font-bold">Dark Surface 02</h3>
+<p class="text-xs text-slate-500 font-mono">#0D1421</p>
+</div>
+</div>
+</section>
+<!-- 2. Tipografia -->
+<section class="mb-24" id="typography">
+<div class="flex items-center gap-3 mb-10">
+<span class="text-primary material-symbols-outlined">text_fields</span>
+<h2 class="text-3xl font-display font-bold">Tipografia</h2>
+</div>
+<div class="space-y-12">
+<div class="p-8 rounded-3xl bg-slate-100 dark:bg-surface-dark border border-slate-200 dark:border-border-dark">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<div class="col-span-1">
+<span class="text-xs font-bold text-primary uppercase tracking-widest block mb-2">Display Font</span>
+<h4 class="text-2xl font-display font-extrabold">Syne</h4>
+<p class="text-sm text-slate-500 mt-2">Usada para títulos de impacto e elementos de destaque.</p>
+</div>
+<div class="col-span-2 space-y-4">
+<h1 class="text-6xl font-display font-extrabold">The future is now.</h1>
+<h2 class="text-4xl font-display font-bold">The quick brown fox jumps over the lazy dog.</h2>
+</div>
+</div>
+</div>
+<div class="p-8 rounded-3xl bg-slate-100 dark:bg-surface-dark border border-slate-200 dark:border-border-dark">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<div class="col-span-1">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest block mb-2">Body Font</span>
+<h4 class="text-2xl font-body font-bold">DM Sans</h4>
+<p class="text-sm text-slate-500 mt-2">Otimizada para leitura prolongada em interfaces digitais.</p>
+</div>
+<div class="col-span-2 space-y-4">
+<p class="text-xl leading-relaxed">Desenvolvemos soluções que conectam pessoas ao futuro da tecnologia. A interface do PostJá foi pensada para ser rápida, intuitiva e esteticamente provocativa.</p>
+<p class="text-base text-slate-500 leading-relaxed">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890 !@#$%^&amp;*()</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Componentes -->
+<section class="mb-24" id="components">
+<div class="flex items-center gap-3 mb-10">
+<span class="text-primary material-symbols-outlined">widgets</span>
+<h2 class="text-3xl font-display font-bold">Componentes</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Buttons & Chips -->
+<div class="p-8 rounded-3xl border border-slate-200 dark:border-border-dark space-y-10">
+<div>
+<h3 class="text-lg font-bold mb-6">Botões Neon</h3>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-background-dark px-6 py-3 rounded-xl font-bold neon-border-primary hover:brightness-110 transition-all">Primary Action</button>
+<button class="bg-secondary text-white px-6 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(217,0,255,0.4)] transition-all">Secondary Action</button>
+<button class="border border-primary text-primary px-6 py-3 rounded-xl font-bold hover:bg-primary/10 transition-all">Outline Button</button>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Chips &amp; Tags</h3>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-bold">Ativo</span>
+<span class="px-4 py-1.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-xs font-bold">Premium</span>
+<span class="px-4 py-1.5 rounded-full bg-slate-500/10 text-slate-400 border border-slate-500/20 text-xs font-bold">Pendente</span>
+</div>
+</div>
+</div>
+<!-- Inputs & Icons -->
+<div class="p-8 rounded-3xl border border-slate-200 dark:border-border-dark space-y-10">
+<div>
+<h3 class="text-lg font-bold mb-6">Inputs</h3>
+<div class="space-y-4">
+<div class="group">
+<label class="block text-xs font-bold text-slate-500 mb-2 uppercase">Nome do Usuário</label>
+<input class="w-full bg-slate-100 dark:bg-surface-dark border-2 border-transparent focus:border-primary rounded-xl px-4 py-3 transition-all outline-none" placeholder="Ex: CyberPunk2077" type="text"/>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">rocket_launch</span>
+<input class="w-full bg-slate-100 dark:bg-surface-dark border-2 border-transparent focus:border-primary rounded-xl pl-12 pr-4 py-3 transition-all outline-none" placeholder="Lançar projeto..." type="text"/>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Ícones (Material Symbols)</h3>
+<div class="flex gap-6">
+<div class="size-12 rounded-xl bg-surface-dark flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined text-2xl">bolt</span>
+</div>
+<div class="size-12 rounded-xl bg-surface-dark flex items-center justify-center text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-2xl">rocket_launch</span>
+</div>
+<div class="size-12 rounded-xl bg-surface-dark flex items-center justify-center text-slate-400 border border-border-dark">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+</div>
+<div class="size-12 rounded-xl bg-surface-dark flex items-center justify-center text-slate-400 border border-border-dark">
+<span class="material-symbols-outlined text-2xl">shield</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Grid & Layout -->
+<section class="mb-24" id="grid">
+<div class="flex items-center gap-3 mb-10">
+<span class="text-primary material-symbols-outlined">grid_4x4</span>
+<h2 class="text-3xl font-display font-bold">Grid e Espaçamento</h2>
+</div>
+<div class="bg-slate-100 dark:bg-surface-dark rounded-3xl p-8 border border-slate-200 dark:border-border-dark">
+<div class="grid grid-cols-12 gap-4 h-64 opacity-50 relative">
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">1</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">2</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">3</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">4</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">5</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">6</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">7</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">8</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">9</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">10</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">11</div>
+<div class="col-span-1 bg-primary/20 border border-primary/40 rounded flex items-center justify-center text-[10px] font-bold">12</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="bg-background-dark/80 backdrop-blur px-6 py-4 rounded-2xl border border-border-dark text-center">
+<p class="font-bold text-lg">12 Column Fluid Grid</p>
+<p class="text-sm text-slate-500">Gutter: 24px (1.5rem) | Container: 1280px</p>
+</div>
+</div>
+</div>
+<div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="space-y-2">
+<h4 class="font-bold text-primary">Responsive Breakpoints</h4>
+<ul class="text-sm text-slate-500 space-y-1">
+<li>Mobile: 375px+</li>
+<li>Tablet: 768px+</li>
+<li>Desktop: 1280px+</li>
+</ul>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-primary">Border Radius</h4>
+<ul class="text-sm text-slate-500 space-y-1">
+<li>Default: 4px</li>
+<li>Large: 8px</li>
+<li>X-Large: 12px</li>
+<li>Full: 9999px</li>
+</ul>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-primary">Shadows</h4>
+<ul class="text-sm text-slate-500 space-y-1">
+<li>Neon Glow: Primary 0.3 opacity</li>
+<li>Surface: Black 0.5 opacity</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-border-dark py-12 px-6 md:px-20 bg-slate-50 dark:bg-surface-dark">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined text-xs font-bold">bolt</span>
+</div>
+<span class="font-display font-extrabold text-lg">PostJá 2026</span>
+</div>
+<p class="text-slate-500 text-sm">© 2024 PostJá Design Systems. Todos os direitos reservados.</p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">hub</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">code</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">terminal</span></a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

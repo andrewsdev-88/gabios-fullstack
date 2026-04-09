@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ccff00",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .metallic-text {
+            background: linear-gradient(135deg, #ccff00 0%, #ffffff 50%, #ccff00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 5px rgba(204, 255, 0, 0.3));
+        }
+        .perspective-lg {
+            perspective: 1000px;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px) rotateX(5px);
+            box-shadow: 0 20px 25px -5px rgba(204, 255, 0, 0.1), 0 10px 10px -5px rgba(204, 255, 0, 0.04);
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Top Navigation Bar (Bilingual Style) -->
+<header class="sticky top-0 z-50 w-full border-b border-white/10 glass-panel">
+<div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">star_rate</span>
+<h2 class="text-xl font-black tracking-tighter uppercase italic">GGABIPRODUCOES</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Início / Home</a>
+<a class="text-sm font-bold uppercase tracking-widest text-primary transition-colors border-b-2 border-primary" href="#">Produtos / Store</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Sobre / About</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Contato / Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-white/5 rounded-full px-4 py-2 border border-white/10">
+<span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 placeholder:text-slate-500" placeholder="Search products..." type="text"/>
+</div>
+<button class="relative p-2 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-emerald-400 p-[2px]">
+<div class="w-full h-full rounded-full bg-background-dark flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZG4y5xMgTtwBGyk9UlMe81KXTBe89WQeYmI4JD2YLm4DAZUw7ekR0iICP0eQsH4bv103hRsEwwAF2-uGyVLtwaFPFLsJC6Qy98i-yYliRDYtuvw6QBaHaWdsAnMT18jsyGLa184IdGPNMLCdzVViVw4Je4TFbs0aJ4VIUjoHBcAxxrRNQKYOvY8SFnp3tpYdBOvvKh6h7A6BXPUSg7Nk6Eh3CFy3xkjffNKPo7p-sSz-NN5uTXwukD2nGtOmut0cDxkMYHkKA39I"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- Editorial Hero Section -->
+<section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-20 px-4">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark/20 to-background-dark"></div>
+<img class="w-full h-full object-cover opacity-40" data-alt="Abstract dark metallic textured background with 3D elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqoDOULUvTtiqpDjvZczbFyai0LA7Fa2qEkHzFFj-3vyX2tnVwNP1jN9bNJdod8eGHIdvWYqoGWZLiJSaWYdWW3H9q47Df11ax10jpkRReYqd79GNcfTiGLDnKhO2kbwS5PFeVLVKO_xbhBdJ_EP1IgHp3TAkNWLkf2EiU-I52pQMvq9Foi-dCb2BQjcHMqUxLT5sltvfsN9lVwFRQ29lpVyDKam1gp95Rzj0FKB3tNSYTC-C0q-1SIsbivlLZMEZMjA8Yl9Tq1b8"/>
+</div>
+<div class="relative z-10 max-w-5xl mx-auto text-center">
+<div class="inline-block mb-6 px-4 py-1 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm">
+<span class="text-primary text-xs font-black tracking-[0.3em] uppercase">Premium Editorial 2024</span>
+</div>
+<h1 class="text-6xl md:text-8xl font-black italic tracking-tighter leading-[0.9] mb-8 uppercase metallic-text">
+                    Nossa Linha de<br/>Produtos Exclusivos
+                </h1>
+<p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-10 leading-relaxed">
+                    A fusão definitiva entre o minimalismo industrial e o impacto visual neon. Explore o design editorial premium com efeito 3D metálico.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto px-10 py-4 bg-primary text-black font-black uppercase tracking-widest hover:scale-105 transition-transform rounded-none">
+                        Ver Coleção
+                    </button>
+<button class="w-full sm:w-auto px-10 py-4 border border-white/20 hover:bg-white/5 font-black uppercase tracking-widest transition-all rounded-none">
+                        Download Catálogo
+                    </button>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+</section>
+<!-- Product Grid Categories -->
+<section class="py-24 max-w-7xl mx-auto px-4">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<h2 class="text-primary text-sm font-black tracking-widest uppercase mb-4">Curadoria</h2>
+<h3 class="text-4xl font-black uppercase italic tracking-tighter">Categorias Premium</h3>
+</div>
+<p class="max-w-md text-slate-400 border-l-2 border-primary pl-6">
+                    Desenvolvidos para profissionais que não aceitam o comum. Materiais de alta qualidade com acabamento personalizado.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 perspective-lg">
+<!-- Apparel -->
+<div class="group card-hover transition-all duration-500 flex flex-col">
+<div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden mb-6 border border-white/5">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Mockup of a premium black t-shirt with a neon lime logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcqrL2l44yvkqpVn4Q66nqJotxq2Yp9EqKBtAPwMD-d1wDl5rmh1hd7jaGCUty6Vsa7oIM9Mj510-qnf9mOU7s56UZUqYcBDAB_ssuPK4ztEzP_rZ7zb7XaVv-NEfFlFrtqWbySmwTCANk_gpQmrVQCOrAupq54d5iMceolB_FpKsCPGamuHC6CnHmj45DRrc5ovGfIGQ2SX3wXLc_KuNdwmneANDkdy5XktQF3-l7cp_xZczDeKej1WzRAfMtLQwYP07FqZ0DSz0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+<span class="text-primary font-black uppercase text-sm tracking-widest">Ver Detalhes</span>
+</div>
+</div>
+<h4 class="text-2xl font-black uppercase italic mb-2">Vestuário / Apparel</h4>
+<p class="text-slate-400 leading-relaxed">Camiseta preta premium heavy cotton com logo em acabamento metálico 3D e detalhes neon.</p>
+</div>
+<!-- Utilities -->
+<div class="group card-hover transition-all duration-500 flex flex-col">
+<div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden mb-6 border border-white/5">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Matte black ceramic mug with metallic logo detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0WulijEl6LrtyEhF-Z3arequs-Pw-2COg0TYfSem7qItd50Moz4_Fk5sD9thV4J4HbgJjWL1F31klyL6euiF8DHhRBhr9IJ0V4Zcas81YVv57F40139MStuU5fkY1aGJgD0pFEt7pCNNmP2hKnUcXtDEoqwb_oxDHWB-MCPuOGwNyBK8jH2ECaIxwx5ryxP2cF1E47Cxiro6awR2f7kOJniqVZhxr2qAi4ksq9tuoLgnAwczrez6JFpPsZ51Cx13OX1aRHTa9NQs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+<span class="text-primary font-black uppercase text-sm tracking-widest">Ver Detalhes</span>
+</div>
+</div>
+<h4 class="text-2xl font-black uppercase italic mb-2">Utilitários / Utilities</h4>
+<p class="text-slate-400 leading-relaxed">Caneca em cerâmica preta fosca exclusiva com gravação a laser e contraste interno neon.</p>
+</div>
+<!-- Print -->
+<div class="group card-hover transition-all duration-500 flex flex-col">
+<div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden mb-6 border border-white/5">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Premium business cards with metallic green edges and embossed logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR6EAK64l_CKnpaVVFfrjeaP0RLNYXRB6X3BImN6oNX95oubg7vdun4lnvskPqLf3bA0ZscibZxJsHPv6km2lfy9oFib_EMeOuVUMOl-oMIpOy-CcZimGvKNoH0SgrHo7fOWJjKfiR01fU2Lh-G45JYFsybEylg_RJK0B43Q_wMqcWLSOCI69mpFi8nsATAT5Cv02zjkHnQHEGP3MJBP7_e4EMsSjqU3pjEOIxNHKXM-kYEFBh5sg5dKMvuTBp4z3hz-lG3U4Th7s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+<span class="text-primary font-black uppercase text-sm tracking-widest">Ver Detalhes</span>
+</div>
+</div>
+<h4 class="text-2xl font-black uppercase italic mb-2">Material Gráfico / Print</h4>
+<p class="text-slate-400 leading-relaxed">Cartões de visita e papelaria institucional com detalhes em hot-stamping metálico e bordas pintadas.</p>
+</div>
+</div>
+</section>
+<!-- Interactive Section: Vista o Produto -->
+<section class="bg-primary/5 border-y border-primary/20 py-24">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="inline-block bg-primary text-black px-3 py-1 text-xs font-black uppercase mb-6 tracking-widest">Recurso Exclusivo</span>
+<h2 class="text-5xl font-black uppercase italic tracking-tighter mb-8 leading-none">Vista o Produto<br/><span class="text-primary">Virtual Try-On</span></h2>
+<p class="text-lg text-slate-400 mb-8 leading-relaxed">
+                            Visualize como nossa camiseta premium se ajusta ao seu estilo. Nosso processador inteligente sobrepõe o mockup 3D mantendo sua postura e cenário.
+                        </p>
+<div class="space-y-6 mb-10">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">security</span>
+<div>
+<p class="text-sm font-bold uppercase tracking-wide">Privacidade Local</p>
+<p class="text-sm text-slate-500">Sua imagem é processada localmente e não é armazenada ou enviada a servidores externos.</p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<label class="cursor-pointer bg-white text-black px-8 py-4 font-black uppercase tracking-widest hover:bg-primary transition-colors flex items-center gap-3">
+<span class="material-symbols-outlined">upload_file</span>
+                                Enviar Foto
+                                <input class="hidden" type="file"/>
+</label>
+<button class="px-8 py-4 border border-white/20 text-white font-black uppercase tracking-widest hover:bg-white/5 transition-colors flex items-center gap-3">
+<span class="material-symbols-outlined">restart_alt</span>
+                                Resetar
+                            </button>
+</div>
+</div>
+<div class="relative aspect-square glass-panel rounded-none p-8 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="w-full h-full border-2 border-dashed border-primary/30 m-4"></div>
+</div>
+<!-- Mockup Preview Placeholder -->
+<div class="relative w-full h-full flex flex-col items-center justify-center text-center p-12">
+<div class="w-64 h-80 border-2 border-primary/20 rounded-2xl flex items-center justify-center mb-6 relative group overflow-hidden">
+<span class="material-symbols-outlined text-primary/30 text-6xl group-hover:scale-110 transition-transform">person</span>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"></div>
+</div>
+<p class="text-slate-500 font-bold uppercase tracking-widest text-xs">Área de Visualização / Preview Area</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Refactored) -->
+<footer class="bg-background-dark border-t border-white/10 pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+<div class="md:col-span-2">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary text-4xl">star_rate</span>
+<h2 class="text-2xl font-black tracking-tighter uppercase italic">GGABIPRODUCOES</h2>
+</div>
+<p class="max-w-sm text-slate-400 text-lg leading-relaxed mb-10">
+                        Elevando o padrão da produção visual e merchandising corporativo com estética vanguardista e acabamentos de luxo.
+                    </p>
+<div class="flex gap-6">
+<a class="w-12 h-12 rounded-none border border-white/10 flex items-center justify-center hover:border-primary hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-12 h-12 rounded-none border border-white/10 flex items-center justify-center hover:border-primary hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+</a>
+<a class="w-12 h-12 rounded-none border border-white/10 flex items-center justify-center hover:border-primary hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="text-primary font-black uppercase tracking-widest mb-8 text-sm">Links / Quick Links</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">Início / Home</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">Produtos / Store</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">Nossa História / Story</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">Parcerias / B2B</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-primary font-black uppercase tracking-widest mb-8 text-sm">Suporte / Support</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">FAQs</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">Envios / Shipping</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">Privacidade / Privacy</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors uppercase text-sm font-bold" href="#">Contato / Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-xs font-bold uppercase tracking-[0.2em]">
+<p>© 2024 GGABIPRODUCOES. All Rights Reserved.</p>
+<div class="flex gap-8">
+<span>Brasil / Global</span>
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        System Online
+                    </span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ccff00",
+                        "accent-lime": "#ccff00",
+                        "accent-pink": "#ff007a",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#080808",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Cases de Sucesso | GGABIPRODUCOES</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300 dark">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-3">
+<div class="text-accent-lime">
+<span class="material-symbols-outlined text-4xl fill-1">star_rate</span>
+</div>
+<h2 class="text-xl font-black tracking-tighter uppercase italic">GGABIPRODUCOES</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-accent-lime transition-colors" href="#">Home</a>
+<a class="text-sm font-semibold text-accent-lime transition-colors border-b-2 border-accent-lime" href="#">Cases</a>
+<a class="text-sm font-semibold hover:text-accent-lime transition-colors" href="#">Serviços</a>
+<a class="text-sm font-semibold hover:text-accent-lime transition-colors" href="#">Contato</a>
+</nav>
+<div class="flex items-center gap-4 md:gap-6">
+<div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-full p-1 mr-2">
+<button class="px-3 py-1 text-[10px] font-black uppercase tracking-tighter rounded-full bg-accent-lime text-background-dark transition-all">PT</button>
+<button class="px-3 py-1 text-[10px] font-black uppercase tracking-tighter rounded-full text-slate-500 hover:text-white transition-all">EN</button>
+</div><button class="hover:bg-primary/80 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 bg-accent-lime text-background-dark">
+                        Orçamento
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- Hero Section / Title -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16" data-lang-section="hero">
+<div class="max-w-2xl">
+<span class="inline-block px-3 py-1 bg-accent-pink/10 text-accent-pink text-xs font-bold uppercase tracking-widest rounded-full mb-4 border border-accent-pink/20">Portfolio Editorial</span>
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-[0.9]">
+                    RESULTADOS <br/> <span class="text-accent-lime italic">REAIS</span> PARA <br/> NEGÓCIOS <span class="">LÍDERES</span>
+</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
+                    Não vendemos cliques, vendemos escala. Conheça as estratégias de performance que transformaram a presença digital de nossos parceiros em máquinas de vendas.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-sm font-medium">
+<span class="material-symbols-outlined text-accent-lime">verified</span>
+<span>+200 Clientes Atendidos</span>
+</div>
+<div class="flex items-center gap-2 text-sm font-medium">
+<span class="material-symbols-outlined text-accent-pink">trending_up</span>
+<span>R$ 50M+ Gerados em Faturamento</span>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap items-center gap-3 mb-12 pb-6 border-b border-slate-200 dark:border-slate-800">
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 mr-2">Filtrar por:</span>
+<button class="px-5 py-2 rounded-full bg-accent-lime text-background-dark text-xs font-bold uppercase tracking-wider">Todos</button>
+<button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold uppercase tracking-wider transition-colors">Advogados</button>
+<button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold uppercase tracking-wider transition-colors">Médicos</button>
+<button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold uppercase tracking-wider transition-colors">E-commerce</button>
+<button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold uppercase tracking-wider transition-colors">Infoprodutos</button>
+</div>
+<!-- Portfolio Feed -->
+<div class="space-y-24">
+<!-- Case Study 1: Dr. Silva -->
+<section class="group" data-case-id="dr-silva">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Client Info -->
+<div class="lg:col-span-4 sticky top-32">
+<div class="space-y-6">
+<h2 class="text-3xl font-black uppercase italic leading-none group-hover:text-accent-lime transition-colors">Dr. Silva — <br/>Estética Avançada</h2>
+<div class="flex items-center gap-2">
+<span class="bg-accent-pink px-2 py-1 text-[10px] font-bold text-white uppercase rounded">Médicos</span>
+<span class="text-slate-500 text-xs uppercase tracking-tighter font-bold">Local: São Paulo, SP</span>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">
+                                Redefinição de posicionamento digital focado em tratamentos de alto ticket, saindo de uma audiência generalista para pacientes qualificados.
+                            </p>
+<div class="pt-4 space-y-3">
+<div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-xl border-l-4 border-accent-lime">
+<div class="text-2xl font-black text-accent-lime">+340%</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">Aumento em Agendamentos</div>
+</div>
+<div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-xl border-l-4 border-accent-pink">
+<div class="text-2xl font-black text-accent-pink">R$ 1.2M</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">ROI Direto em 6 meses</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Content: Before/Action/After -->
+<div class="lg:col-span-8 space-y-8">
+<div class="aspect-video w-full rounded-2xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Modern medical office with luxury aesthetic equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVTzqLr9QqWfVe61w0fBbgS1hc2FY2PjJP3vMh24Q-d7HMeSQBWSyyp_24CCjR80dYzrf83ANTcS8keGFE1d3u-mLm4rgJLwxlVqIlxfwoD2iRRsnHje6ea5ST3UNP1TPCdW4vQsatvhXY0LfKdy9ZVuDRqSCiK0WhYj1MoFtWsHckLPewJPVDxiryMcyaT_JdHEcL8kRAGCpTMpeGwK-s0_J4S3tClvce9bhYvwuqaQY6QtQ_gtTN3HRIh1RIEYCaaDb8rtHsiY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+<div class="text-white">
+<div class="text-[10px] uppercase font-black tracking-widest mb-1 opacity-70">Desafio Principal</div>
+<div class="text-xl font-bold">Baixo volume de leads qualificados.</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- BEFORE -->
+<div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-slate-400">history</span>
+<span class="text-xs font-black uppercase tracking-widest text-slate-500">Antes</span>
+</div>
+<ul class="space-y-3 text-sm text-slate-400">
+<li class="flex gap-2"><span class="text-accent-pink">•</span> Presença visual amadora</li>
+<li class="flex gap-2"><span class="text-accent-pink">•</span> Custo por lead de R$ 45,00</li>
+<li class="flex gap-2"><span class="text-accent-pink">•</span> Agenda com 40% de ociosidade</li>
+</ul>
+</div>
+<!-- ACTION -->
+<div class="bg-accent-lime/10 p-6 rounded-2xl border border-accent-lime/30">
+<div class="flex items-center gap-2 mb-4 text-accent-lime">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-xs font-black uppercase tracking-widest">Estratégia</span>
+</div>
+<p class="text-sm font-medium leading-relaxed">
+                                    Implementamos funil de landing page otimizada e campanhas de Google Ads focadas em intenção de compra imediata.
+                                </p>
+</div>
+<!-- AFTER -->
+<div class="bg-accent-pink p-6 rounded-2xl">
+<div class="flex items-center gap-2 mb-4 text-white">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="text-xs font-black uppercase tracking-widest">Depois</span>
+</div>
+<ul class="space-y-3 text-sm text-white font-bold">
+<li class="flex gap-2"><span>✓</span> CPL reduzido para R$ 12,00</li>
+<li class="flex gap-2"><span>✓</span> Agenda lotada por 3 meses</li>
+<li class="flex gap-2"><span>✓</span> Ticket médio elevado em 60%</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Case Study 2: Advocacia Criminal Premium -->
+<section class="group" data-case-id="marcondes">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Client Info -->
+<div class="lg:col-span-4 lg:order-2 sticky top-32">
+<div class="space-y-6">
+<h2 class="text-3xl font-black uppercase italic leading-none group-hover:text-accent-pink transition-colors">Marcondes &amp; <br/>Associados</h2>
+<div class="flex items-center gap-2">
+<span class="bg-accent-lime px-2 py-1 text-[10px] font-bold text-background-dark uppercase rounded">Advogados</span>
+<span class="text-slate-500 text-xs uppercase tracking-tighter font-bold">Local: Brasília, DF</span>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">
+                                Estratégia de SEO e Marketing Jurídico ético para atração de causas complexas de alta rentabilidade.
+                            </p>
+<div class="pt-4 space-y-3">
+<div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-xl border-l-4 border-accent-pink">
+<div class="text-2xl font-black text-accent-pink">12k+</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">Acessos Orgânicos/mês</div>
+</div>
+<div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-xl border-l-4">
+<div class="text-2xl font-black">Zero</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">Multas Éticas da OAB</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Content: Before/Action/After -->
+<div class="lg:col-span-8 lg:order-1 space-y-8">
+<div class="aspect-video w-full rounded-2xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Sophisticated law firm office with library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO5vL1MvqBkcX5b3vhjUCMQ5tfGAQB9KJ3Qhh0pk4GP8H3f1mA_w3U-4L-Ngvcna0JnCrubgCFf1Xy6L4v0aTDoPou7BQ-7Jug1H1T46mGKoXgTyMG8F_OPiG7aLNNU0HKZn-6objdSiISjmrpV-90TceTClJp5iLPCU70G90JcWPG6zyYn1zrUQSiGdnc04DZVKl2qSgbimbQawjdor4C3ZCCIMCoPQIY1mLiomkIihtQ9ac5RO4HP-nPFVVZ10M1MJ4EMTO-vMw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<div class="text-white">
+<div class="text-[10px] uppercase font-black tracking-widest mb-1 opacity-70">Ponto de Inflexão</div>
+<div class="text-xl font-bold">Migração total do offline para o digital de autoridade.</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- BEFORE -->
+<div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-slate-400">history</span>
+<span class="text-xs font-black uppercase tracking-widest text-slate-500">Antes</span>
+</div>
+<ul class="space-y-3 text-sm text-slate-400">
+<li class="flex gap-2"><span class="text-accent-lime">•</span> Dependência total de indicações</li>
+<li class="flex gap-2"><span class="text-accent-lime">•</span> Sem site institucional funcional</li>
+<li class="flex gap-2"><span class="text-accent-lime">•</span> Dificuldade em fechar novos contratos</li>
+</ul>
+</div>
+<!-- ACTION -->
+<div class="bg-accent-pink/10 p-6 rounded-2xl border border-accent-pink/30">
+<div class="flex items-center gap-2 mb-4 text-accent-pink">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-xs font-black uppercase tracking-widest">Estratégia</span>
+</div>
+<p class="text-sm font-medium leading-relaxed">
+                                    Criação de autoridade através de Blog Jurídico especializado e Campanhas de Display no YouTube para audiências corporativas.
+                                </p>
+</div>
+<!-- AFTER -->
+<div class="bg-accent-lime p-6 rounded-2xl text-background-dark">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-xs font-black uppercase tracking-widest">Depois</span>
+</div>
+<ul class="space-y-3 text-sm font-bold">
+<li class="flex gap-2"><span>✓</span> Top 3 Google nas buscas alvo</li>
+<li class="flex gap-2"><span>✓</span> 15 novos contratos premium/mês</li>
+<li class="flex gap-2"><span>✓</span> Referência nacional em criminal</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Case Study 3: Infoproduto Fitness -->
+<section class="group" data-case-id="protocolo-zero">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Client Info -->
+<div class="lg:col-span-4 sticky top-32">
+<div class="space-y-6">
+<h2 class="text-3xl font-black uppercase italic leading-none group-hover:text-primary transition-colors">Protocolo <br/>Zero Gordura</h2>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 text-[10px] font-bold text-white uppercase rounded">Infoprodutos</span>
+<span class="text-slate-500 text-xs uppercase tracking-tighter font-bold">Escala: Global</span>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">
+                                Lançamento perpétuo otimizado com tráfego massivo em Meta Ads e automação de recuperação de carrinho.
+                            </p>
+<div class="pt-4 space-y-3">
+<div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-xl border-l-4 border-accent-lime">
+<div class="text-2xl font-black text-accent-lime">ROAS 8.5</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">Retorno sobre investimento</div>
+</div>
+<div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-xl border-l-4 border-accent-pink">
+<div class="text-2xl font-black text-accent-pink">50k+</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">Alunos Ativos</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Content -->
+<div class="lg:col-span-8 space-y-8">
+<div class="aspect-video w-full rounded-2xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Fitness tracking dashboard and healthy lifestyle imagery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-4pb59gsEuotj9bxGDsv5Qoo8ocAK_IIWs86lzaTt7oi8h98Gv8KXYqTYSXvz5574fHrF_Myst1sHL0E4UnYF3bQQn59RgB_hXxvlS-v3L_oGw9_slIIQEvHbnuik0ZuXOvDCbIRTewwsnx-dzYNwRRbDVXTzNFXKOHHigNCvsiRj81VbZWP8rD27PCpLmrMyPsyBChEnk4q36tFgfI6JI4S5Ae2n0MIfXZ68uA70cK95lFGQbFTBvJOt2268WOYSsRkhmOIITX4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 inline-block">
+<div class="text-accent-lime text-2xl font-black">Escalabilidade Infinita</div>
+<div class="text-white/80 text-xs font-bold uppercase tracking-widest">A meta é dominar o mercado fitness</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-slate-400">history</span>
+<span class="text-xs font-black uppercase tracking-widest text-slate-500">Antes</span>
+</div>
+<ul class="space-y-3 text-sm text-slate-400">
+<li class="flex gap-2"><span>•</span> Bloqueios constantes de conta</li>
+<li class="flex gap-2"><span>•</span> Vendas estagnadas em 5k/mês</li>
+<li class="flex gap-2"><span>•</span> CPA acima do valor do produto</li>
+</ul>
+</div>
+<div class="bg-primary/10 p-6 rounded-2xl border border-primary/30">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined">architecture</span>
+<span class="text-xs font-black uppercase tracking-widest">Estratégia</span>
+</div>
+<p class="text-sm font-medium leading-relaxed">
+                                    Estruturação de contingência robusta, criativos de UGC (User Generated Content) e Upsell imediato no checkout.
+                                </p>
+</div>
+<div class="bg-background-dark p-6 rounded-2xl border border-accent-lime">
+<div class="flex items-center gap-2 mb-4 text-accent-lime">
+<span class="material-symbols-outlined">currency_exchange</span>
+<span class="text-xs font-black uppercase tracking-widest">Depois</span>
+</div>
+<ul class="space-y-3 text-sm font-bold text-white">
+<li class="flex gap-2"><span>✓</span> Faturamento de 6 dígitos mensal</li>
+<li class="flex gap-2"><span>✓</span> Taxa de conversão de 14%</li>
+<li class="flex gap-2"><span>✓</span> Operação 100% automatizada</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Call to Action -->
+<section class="mt-32 mb-16 relative overflow-hidden bg-background-dark border border-accent-lime/20 rounded-[2rem] p-8 md:p-16 text-center">
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 opacity-10">
+<span class="material-symbols-outlined text-[300px]">rocket</span>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="text-4xl md:text-6xl font-black text-white leading-tight mb-8">QUER SER O PRÓXIMO <span class="text-accent-lime italic">CASE DE SUCESSO?</span></h2>
+<p class="text-white/80 text-lg mb-10">
+                    Nossa equipe está pronta para analisar seu negócio e desenhar a estratégia que vai te levar ao próximo nível de faturamento.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto px-10 py-4 bg-accent-lime text-background-dark rounded-full font-black uppercase tracking-wider hover:bg-white transition-all flex items-center justify-center gap-2">
+<span>Falar com Especialista</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full sm:w-auto px-10 py-4 border-2 border-accent-pink text-accent-pink rounded-full font-black uppercase tracking-wider hover:bg-accent-pink hover:text-white transition-all">
+                        Ver Mais Cases
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900/30 border-t border-slate-200 dark:border-slate-800 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 mb-6">
+<div class="text-accent-lime">
+<span class="material-symbols-outlined text-3xl fill-1">star_rate</span>
+</div>
+<h2 class="text-lg font-black tracking-tighter uppercase italic">GGABIPRODUCOES</h2>
+</div>
+<p class="text-slate-500 text-sm max-w-sm mb-6">
+                        Agência de performance especializada em escala de negócios através de tráfego pago, SEO e estratégias de conversão de alto impacto.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-accent-lime hover:text-background-dark transition-all" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-accent-pink hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-black uppercase tracking-widest mb-6">Navegação</h3>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-accent-lime" href="#">Início</a></li>
+<li><a class="hover:text-accent-lime" href="#">Portfolio</a></li>
+<li><a class="hover:text-accent-lime" href="#">Serviços</a></li>
+<li><a class="hover:text-accent-lime" href="#">Contatos</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xs font-black uppercase tracking-widest mb-6">Suporte</h3>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-accent-lime" href="#">FAQ</a></li>
+<li><a class="hover:text-accent-lime" href="#">Privacidade</a></li>
+<li><a class="hover:text-accent-lime" href="#">Termos de Uso</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 text-[10px] uppercase font-bold tracking-widest">
+                © 2024 GGABIPRODUCOES — Todos os direitos reservados.
+            </div>
+</div>
+</footer>
+</body></html>

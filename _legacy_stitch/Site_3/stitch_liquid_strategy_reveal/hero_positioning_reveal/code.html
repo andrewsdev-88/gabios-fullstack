@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0e0e0e",
+                        "error": "#ff7351",
+                        "inverse-on-surface": "#565554",
+                        "on-primary": "#536600",
+                        "on-primary-fixed": "#3b4a00",
+                        "on-primary-fixed-variant": "#556800",
+                        "on-background": "#ffffff",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-fixed": "#483d00",
+                        "on-error-container": "#ffd2c8",
+                        "secondary-fixed": "#e2e2e2",
+                        "secondary-dim": "#d4d4d4",
+                        "primary": "#f4ffc7",
+                        "on-tertiary-fixed-variant": "#695900",
+                        "on-secondary-fixed-variant": "#5a5c5c",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary-fixed": "#3e4040",
+                        "primary-fixed": "#d0fc00",
+                        "primary-container": "#d0fc00",
+                        "tertiary-dim": "#efd138",
+                        "tertiary-fixed": "#fedf46",
+                        "outline-variant": "#494847",
+                        "on-tertiary": "#675800",
+                        "secondary-container": "#454747",
+                        "surface-tint": "#f4ffc7",
+                        "on-tertiary-container": "#5e4f00",
+                        "surface-variant": "#262626",
+                        "inverse-primary": "#536600",
+                        "tertiary-fixed-dim": "#efd138",
+                        "tertiary-container": "#fedf46",
+                        "surface-container-high": "#201f1f",
+                        "on-error": "#450900",
+                        "on-surface": "#ffffff",
+                        "secondary-fixed-dim": "#d4d4d4",
+                        "surface-container-low": "#131313",
+                        "secondary": "#e2e2e2",
+                        "error-container": "#b92902",
+                        "on-secondary-container": "#d0d0d0",
+                        "outline": "#777575",
+                        "surface-container-highest": "#262626",
+                        "primary-dim": "#c5f000",
+                        "on-primary-container": "#4c5e00",
+                        "surface-container-lowest": "#000000",
+                        "background": "#0e0e0e",
+                        "surface-container": "#1a1919",
+                        "tertiary": "#ffeeac",
+                        "error-dim": "#d53d18",
+                        "on-surface-variant": "#adaaaa",
+                        "primary-fixed-dim": "#c3ed00",
+                        "inverse-surface": "#fcf8f8",
+                        "on-secondary": "#505252"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-mask {
+            clip-path: polygon(0 0, 55% 0, 45% 100%, 0% 100%);
+        }
+        .text-glow:hover {
+            text-shadow: 1px 0 0 rgba(255,0,0,0.5), -1px 0 0 rgba(0,255,255,0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e0e0e]/40 backdrop-blur-xl shadow-[0_0_40px_rgba(210,255,0,0.05)]">
+<div class="flex justify-between items-center px-8 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black italic tracking-tighter text-[#d2ff00] font-headline">
+                G Gabi Produções
+            </div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-headline font-bold tracking-tight italic text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Work</a>
+<a class="font-headline font-bold tracking-tight italic text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Expertise</a>
+<a class="font-headline font-bold tracking-tight italic text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Process</a>
+<a class="font-headline font-bold tracking-tight italic text-white/70 hover:text-[#d2ff00] hover:scale-x-105 transition-transform duration-300 hover:skew-x-[-12deg]" href="#">Network</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-headline font-bold italic tracking-tight hover:scale-x-105 transition-all duration-300 shadow-[0_0_20px_rgba(210,255,0,0.3)]">
+                Start Project
+            </button>
+</div>
+</nav>
+<!-- Main Hero Canvas -->
+<main class="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden pt-24">
+<!-- Background Ambient Glows -->
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[160px]"></div>
+<!-- Headline Section -->
+<div class="relative z-10 w-full px-8 mb-12">
+<div class="max-w-[1400px] mx-auto">
+<h1 class="font-headline font-black text-7xl md:text-[10rem] leading-[0.85] tracking-tighter italic -skew-x-[12deg] mb-8 text-glow transition-all duration-500">
+                    DO COMUM<br/>
+<span class="text-primary ml-12 md:ml-32">À AUTORIDADE</span>
+</h1>
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mt-12">
+<p class="text-on-surface-variant max-w-lg text-lg md:text-xl font-light tracking-tight">
+<span class="text-secondary font-bold">Elevando o posicionamento</span> de quem molda a cultura digital através de uma arquitetura de imagem de alta velocidade.
+                    </p>
+<div class="flex items-center gap-4">
+<div class="h-[1px] w-12 bg-outline-variant"></div>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant">Curadoria Digital &amp; Estratégia de Marca</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Liquid Reveal Visual Container -->
+<div class="relative w-full h-[614px] md:h-[768px] max-w-[1700px] mx-auto group">
+<!-- Layer A: The Raw Process (Base) -->
+<div class="absolute inset-0 w-full h-full grayscale opacity-40 mix-blend-luminosity">
+<img class="w-full h-full object-cover" data-alt="Gritty behind-the-scenes photography of a film set with cables, monitors, and production equipment in low key lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPFaOjXVH7EKFzLaLAX_12hW7H8HCUwkweJkqsFyWwvqfcvCcdAjbnvYXe1lqctgmhOS7eQe7vAZ6gG0VqtKmtUCPEhpN_9va8lhrRjpB-SonHESMt4h79GmhEZOhIRiVrGVzIqu22oEDeVs5WQhzj7iC5GcP8QZwK1y5yUPGe6IPm-ShZLj3qrJtKGcBSbQSJSCPsjYYJnGgWJDoj3L_a2jNolUTnYf_j3pQ4mpMbugItzKT8WYgGqz9ngY9WiV8GEBcuVALgX_Q"/>
+</div>
+<!-- Layer B: The Strategic Result (The Reveal) -->
+<div class="absolute inset-0 w-full h-full liquid-mask transition-all duration-1000 ease-[cubic-bezier(0.8,0,0.2,1)] group-hover:clip-path-[polygon(0_0,100%_0,100%_100%,0%_100%)]">
+<img class="w-full h-full object-cover" data-alt="High-fashion editorial portrait of a confident digital creator in a futuristic metallic environment with electric lime neon accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD31nyIJIae_zB148kzqmZkHoVMrVu_i9pLW2gURJygeMo-G0z6vyLX91PLGIn2qq8UxhYW37UE_uXDhw1_5W_0lu4uagcjv0NV2s-XxxFES7xgcgheig3-jiEhl5V71zunAnNuFzVP9O688zpTNHrdFU_xrNAKFWmAExDogPagMtHqwJiMPn-k8nYndnsFbJOa4fQXKquUie0r-tTX2vOm4jSVOVx-2BZrOYy3ndRIkXY39D79Mpi66_GuE2NXJYOKXjFtN1AcwB4"/>
+<!-- Glossy Overlay -->
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-dim/80 via-transparent to-primary/10"></div>
+</div>
+<!-- Reveal Line Indicator -->
+<div class="absolute top-0 bottom-0 left-[55%] w-[2px] bg-primary shadow-[0_0_15px_#d2ff00] z-20 group-hover:left-full transition-all duration-1000 ease-[cubic-bezier(0.8,0,0.2,1)] pointer-events-none">
+<div class="absolute top-1/2 -translate-y-1/2 -left-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-black text-sm">unfold_more</span>
+</div>
+</div>
+<!-- Labels within image -->
+<div class="absolute top-8 left-8 z-20">
+<span class="font-label text-[10px] uppercase tracking-widest text-white/40 px-3 py-1 border border-white/10 backdrop-blur-md">Stage 01: Raw Input</span>
+</div>
+<div class="absolute bottom-8 right-8 z-20">
+<span class="font-label text-[10px] uppercase tracking-widest text-primary px-3 py-1 border border-primary/20 backdrop-blur-md">Stage 02: Authority Output</span>
+</div>
+</div>
+<!-- Magnetic CTA Footer -->
+<div class="w-full max-w-[1400px] mx-auto px-8 py-16 flex flex-col md:flex-row items-center justify-between">
+<div class="flex gap-4 mb-8 md:mb-0">
+<div class="flex -space-x-4">
+<div class="w-12 h-12 rounded-full border-2 border-surface-dim bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young executive woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIJYCsKaI8882iGcRBBwhv0zNBtWxZ6CJhNfAil37QSJ4E79k8D_Ou215lQxUqs6FpjTTVUdCpLTh3fc9t7UuvtJodxawTzGXkG1kZKVjOm094M8JgWbjVIl9x1fTV8rAVyQT6IdgGjTDfDuXibpGi5j1alHDBY0PBnKL_Nwzg_KzTV5QfE_UnIgLYSLKBhOdyNn7MXy1Nl_ye_bOGR2SaqyKqvs5XntXewpydUPn_9So5AlG5XDLWN8B2nn4A6WHAqNANG4VtQDw"/>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-surface-dim bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-crop" data-alt="Portrait of a creative professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKiuI7y3kKWo9zkTDfypFQiV02m3m6eiFe30eXANsp0cLiNtKj3XhkcRzs0gNg0rm1B-Xdfo_ZkuRMbhFYcCE6EbVxLAdtTJ1PYEyoNnf-lldSG93WRLKtmlvV1SkPwZv4Wjc7xqizyqj348NGMAqcr24_RXNKX0q-BLc6NP_wtwNwqcvziG2D1G0Jr1yT61zft_qkOZZOzxV9FGTeYWkwDt42Dnc-KAc71cVXMbEH-wl4ex8k9Nmg3hY6v9ND2u3bGQZOCeh-mZk"/>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-surface-dim bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm">bolt</span>
+</div>
+</div>
+<div class="text-left">
+<p class="font-bold text-sm">+50 Projetos de Alto Impacto</p>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-wider">Crescimento Médio 400%</p>
+</div>
+</div>
+<button class="relative group p-[2px] rounded-full bg-gradient-to-r from-primary-dim to-primary transition-all duration-300 hover:shadow-[0_0_30px_rgba(210,255,0,0.4)]">
+<div class="bg-surface-container-lowest text-primary px-10 py-5 rounded-full flex items-center gap-4 transition-all group-hover:bg-transparent group-hover:text-on-primary">
+<span class="font-headline font-extrabold italic text-xl tracking-tight uppercase">Falar com a Estrategista</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</button>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-12 px-8 border-t border-white/5 bg-black">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-[1920px] mx-auto">
+<div class="text-lg font-bold text-white font-headline italic">G Gabi Produções</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors" href="#">Instagram</a>
+<a class="font-['Inter'] text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors" href="#">LinkedIn</a>
+<a class="font-['Inter'] text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors" href="#">Behance</a>
+<a class="font-['Inter'] text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors" href="#">Privacy</a>
+</div>
+<div class="font-['Inter'] text-xs uppercase tracking-[0.1em] text-white/40">
+                © 2024 G Gabi Produções. High-Velocity Digital Architecture.
+            </div>
+</div>
+</footer>
+</body></html>

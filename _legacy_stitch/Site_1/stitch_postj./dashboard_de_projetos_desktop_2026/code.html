@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostJá.io Dashboard | 2026</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "oklch(85% 0.25 150)",
+                        "background-dark": "#080C14",
+                        "surface-dark": "#0f172a",
+                        "border-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "heading": ["Syne", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "DM Sans", sans-serif;
+            background-color: #080C14;
+        }
+        h1, h2, h3, h4 {
+            font-family: "Syne", sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-neon-lime {
+            background-color: oklch(85% 0.25 150);
+        }
+        .text-neon-lime {
+            color: oklch(85% 0.25 150);
+        }
+        .border-neon-lime {
+            border-color: oklch(85% 0.25 150);
+        }
+    </style></head>
+<body class="bg-background-dark text-slate-200 font-body">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 border-r border-border-dark bg-background-dark flex flex-col justify-between p-4">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-neon-lime size-8 rounded flex items-center justify-center text-black">
+<span class="material-symbols-outlined font-bold">bolt</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-100 text-lg font-bold leading-none">PostJá.io</h1>
+<p class="text-neon-lime text-xs font-medium">Pro Plan</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-neon-lime text-xs font-medium" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">folder_open</span>
+<span class="text-sm font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">image</span>
+<span class="text-sm font-medium">Assets</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">monitoring</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">group</span>
+<span class="text-sm font-medium">Team</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-surface-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<div class="bg-surface-dark p-4 rounded-xl border border-border-dark">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs text-slate-400 font-medium">Storage</span>
+<span class="text-xs text-slate-100 font-bold">85%</span>
+</div>
+<div class="w-full bg-border-dark h-1.5 rounded-full overflow-hidden">
+<div class="bg-neon-lime size-8 rounded flex items-center justify-center text-black"></div>
+</div>
+<button class="bg-neon-lime size-8 rounded flex items-center justify-center text-black">
+                        Upgrade Now
+                    </button>
+</div>
+<div class="flex items-center gap-3 px-2 border-t border-border-dark pt-4">
+<div class="size-8 rounded-full bg-surface-dark border border-border-dark flex items-center justify-center overflow-hidden">
+<img alt="Profile" data-alt="User profile avatar circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAstMnc5iOI0feplF-hSyJFuv8qla3BuWaYpMV7OJOdOyuxy0yG2uEl5LD7yWVF1sIQc9OUeNWqO8YXoktBdut8DA80YIdUdlOpxNfy_5lyL0ikQvPNwIFUF8FnROjRRlaO-3yKCmoAA1GonFO3FoEhrnQKVcEZn8LRjbWdvjVygSr66c_ZYzhhL0A1BcQ67LrSTZE9KFm-awLI6w58M9fuiPazK5R-7xYNCt2nVNC9qseEQd8gSjwl6TxLUdQnY2upryOnEEL2tJk"/>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-sm text-slate-100 font-semibold truncate">Alex Rivera</p>
+<p class="text-[10px] text-slate-500 truncate">alex@postja.io</p>
+</div>
+<span class="material-symbols-outlined text-slate-500 text-sm ml-auto">unfold_more</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-y-auto bg-background-dark">
+<!-- Header -->
+<header class="h-16 border-b border-border-dark flex items-center justify-between px-8 sticky top-0 bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex items-center gap-2">
+<h2 class="text-slate-100 text-xl font-bold tracking-tight">Dashboard</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">search</span>
+<input class="w-full bg-surface-dark border-border-dark rounded-lg py-1.5 pl-10 pr-4 text-sm text-slate-200 focus:border-neon-lime focus:ring-1 focus:ring-neon-lime transition-all" placeholder="Search projects..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="size-9 flex items-center justify-center rounded-lg text-slate-400 hover:bg-surface-dark hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg text-slate-400 hover:bg-surface-dark hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<div class="h-6 w-px bg-border-dark mx-2"></div>
+<button class="text-neon-lime text-xs font-medium">
+<span class="material-symbols-outlined text-sm">add</span>
+                            New Post
+                        </button>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto w-full">
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-dark p-5 rounded-xl border border-border-dark flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Total Posts</span>
+<span class="text-neon-lime text-xs font-medium">+5.2%</span>
+</div>
+<p class="text-2xl font-bold text-slate-100 mt-1">1,284</p>
+<p class="text-slate-500 text-[11px] mt-2 italic">Scheduled across 4 channels</p>
+</div>
+<div class="bg-surface-dark p-5 rounded-xl border border-border-dark flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Engagement</span>
+<span class="text-neon-lime text-xs font-medium">+12.5%</span>
+</div>
+<p class="text-2xl font-bold text-slate-100 mt-1">24.8k</p>
+<p class="text-slate-500 text-[11px] mt-2 italic">Avg. likes per post</p>
+</div>
+<div class="bg-surface-dark p-5 rounded-xl border border-border-dark flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Active Campaigns</span>
+<span class="text-slate-400 text-[10px] bg-slate-800 px-1.5 py-0.5 rounded font-bold">Static</span>
+</div>
+<p class="text-2xl font-bold text-slate-100 mt-1">12</p>
+<p class="text-slate-500 text-[11px] mt-2 italic">3 ending this week</p>
+</div>
+<div class="bg-surface-dark p-5 rounded-xl border border-border-dark flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Reach</span>
+<span class="text-neon-lime text-xs font-medium">+18.2%</span>
+</div>
+<p class="text-2xl font-bold text-slate-100 mt-1">412.5k</p>
+<p class="text-slate-500 text-[11px] mt-2 italic">Across all platforms</p>
+</div>
+</section>
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-slate-100 text-lg font-bold">Recent Projects</h3>
+<p class="text-slate-500 text-sm">Manage and monitor your ongoing social campaigns</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-dark border border-border-dark px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 flex items-center gap-2 hover:bg-border-dark transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter
+                        </button>
+<button class="bg-surface-dark border border-border-dark px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 flex items-center gap-2 hover:bg-border-dark transition-colors">
+<span class="material-symbols-outlined text-sm">sort</span>
+                            Sort
+                        </button>
+</div>
+</div>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- New Project Card -->
+<button class="group bg-surface-dark border-2 border-dashed border-border-dark rounded-xl p-6 flex flex-col items-center justify-center gap-4 hover:border-neon-lime/40 hover:bg-neon-lime/5 transition-all min-h-[280px]">
+<div class="size-14 rounded-full bg-border-dark flex items-center justify-center text-slate-500 group-hover:bg-neon-lime group-hover:text-black transition-all">
+<span class="material-symbols-outlined text-3xl">add</span>
+</div>
+<div class="text-center">
+<p class="text-slate-100 font-bold">New Project</p>
+<p class="text-slate-500 text-xs mt-1">Start from a template or scratch</p>
+</div>
+</button>
+<!-- Project Card 1 -->
+<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+<div class="h-40 bg-cover bg-center relative" data-alt="Abstract neon digital art and social media concept" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAC1aF5CSLtmHT2Mq8so-nGHsRzZvgSFf4swV3m1ZF0QnYS-45bmYTKIAq_8WojhPyhEtOQ8HInfaEJtgc5WXgkXg4x5dQLes-6Ko8yWshyqmwmcXQg-UdYI0-9umhG3rzMWw4XMFFiF8nqXzd9lqbQhCA-1_OJO72st31yNfVn__4LpgfaG7OkN3BjOAudSU-t6pUsfhLWrvDyA0TWzbm2viLn_j8fXYhkYJP3ocsaWdh1En8ue6RGhlpiDmV_7t_GLL0q2-26hlE')">
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="text-neon-lime text-xs font-medium">Active</span>
+</div>
+<button class="absolute top-3 right-3 size-8 bg-black/60 backdrop-blur-md text-white rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div>
+<h4 class="text-slate-100 font-bold truncate">Summer Launch 2026</h4>
+<p class="text-slate-500 text-xs mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    Edited 2h ago
+                                </p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlr4iNwYDoaTDBCEuNx38yOQ0_M3MntIXSMD8gcis3YzA2Z1tei12Wnfg5C2fQdkR7PjT_4gH21R-NkCD93TF8x3mzdmc_HdR-uz6pnQJBpuxXPyEmDRSE65LiE9nAyG_bHr9yXflS39W-2xJE8ZHrq3pleYImmcItkbpIiJ-e0TxsW6gaazO8yayeBxMEkEAgebgizaK7dYeunvS2oCQxtLu3RezTLqlbL3VaL0Q0H6cbxMtZef_glcLASAw4Wdh3ZVwyvbbJNas"/>
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuwE-cxKPSPd94cS1E1kS0wAmpEisYW7K-yC17potXGwTfMS68zam8H9KL9-T0764qLpSRKFeB9ivIVLz9NzFgbKG4RMGzvTgxHse7OnG4_ASWz0EJTYLFLcQMzUhamDdsHKEHx2EB_mPEN65tZN0eBucdYelNpCXJ7TB1csqQSbvAVRoy-yKL3i057CXktCdW2fU4FujB95RUztMpSty02ukmzHOH3YvPXoXd3Vc4D4xeoE5RJ71hGHF_JR5_ZBZIhaAXz83n6LQ"/>
+<div class="size-6 rounded-full bg-border-dark border-2 border-surface-dark flex items-center justify-center text-[8px] font-bold text-slate-400">+3</div>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">visibility</span>
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+<div class="h-40 bg-cover bg-center relative" data-alt="Bright workspace with multiple devices showing data charts" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9MxHf6azbfokcq_UGqHtl4lLn8KufiVuwlTB6VIU7pFXrDasHA3npR1nCyr9Mr0MjI-YlvltdigqSON5EsUPctn_SgSYxjlSmwsE7kU9LJPuuw6tC3yNzN-Jg6Li6EFMlYZCugJItTYcIBg-8p1gKk3MILAz_iw9Hj9fSq-x44o5eNzDsSTLYZpjvEt4csmQWKF6Wm8scOik9B0Qz5tcA1vHw4P3P6-1W9e0_n9rgKJ78cNyqfEem14ngKPKkcy1VewFjOYNikxA')">
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-black/60 backdrop-blur-md text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-700">Draft</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div>
+<h4 class="text-slate-100 font-bold truncate">Q3 Product Reveal</h4>
+<p class="text-slate-500 text-xs mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    Edited 5h ago
+                                </p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaDYIfl6gq7krzO5fJymHfo7Fx8C7NJEmhmJhje3KpE4FTs1Cro1ix01-Tpe880PKTUZvQ7BNxDSIXAYv3iQ43cjvjnbIDQj-q6TkfvwXDUIUjD4WRaxW4Jdr4i0P0QkhNYtA8z1T-QQrsescxrHMjMkU73d2c2Z03Xq3S25axAAC5Udb8pufMUstUXf_vgyxHgs6E6j9bqfA4Bdo_qRTTKydn97uvI_Bd-AoZMHGUAqwhL1-14Yan-dSeCIoo-2nb2EcsVkxhJH4"/>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">visibility</span>
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+<div class="h-40 bg-cover bg-center relative" data-alt="Abstract colorful light streaks on dark background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZ9IEElJ-Gf79rN-rwAYqFFk7FFh6ITnmW6j_zXABSSFR5t8hCb-4ICxTJHVFuuLmOWn_mMmygf_BkUp-AdxvO-6iI13LqSRxeB4T6qtZVwwTbV6gTi_VuA1yf7cWHQCXsxVc2mptmJya-3ZLGytCyRPLZcPU4fEAFFw7IZh43-pr_421IAqj3FE5y7-MFeiIUaGcdCxn_IRi9zkfPayfADhwKB4dHDOZy5KU3_cwp4lWitJ0Gbozo1dbqNT_limqwBr55LUU71rc')">
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-black/60 backdrop-blur-md text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-900/50">Completed</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div>
+<h4 class="text-slate-100 font-bold truncate">Brand Refresh 2.0</h4>
+<p class="text-slate-500 text-xs mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    Edited 1d ago
+                                </p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPXA-_yxDV9cX3haj8dLEE16eHLQKyQgfzevHUiYF3dilrDzhBnDVHFYcz--w1ubDGE0FIEoEw2O9yJNfyNqHc9YM9Xd4HhY9mK_L1eroFcwYnWfq3Q4O7_M1AheUgbKdB9fnfduRCeGsP-68QtjNGKwC9PZe85pbs4FGECdTMpIVhMzi7aFwxpllgISKWTwKLbxe_BBT8RtKNZCsY1riZApemKsdb7p5OvJh0Sxa0uE2NfUUHgX_HC_ZWm1NzVVxME-nSQluoWZo"/>
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1d7iBEB-eP1HXHjT3K09f0cxE_puxLyoHcYPG1zrb95uful2GhaHs5Kl8ut9BYzAWkDMGfSIeN0fDMo-RmSgS3RZdUQtu2ET6CtUw2qNt4oACwAPUUV65KldJCrVT8O2NAqQJJUuKA2oqhPdxAS9iAfeVnnaIFHxJSc6MGIEADC-59gRW8y3MH4D6kYwhGZFQrlMfvMndh1_15yCbCMjD078kYDn4CX0sR5p0J6KEyL53GOyXMu8Rrg-qK7-qN_TnuAiuJtOsOQw"/>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">visibility</span>
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+<div class="h-40 bg-cover bg-center relative" data-alt="Modern office meeting room with analytical dashboard on screen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADs8pU_Mqmtchiw7DKOMeUBb1_sH3adB-ogqUPvTC5kqOqrD90ua8ygPrk8LEGrvGensmno1puWNNzcWYr4VXH3qLPuCF7qUzrUn85O_aa2JYxwksZH1reXNgEInrt8cI_HzUoxlRMPSeRG2myDTSlsCUVLOyNfFpvI_nyNzkAtcgNt5YLhfmxp0yuwitOgR4oOC2SEsaYxz4NvoqmwVusbR9Z90zSNPS1XAzh_0sHd71SC71fn8rmnu5mk5lYvSjeHDGQ0w3D_U4')">
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-black/60 backdrop-blur-md text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-900/50">Scheduled</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div>
+<h4 class="text-slate-100 font-bold truncate">Influencer Outreach</h4>
+<p class="text-slate-500 text-xs mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    Edited 3d ago
+                                </p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeouZwOPCxMALOPuDUX3x4XNZ13F4Swyr0uz657Z3_g4LNXdDAcG6YN8_F7pRMxR56ePGvKOKMfoRoz2Ime4YJQaUCwIojxL_aK7yVrUnVjfDjnul8iGUZMXOmDMpL32MRL5rJBh6FaPl_gfh5LaWbcXH0y_PJUcHVbaLh7zP5msU5Xtpf_iFOJ4uaSvr0XMxqK0Dm_2VJviJ6oZ0aLegUbZu422AeaTGOZcsOraw-pQ0tn6xg_YHpV_ey9F_t1uq9GrqOrLP6og8"/>
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcuejTFpQjTnbzBArWUyZRxE-QgZ7EGLBIGqAuV60Br-nB-H_I3sn4f-IxS85TbYIphUsYQ4Cohusc-JqiO3wX7U1qmO_P66qrhSqTyPh2PPaPuCq3OiBiSU1SL-jmbcJ6KGtIm7x76gy_S1-fT-FqbS04x7vN1BeZTSDcMNkIRyMBN_5MYsmhkwNTgl70BVSXKy-p85qS5jvP5emvMCDVeiva89KlUbaIhnU6kO_3JwxELO6BUEuIfbvxiP8BjnfHCtw31I3min8"/>
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9BOWZSawFmFAnZeKHyFwQzjr-5f08dOlyDWISxxYBy_ELGZ02t8BEFtVLfOCD5M3cw6uZVFFXrb5V5qo5YPvrVhxQZUXMffmN7qd25wwEoCnbgzvZoZKV2JR4gwvjEHp3bE6MhMg5D0l9xdIUe85xHfki-J1AAdcTO0Fq8eHZIvxAP99CFmFQAU9dkoTXjnYTqH2vp13cNwhlfK3VCLLNr_Ylj1aWmse8ZI7ijCD_5IA1H8Redal5Q7QsjnziTLolG5xk1AKSjV8"/>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">visibility</span>
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">share</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 5 -->
+<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+<div class="h-40 bg-cover bg-center relative" data-alt="Team collaborating on a white board with colorful notes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1Kf1afh9sUHhpRpd_70HUX8VRwyVDwm4O66dNppwO60vPqkOeYq6kBAp-HpAlQ5srqbqfuCNjjSXVdlG_R1tNKLgvl9tCRh9vPgmHP20DZTtgcLX6uxoXnY8S5qiD1bYRjZxXhoYM87So-fxtbtmVw8khi-co6e_yOZPu38MxvFVJ_3F_3PSqyzGBHdL8gm76eDqaPTLpINQHHbf5eSysBA3cTJvAeSXd3zDxrikYZWfehTh0GvtZqspFc3ygvRDpshLAjSLHRUU')">
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="text-neon-lime text-xs font-medium">Review</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div>
+<h4 class="text-slate-100 font-bold truncate">Annual Report Video</h4>
+<p class="text-slate-500 text-xs mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    Edited 4d ago
+                                </p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Team member" class="size-6 rounded-full border-2 border-surface-dark" data-alt="Small team member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIJss49upFQ9NF2zT6vnOz4l5vwNwSFe7FjCvNzCYMGI7LoQlZfIGF8ScFzNv_pK8XZ51rLVIMwK1i6OvLqm6Vlu7PZMmMR8m1wmobmPwF7lPCNYomsKsvnqy3PDpNgXLf569S1mT4Ln-iAZSHJjfHijCjdv_kzMqkckGy1-4H_tLuBlrG-Q23JpCITfkLZCqpqMKjqOc-EcInXf2bI4HrDQWgYj4nGwqUcgFy1q6zRru_IfAbom2nGxpFj-408YOoaRP5NsPGkS4"/>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">visibility</span>
+<span class="material-symbols-outlined text-slate-500 text-lg hover:text-neon-lime cursor-pointer">share</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity List -->
+<section class="mt-12 bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+<div class="p-6 border-b border-border-dark flex items-center justify-between">
+<h3 class="text-slate-100 font-bold">Team Activity</h3>
+<button class="text-neon-lime text-xs font-medium">View All</button>
+</div>
+<div class="p-0">
+<div class="flex items-center gap-4 p-4 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<img alt="Activity user" class="size-10 rounded-full bg-border-dark" data-alt="User avatar for activity list" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCodUyJGtXfqtymUz7Ao2OJUF0I7unmt3L-nyqz9ArvfZb3ttypgDypcHAwEe4Btsdaml8ucmvub51SoaL1McDet3gHUdwwu-v09VSTQyLzSCAxnEkMFnOwuVAd6eMDvG8-vtRlrySMA5F5vjQxM9v3R_5gk3y-8p3lRFIDzahMWsKbfDT3I4laIEXkBJZ8HaZLd3nwF2lKgZhFNW9rtAFc6YtXPg-EXlzAdvpr2jbqQ_Kefspr-evxu9nYGzAUn0krKFOBDmto_Ks"/>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm text-slate-200 font-medium">
+<span class="font-bold text-slate-100">Marco Polo</span> commented on <span class="text-neon-lime text-xs font-medium">Summer Launch 2026</span>
+</p>
+<p class="text-xs text-slate-500 mt-1 italic line-clamp-1">"The color palette for the Instagram carousel looks great!"</p>
+</div>
+<span class="text-[10px] font-bold text-slate-600">12m ago</span>
+</div>
+<div class="flex items-center gap-4 p-4 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<img alt="Activity user" class="size-10 rounded-full bg-border-dark" data-alt="User avatar for activity list" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6IN0uz30oW-cFfM4ZJd8JJuE1_vhhVvLANGjng4NHkod1c6h3lJo2F5I9eYWEnivb0aameIl65dcNcT7ghXuhgQDKJ99m9gnj1vR3rD8EmGxSqDNulH5yd2LyDNUaN3ZX92gk8S5QA2H9p_0r1DxJaoN88PHlZKfmPhvY7kK9zT0dlwrI7MNHjsEOhx_h_fn0-PhZfZTyxNK791bO5cpZgKJE9HfQ-kHCUknIs42UncSpDq46DVXUcgC9wcmY-g1NNr47K9Xie64"/>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm text-slate-200 font-medium">
+<span class="font-bold text-slate-100">Sarah Chen</span> moved <span class="text-neon-lime text-xs font-medium">Influencer Outreach</span> to <span class="text-amber-400">Scheduled</span>
+</p>
+</div>
+<span class="text-[10px] font-bold text-slate-600">45m ago</span>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-white/5 transition-colors">
+<img alt="Activity user" class="size-10 rounded-full bg-border-dark" data-alt="User avatar for activity list" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMlgqqowoPtdr68wJII2wiS5o-PBP2hWgfjA778zg5VgX2CxlE3eXyI7MFjwAj3M-91QR1d_yqaaC_gyNUTLo3nYL5QvbZ4yLCeSfC9L2stDD0Q8dEYDYWlJFhKoQF03IuBynTk2Odl8OKADluUxPQzdWfwUuu5EtfNSJ8PcRfyiG5HZ5Seqfhn78xtRJXofx8iNY2wYWCm8y0N_kMtX9AtsHp_nJRyHai6e16qtfGJzJjQd5CWDG6ENcWQl10kN8hl7wKa-jw3Pw"/>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm text-slate-200 font-medium">
+<span class="font-bold text-slate-100">James Wilson</span> added 4 new assets to <span class="text-neon-lime text-xs font-medium">Brand Refresh 2.0</span>
+</p>
+</div>
+<span class="text-[10px] font-bold text-slate-600">2h ago</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

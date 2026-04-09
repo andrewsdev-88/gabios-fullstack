@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio 3 · Carrosséis Fixados · G Gabi Produções</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;1,300&family=Lora:ital@1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0A0A08;--lime:#C8F23A;--rosa:#FF4D8F;--laranja:#FF7C35;
+  --offwhite:#F5F2EB;--muted:#5a5650;--s1:#111110;--s2:#181816;
+  --b1:#1e1e1c;--b2:#2e2e2c;--ok:#4ade80;--danger:#ff4d4d;
+  --slide-w:1080px;--slide-h:1350px;--mv:135px;--ph:72px;--r:23px;
+}
+body{background:var(--bg);color:var(--offwhite);font-family:'Poppins',sans-serif;font-weight:300;min-height:100vh;}
+
+/* ── HEADER ── */
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid var(--b1);flex-wrap:wrap;gap:10px;}
+.h-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--lime);}
+.h-sub{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+.badge{font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border:1px solid;}
+.badge-ok{color:var(--ok);border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.06);}
+.badge-muted{color:var(--muted);border-color:var(--b2);}
+.badge-lime{color:var(--lime);border-color:rgba(200,242,58,.25);background:rgba(200,242,58,.06);}
+
+/* ── CONTROLES TOPO ── */
+.topbar{display:flex;align-items:center;gap:10px;padding:10px 28px;background:var(--s1);border-bottom:1px solid var(--b1);flex-wrap:wrap;}
+.topbar label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.api-input{background:var(--bg);border:1px solid var(--b2);color:var(--offwhite);font-family:monospace;font-size:11px;padding:6px 10px;outline:none;transition:border-color .2s;width:280px;}
+.api-input:focus{border-color:var(--lime);}
+.api-input::placeholder{color:var(--muted);opacity:.4;}
+
+/* ── LAYOUT ── */
+.main{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 120px);}
+.left{border-right:1px solid var(--b1);display:flex;flex-direction:column;}
+.right{overflow-x:auto;overflow-y:auto;padding:24px;}
+
+/* ── PAINEL ESQUERDO ── */
+.panel{padding:16px;flex:1;display:flex;flex-direction:column;gap:12px;overflow-y:auto;}
+.sec{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:2px;}
+.sec::after{content:'';flex:1;height:1px;background:var(--b1);}
+
+/* FIXADOS */
+.fixado-btn{width:100%;background:var(--s2);border:1px solid var(--b2);color:var(--muted);padding:10px 12px;text-align:left;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:space-between;font-family:'Poppins',sans-serif;font-size:11px;}
+.fixado-btn:hover{border-color:rgba(200,242,58,.3);color:var(--offwhite);}
+.fixado-btn.ativo{border-color:var(--lime);color:var(--lime);background:rgba(200,242,58,.06);}
+.fixado-num{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.fixado-btn.ativo .fixado-num{color:var(--lime);}
+
+/* MODOS */
+.modo-btn{width:100%;background:var(--s2);border:1px solid var(--b2);color:var(--muted);padding:8px 12px;text-align:left;cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif;font-size:10px;display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.modo-btn:hover{border-color:rgba(200,242,58,.2);color:var(--offwhite);}
+.modo-btn.ativo{border-color:var(--lime);background:rgba(200,242,58,.04);}
+.modo-btn.ativo .modo-n{color:var(--lime);}
+.modo-n{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--muted);flex-shrink:0;line-height:1.1;}
+.modo-txt strong{display:block;font-weight:400;font-size:10px;color:var(--offwhite);margin-bottom:2px;}
+.modo-txt span{font-size:10px;color:var(--muted);}
+
+/* UPLOAD FOTO */
+.foto-area{display:none;}
+.foto-area.on{display:flex;flex-direction:column;gap:8px;}
+.upload-zone{background:rgba(200,242,58,.04);border:1px dashed rgba(200,242,58,.2);padding:14px;text-align:center;cursor:pointer;position:relative;transition:all .2s;}
+.upload-zone:hover{background:rgba(200,242,58,.08);border-color:rgba(200,242,58,.35);}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
+.upload-zone p{font-size:10px;color:rgba(200,242,58,.5);}
+.preview-foto{width:100%;height:80px;object-fit:cover;display:none;background:var(--s2);}
+
+/* OPACIDADE */
+.opacity-row{display:flex;align-items:center;gap:8px;}
+.opacity-row label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0;}
+input[type=range]{flex:1;accent-color:var(--lime);}
+.opacity-val{font-size:10px;color:var(--lime);width:32px;text-align:right;}
+
+/* GEMINI STATUS */
+.gemini-status{font-size:10px;padding:6px 10px;border:1px solid var(--b2);background:var(--s2);display:none;}
+.gemini-status.on{display:block;}
+.spinner{width:14px;height:14px;border:1.5px solid rgba(200,242,58,.15);border-top-color:var(--lime);border-radius:50%;animation:spin .7s linear infinite;display:inline-block;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* BOTÕES AÇÃO */
+.btn-gerar{width:100%;background:var(--lime);color:var(--bg);border:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;padding:12px;cursor:pointer;transition:opacity .2s;margin-top:auto;}
+.btn-gerar:hover{opacity:.88;}
+.btn-gerar:disabled{background:var(--b2);color:var(--muted);cursor:not-allowed;}
+.btn-row{display:flex;gap:6px;padding:10px 16px;border-top:1px solid var(--b1);}
+.btn-dl{flex:1;background:var(--s2);border:1px solid var(--b2);color:var(--muted);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:8px 4px;cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif;text-align:center;}
+.btn-dl:hover{border-color:var(--lime);color:var(--lime);}
+.btn-dl-all{width:100%;background:var(--s2);border:1px solid rgba(200,242,58,.25);color:var(--lime);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:9px;cursor:pointer;font-family:'Poppins',sans-serif;}
+.btn-dl-all:hover{background:rgba(200,242,58,.08);}
+
+/* ── SLIDE CANVAS ── */
+.slide-tabs{display:flex;gap:0;margin-bottom:16px;}
+.slide-tab{background:var(--s2);border:1px solid var(--b2);color:var(--muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px;cursor:pointer;transition:all .2s;border-right:none;}
+.slide-tab:last-child{border-right:1px solid var(--b2);}
+.slide-tab.ativo{background:rgba(200,242,58,.08);border-color:var(--lime);color:var(--lime);}
+
+.canvas-wrap{display:flex;justify-content:flex-start;isolation:isolate;}
+.slide{
+  width:var(--slide-w);height:var(--slide-h);
+  flex-shrink:0;position:relative;background:var(--bg);
+  overflow:hidden;
+  padding:var(--mv) var(--ph);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  transform-origin:top left;
+}
+/* Scale para preview */
+.canvas-wrap{overflow:hidden;}
+.canvas-wrap.preview{width:454px;height:567px;overflow:hidden;position:relative;border:1px solid var(--b1);}
+.canvas-wrap.preview .slide{
+  transform:scale(0.42);
+  transform-origin:top left;
+  position:absolute;
+  top:0;left:0;
+  width:1080px !important;
+  height:1350px !important;
+}
+
+/* Noise */
+.slide::before{content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.036;z-index:1;pointer-events:none;}
+/* Vignette */
+.slide::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 45%,rgba(10,10,8,.7) 100%);
+  z-index:2;pointer-events:none;}
+
+/* Foto de fundo */
+.slide-foto{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;}
+/* Overlay texto sobre foto */
+.slide-overlay{position:absolute;bottom:0;left:0;right:0;height:80%;
+  background:linear-gradient(to top,rgba(10,10,8,.85) 0%,transparent 100%);
+  z-index:3;pointer-events:none;}
+
+.slide-content{position:relative;z-index:10;width:100%;}
+
+/* ── TIPOGRAFIA SLIDES ── */
+.pre-tag{font-size:12px;letter-spacing:5px;text-transform:uppercase;font-weight:300;margin-bottom:18px;opacity:.8;}
+.capa-h{font-family:'Bebas Neue',sans-serif;font-size:148px;line-height:.88;letter-spacing:-1px;margin-bottom:28px;}
+.capa-sub{font-family:'Lora',serif;font-style:italic;font-size:21px;line-height:1.55;max-width:620px;margin-bottom:44px;padding-left:18px;border-left:2px solid rgba(200,242,58,.35);}
+.dev-n{position:absolute;clip-path:inset(0 0 0 0);max-width:100%;font-family:'Bebas Neue',sans-serif;font-size:300px;line-height:1;color:rgba(200,242,58,.05);top:40px;right:-10px;z-index:3;letter-spacing:-8px;user-select:none;pointer-events:none;}
+.dev-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;font-weight:300;margin-bottom:18px;opacity:.7;}
+.dev-h{font-family:'Bebas Neue',sans-serif;font-size:96px;line-height:.93;margin-bottom:24px;}
+.dev-h .lime{color:var(--lime);}
+.dev-sep{width:36px;height:2px;margin-bottom:22px;opacity:.7;}
+.dev-body{font-size:19px;line-height:1.7;color:rgba(245,242,235,.72);max-width:880px;}
+.cta-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;font-weight:300;color:var(--muted);margin-bottom:20px;}
+.cta-h{font-family:'Bebas Neue',sans-serif;font-size:106px;line-height:.92;margin-bottom:28px;}
+.cta-h .lime{color:var(--lime);}
+.cta-body{font-size:18px;line-height:1.65;color:rgba(245,242,235,.65);margin-bottom:44px;}
+.ass-panel{background:rgba(10,10,8,.55);border:1px solid rgba(200,242,58,.12);border-radius:12px;padding:18px 22px;display:inline-flex;flex-direction:row;align-items:center;gap:16px;backdrop-filter:blur(8px);}
+.ass-logo{width:52px;height:52px;object-fit:contain;flex-shrink:0;display:none;}
+.ass-logo.on{display:block;}
+.ass-info{display:flex;flex-direction:column;gap:4px;}
+.ass-handle{font-size:13px;color:var(--lime);letter-spacing:.5px;}
+.ass-nome{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;}
+.ass-local{font-size:11px;color:var(--muted);letter-spacing:.5px;}
+
+/* ── FIXADO 1 DECO ── */
+.f1-geo{position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(200,242,58,.05);top:-200px;right:-200px;z-index:0;}
+.f1-geo2{position:absolute;width:400px;height:400px;border-radius:50%;border:1px solid rgba(200,242,58,.04);top:-80px;right:-80px;z-index:0;}
+/* ── FIXADO 2 DECO ── */
+.f2-acento{position:absolute;width:3px;height:120px;top:var(--mv);right:var(--ph);opacity:.5;z-index:3;}
+.f2-line1{position:absolute;width:900px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,242,58,.06),transparent);top:38%;left:-100px;transform:rotate(-10deg);z-index:0;}
+/* ── FIXADO 3 DECO ── */
+.f3-arco{position:absolute;width:480px;height:480px;border-radius:50%;border:1px solid rgba(200,242,58,.06);top:-170px;right:-150px;z-index:0;}
+.f3-barra{position:absolute;width:3px;height:200px;background:linear-gradient(to bottom,var(--rosa),transparent);top:var(--mv);right:var(--ph);opacity:.4;z-index:3;}
+
+/* ── STATUS BAR ── */
+.status-bar{height:3px;background:var(--b2);margin-top:6px;border-radius:2px;}
+.status-fill{height:100%;background:var(--lime);width:0%;transition:width .3s;border-radius:2px;}
+.status-txt{font-size:10px;color:var(--lime);min-height:16px;margin-top:4px;}
+
+/* ── RODAPÉ ── */
+.footer-prop{background:var(--s1);border-top:1px solid var(--b1);padding:10px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.footer-prop span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.footer-prop strong{color:var(--offwhite);}
+
+.bdpbar{display:flex;align-items:center;gap:12px;padding:8px 28px;background:#111110;border-bottom:1px solid var(--b1);flex-wrap:wrap;}
+.bdpbar label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.bdp-upload-btn{background:rgba(200,242,58,.06);border:1px dashed rgba(200,242,58,.2);color:#c8f23a;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;cursor:pointer;white-space:nowrap;transition:all .2s;position:relative;}
+.bdp-upload-btn:hover{background:rgba(200,242,58,.12);border-color:rgba(200,242,58,.4);}
+.bdp-upload-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="h-title">STUDIO 3 · CARROSSÉIS FIXADOS</div>
+    <div class="h-sub">G Gabi Produções · 3 Fixados · 3 Modos de uso</div>
+  </div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+    <div class="badge badge-lime">HTML Canvas</div>
+    <div class="badge badge-muted" id="badge-fixado">Fixado 1</div>
+    <div class="badge badge-muted" id="badge-modo">Modo 1</div>
+  </div>
+</div>
+
+<!-- API BAR -->
+<div class="topbar">
+  <label>Gemini API Key</label>
+  <input type="password" class="api-input" id="apiKey" placeholder="AIza... (necessário apenas no Modo 3)" oninput="checkApi()">
+  <span id="api-status" style="font-size:10px;color:var(--muted);">—</span>
+</div>
+
+<!-- BDP BAR -->
+<div class="bdpbar">
+  <label>BDP do Cliente</label>
+  <label class="bdp-upload-btn">
+    Carregar BDP.md
+    <input type="file" accept=".md,.txt" onchange="carregarBDP(this)">
+  </label>
+  <span id="bdpBarStatus" style="font-size:11px;color:var(--muted);">Não carregado — prompt Gemini usará configuração padrão</span>
+</div>
+
+<div class="main">
+  <!-- ESQUERDA -->
+  <div class="left">
+    <div class="panel">
+
+      <!-- FIXADOS -->
+      <div>
+        <div class="sec">Escolher Fixado</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <button class="fixado-btn ativo" id="fb-0" onclick="selecionarFixado(0)">
+            <span>Quem Sou Eu</span>
+            <span class="fixado-num">01</span>
+          </button>
+          <button class="fixado-btn" id="fb-1" onclick="selecionarFixado(1)">
+            <span>Como Trabalho</span>
+            <span class="fixado-num">02</span>
+          </button>
+          <button class="fixado-btn" id="fb-2" onclick="selecionarFixado(2)">
+            <span>Resultados</span>
+            <span class="fixado-num">03</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- MODOS -->
+      <div>
+        <div class="sec">Modo de uso</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <button class="modo-btn ativo" id="mb-0" onclick="selecionarModo(0)">
+            <div class="modo-n">1</div>
+            <div class="modo-txt">
+              <strong>Só texto</strong>
+              <span>Fundo escuro, sem foto</span>
+            </div>
+          </button>
+          <button class="modo-btn" id="mb-1" onclick="selecionarModo(1)">
+            <div class="modo-n">2</div>
+            <div class="modo-txt">
+              <strong>Foto manual</strong>
+              <span>Upload + slider de opacidade</span>
+            </div>
+          </button>
+          <button class="modo-btn" id="mb-2" onclick="selecionarModo(2)">
+            <div class="modo-n">3</div>
+            <div class="modo-txt">
+              <strong>Gemini</strong>
+              <span>IA integra a foto no cenário</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- FOTO (Modos 2 e 3) -->
+      <div class="foto-area" id="foto-area">
+
+        <!-- MODO 2: upload individual por slide -->
+        <div id="modo2-area" style="display:none;">
+          <div class="sec">Foto por slide</div>
+          <div style="display:flex;flex-direction:column;gap:8px;" id="slides-upload-list">
+            <!-- gerado por JS -->
+          </div>
+        </div>
+
+        <!-- MODO 3: gemini por slide -->
+        <div id="modo3-area" style="display:none;">
+          <div class="sec">Composição Gemini</div>
+
+          <!-- AVISO DE PRESERVAÇÃO -->
+          <div style="background:rgba(200,242,58,.05);border:1px solid rgba(200,242,58,.15);padding:10px 12px;margin-bottom:10px;">
+            <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);margin-bottom:6px;">⚠ Regras de preservação</div>
+            <div style="font-size:10px;color:rgba(245,242,235,.65);line-height:1.6;">
+              O Gemini <strong style="color:var(--offwhite);">preserva integralmente:</strong><br>
+              · Rosto e fisionomia<br>
+              · Feições e expressão<br>
+              · Gestos e trejeitos<br>
+              · Tatuagens<br>
+              · <strong style="color:var(--rosa);">Mão no rosto → preservar exatamente</strong><br>
+              <span style="font-size:9px;color:var(--muted);margin-top:4px;display:block;">Alterar a posição da mão muda o rosto. Nunca será a mesma pessoa.</span>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;" id="slides-gemini-list">
+            <!-- gerado por JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="status-bar" id="status-bar"><div class="status-fill" id="status-fill"></div></div>
+      <div class="status-txt" id="status-txt"></div>
+
+    </div>
+
+    <!-- BOTÕES -->
+    <div style="padding:10px 16px;border-top:1px solid var(--b1);display:flex;flex-direction:column;gap:6px;">
+      <div class="btn-row" style="padding:0;">
+        <button class="btn-dl" onclick="exportSlide(0)">↓ S1</button>
+        <button class="btn-dl" onclick="exportSlide(1)">↓ S2</button>
+        <button class="btn-dl" onclick="exportSlide(2)">↓ S3</button>
+      </div>
+      <button class="btn-dl-all" onclick="exportTodos()">↓ Exportar os 3 slides</button>
+    </div>
+  </div>
+
+  <!-- DIREITA: SLIDES -->
+  <div class="right" id="right-panel">
+    <!-- TABS DOS SLIDES -->
+    <div class="slide-tabs">
+      <div class="slide-tab ativo" id="tab-0" onclick="verSlide(0)">Slide 1 · Capa</div>
+      <div class="slide-tab" id="tab-1" onclick="verSlide(1)">Slide 2 · Dev</div>
+      <div class="slide-tab" id="tab-2" onclick="verSlide(2)">Slide 3 · CTA</div>
+    </div>
+
+    <!-- SLIDE 0 — CAPA -->
+    <div class="canvas-wrap preview" id="wrap-0">
+      <div class="slide" id="slide-0">
+        <div class="slide-foto" id="foto-0"></div>
+        <div class="slide-overlay" id="overlay-0" style="display:none;"></div>
+        <!-- Deco F1 default -->
+        <div class="f1-geo" id="deco-a-0"></div>
+        <div class="f1-geo2" id="deco-b-0"></div>
+        <div class="slide-content">
+          <div class="pre-tag" id="pretag-0" style="color:var(--muted);">G Gabi Produções · Post Fixado 01</div>
+          <div class="capa-h" id="capa-h-0" style="color:var(--lime);">QUEM<br>SOU<br>EU.</div>
+          <div class="capa-sub" id="capa-sub-0" style="color:rgba(245,242,235,.8);">
+            "A gente não cria quem você é.<br>A gente mostra."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 1 — DEV -->
+    <div class="canvas-wrap preview" id="wrap-1" style="display:none;">
+      <div class="slide" id="slide-1">
+        <div class="slide-foto" id="foto-1"></div>
+        <div class="slide-overlay" id="overlay-1" style="display:none;"></div>
+        <div class="dev-n" id="dev-n-1">01</div>
+        <div class="slide-content">
+          <div class="dev-tag" id="dev-tag-1" style="color:var(--lime);">O que eu faço</div>
+          <div class="dev-h" id="dev-h-1" style="color:var(--offwhite);">
+            VOCÊ JÁ TEM<br><span class="lime">O QUE PRECISA</span><br>PARA SER RECONHECIDO.
+          </div>
+          <div class="dev-sep" id="dev-sep-1" style="background:var(--laranja);"></div>
+          <div class="dev-body" id="dev-body-1">
+            Falta alguém que veja antes de você.<br>
+            Eu organizo o que você já é — e transformo em presença<br>
+            que atrai o cliente certo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — CTA -->
+    <div class="canvas-wrap preview" id="wrap-2" style="display:none;">
+      <div class="slide" id="slide-2">
+        <div class="slide-foto" id="foto-2"></div>
+        <div class="slide-overlay" id="overlay-2" style="display:none;"></div>
+        <div class="f1-geo" id="deco-a-2" style="display:none;"></div>
+        <div class="slide-content">
+          <div class="cta-tag" id="cta-tag-2">Próximo passo</div>
+          <div class="cta-h" id="cta-h-2" style="color:var(--offwhite);">
+            ME CHAMA.<br><span class="lime">PRIMEIRA<br>CONVERSA</span><br>É DIAGNÓSTICO.
+          </div>
+          <div class="cta-body" id="cta-body-2">
+            Sem precisar se explicar do zero toda vez.<br>
+            Sem performance. Sem criar quem você não é.
+          </div>
+          <div class="ass-panel">
+            <img id="ass-logo-slide2" class="ass-logo" src="" alt="G Gabi Produções">
+            <div class="ass-info">
+              <span class="ass-handle">&#8595; @ggabiproducoes</span>
+              <span class="ass-nome">G GABI PRODUÇÕES</span>
+              <span class="ass-local">Campo Grande, MS · Produção criativa com propósito</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer-prop">
+  <span>Proprietária do PRISMA: <strong>G Gabi Produções · Glenda Gabi</strong></span>
+  <span>Arquiteto: <strong>Jimmy Andrews · Jimmy Andrews Sistemas IA</strong></span>
+  <span>Studio 3 · Carrosséis Fixados · skill-squad-prisma-fullstack</span>
+</div>
+
+<script>
+// ── ROTEIROS DOS 3 FIXADOS ─────────────────────────────────
+const FIXADOS = [
+  {
+    id: 0, nome: 'Quem Sou Eu', num: '01', ato: 'Atos I + III',
+    acento: 'var(--lime)',
+    pretag: 'G Gabi Produções · Post Fixado 01',
+    capa_h: 'QUEM<br>SOU<br>EU.',
+    capa_sub: '"A gente não cria quem você é.<br>A gente mostra."',
+    dev_tag: 'O que eu faço',
+    dev_h: 'VOCÊ JÁ TEM<br><span style="color:var(--lime)">O QUE PRECISA</span><br>PARA SER RECONHECIDO.',
+    dev_sep: 'var(--laranja)',
+    dev_body: 'Falta alguém que veja antes de você.<br>Eu organizo o que você já é — e transformo em presença<br>que atrai o cliente certo.',
+    cta_h: 'ME CHAMA.<br><span style="color:var(--lime)">PRIMEIRA<br>CONVERSA</span><br>É DIAGNÓSTICO.',
+    cta_body: 'Sem precisar se explicar do zero toda vez.<br>Sem performance. Sem criar quem você não é.',
+    gemini_prompt: (slide) => {
+      const pos = ['subject right side, text space on left','subject centered, expression present','subject left, right space for CTA'][slide];
+      const slLabel = ['cover (Capa)','development (Desenvolvimento)','call-to-action (CTA)'][slide];
+      return `You are a Senior Art Director and photo compositor for the brand "${BDP.nome}".
+Recompose this photo of the client into the brand's visual environment for an Instagram carousel ${slLabel} slide.
+
+━━━ PRESERVATION RULES (NON-NEGOTIABLE) ━━━
+PRESERVE ABSOLUTELY:
+- Face, facial features, expression, proportions
+- Body type, weight, biotipo — NEVER slim or alter
+- All gestures and body language
+- All tattoos — exact placement and design
+- Hand near face / hand on face → preserve EXACTLY as photographed
+  (changing hand position changes the face — it will never be the same person)
+NEVER: beautify, slim, alter face, remove tattoos, change hand positions.
+
+━━━ BRAND DNA — ${BDP.nome} ━━━
+Archetype: ${BDP.arquetipo}
+Brand soul: ${BDP.trueline}
+Manifesto: ${BDP.manifesto_curto}
+Visual style: ${BDP.estilo}
+Palette: ${BDP.paleta}
+Never use: ${BDP.rejeita}
+
+━━━ BACKGROUND ENVIRONMENT ━━━
+Build a background that BREATHES the brand identity:
+- Base: deep dark #0A0A08 with 3-4% grain/noise texture
+- Lighting: cold dramatic side lighting — primary color from brand palette (${BDP.paleta.split(',')[0]?.trim() || '#C8F23A'})
+- Atmosphere: editorial revelation — the moment clarity emerges from darkness
+- Archetype energy (${BDP.arquetipo}): the scene should feel like the brand's soul made visible
+- Secondary light accents: use secondary brand colors subtly (${BDP.paleta.split(',').slice(1,3).join(', ')})
+- Depth: bokeh or geometric dark shapes in background, never competing with subject
+- Vignette: subtle dark edges drawing focus to subject
+- The background must feel PHOTOGRAPHED — not generated, not artificial
+
+━━━ COMPOSITION ━━━
+Position: ${pos}
+Glassmorphism panel allowed behind text area (rgba(10,10,8,0.55)) — NEVER over face or tattoos.
+Output: 1080x1350px vertical. Premium editorial. Someone stops scrolling.`;
+    }
+  },
+  {
+    id: 1, nome: 'Como Trabalho', num: '02', ato: 'Ato IV',
+    acento: 'var(--laranja)',
+    pretag: 'G Gabi Produções · Post Fixado 02',
+    capa_h: 'COMO<br><span style="color:var(--lime)">TRABALHO.</span>',
+    capa_sub: '"Você já tem tudo.<br>A gente só vai organizar."',
+    dev_tag: 'Como funciona',
+    dev_h: 'VISUAL COM<br>INTENÇÃO.<br><span style="color:var(--lime)">NUNCA SÓ<br>ESTÉTICA.</span>',
+    dev_sep: 'var(--laranja)',
+    dev_body: 'Aqui você não precisa ser outra versão de você.<br>E quando o trabalho acabar, você não vai<br>depender de mim pra sempre.',
+    cta_h: 'EU VEJO O QUE<br>VOCÊ AINDA<br>NÃO CONSEGUE<br><span style="color:var(--lime)">VER EM<br>VOCÊ MESMO.</span>',
+    cta_body: 'Me chama.<br>A primeira conversa é diagnóstico.',
+    gemini_prompt: (slide) => {
+      const pos = ['subject left, title space on right','subject right side, text left','subject centered, space below for CTA'][slide];
+      const slLabel = ['cover (Capa)','development (Desenvolvimento)','call-to-action (CTA)'][slide];
+      return `You are a Senior Art Director and photo compositor for the brand "${BDP.nome}".
+Recompose this photo of the client into the brand's visual environment for an Instagram carousel ${slLabel} slide.
+
+━━━ PRESERVATION RULES (NON-NEGOTIABLE) ━━━
+PRESERVE ABSOLUTELY: face, facial features, expression, proportions, body type, weight, all gestures, all tattoos, hand positions (especially hand near face — preserve exactly as photographed).
+NEVER: beautify, slim, alter face, remove tattoos, change hand positions.
+
+━━━ BRAND DNA — ${BDP.nome} ━━━
+Archetype: ${BDP.arquetipo} | Soul: ${BDP.trueline}
+Style: ${BDP.estilo} | Palette: ${BDP.paleta}
+
+━━━ BACKGROUND — FIXADO 02 (MÉTODO) ━━━
+This slide is about method and co-creation (archetype energy: ${BDP.arquetipo}).
+Background: #0A0A08 with grain texture. Warm orange (#FF7C35) side lighting from right — conveying warmth and intentional process.
+Subtle geometric diagonal lines in background suggesting structure and direction.
+Secondary lime (#C8F23A) rim light on subject edge.
+Atmosphere: the moment a skilled artisan is at work — confident, intentional, not performative.
+Background breathes: ${BDP.estilo}
+
+━━━ COMPOSITION ━━━
+Position: ${pos}. Output: 1080x1350px. Feels photographed, not generated.`;
+    }
+  },
+  {
+    id: 2, nome: 'Resultados', num: '03', ato: 'Atos V + VI',
+    acento: 'var(--rosa)',
+    pretag: 'G Gabi Produções · Post Fixado 03',
+    capa_h: 'RESUL<br><span style="color:var(--lime)">TADOS.</span>',
+    capa_sub: '"De \'não sei como me mostrar\'<br>para \'as pessoas certas me encontram<br>porque sabem exatamente o que entrego.\'"',
+    dev_tag: 'A transformação',
+    dev_h: 'GRAVA SEM MEDO.<br>APARECE SEM<br><span style="color:var(--lime)">PERFORMANCE.</span>',
+    dev_sep: 'var(--rosa)',
+    dev_body: 'Presença consolidada.<br>Leads chegando que já entendem seu valor<br>antes de você precisar se explicar.',
+    cta_h: 'VOCÊ É BOM<br>NO QUE FAZ.<br>SÓ FALTA<br><span style="color:var(--lime)">APARECER<br>DO JEITO CERTO.</span>',
+    cta_body: 'Me chama.<br>A primeira conversa é diagnóstico.',
+    gemini_prompt: (slide) => {
+      const pos = ['subject right, text space left','subject full-frame, expressive','subject left, right CTA space'][slide];
+      const slLabel = ['cover (Capa)','development (Desenvolvimento)','call-to-action (CTA)'][slide];
+      return `You are a Senior Art Director and photo compositor for the brand "${BDP.nome}".
+Recompose this photo of the client into the brand's visual environment for an Instagram carousel ${slLabel} slide.
+
+━━━ PRESERVATION RULES (NON-NEGOTIABLE) ━━━
+PRESERVE ABSOLUTELY: face, facial features, expression, proportions, body type, weight, all gestures, all tattoos, hand positions (especially hand near face — preserve exactly as photographed).
+NEVER: beautify, slim, alter face, remove tattoos, change hand positions.
+
+━━━ BRAND DNA — ${BDP.nome} ━━━
+Archetype: ${BDP.arquetipo} | Transformation: ${BDP.trueline}
+Style: ${BDP.estilo} | Palette: ${BDP.paleta}
+
+━━━ BACKGROUND — FIXADO 03 (RESULTADOS/TRANSFORMAÇÃO) ━━━
+This slide is about transformation and results (Story Arc: revelation and return).
+Background: #0A0A08 with grain texture.
+Primary atmospheric glow: pink/magenta (#FF4D8F) from upper-right — emotional energy of transformation.
+Secondary: lime (#C8F23A) edge light suggesting emergence, arrival, clarity.
+The background should feel like: the moment AFTER the transformation — presence consolidated, person fully arrived.
+Atmosphere: cinematic, emotionally charged, the subject looks like someone who has already become.
+Subtle geometric arcs in deep background (barely visible) suggesting cycles and return.
+Vignette strong at edges. Background breathes: ${BDP.estilo}
+
+━━━ COMPOSITION ━━━
+Position: ${pos}. Output: 1080x1350px. Feels photographed, not generated.`;
+    }
+  }
+];
+
+// ── ESTADO ─────────────────────────────────────────────────
+// ── BDP STATE ─────────────────────────────────────────────
+let BDP = {
+  nome: '', arquetipo: '', paleta: '', estilo: '',
+  rejeita: '', trueline: '', manifesto_curto: '',
+  voice_trait_01: '', gancho_01: '', logo_b64: ''
+};
+
+// ── BDP LOADER ────────────────────────────────────────────
+function carregarBDP(input){
+  if(!input.files||!input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const txt = e.target.result;
+    const b = {};
+    txt.split('\n').forEach(l => {
+      const m = l.match(/^([a-zA-Z_0-9]+)\s*[=:]\s*(.+)$/);
+      if(m) b[m[1].trim().toLowerCase()] = m[2].trim();
+    });
+    BDP = {
+      nome:           b.nome || b.cliente || 'G Gabi Produções',
+      arquetipo:      b.arquetipo || b.arquétipo || 'Criador + Sábio',
+      paleta:         b.paleta || '#C8F23A, #FF4D8F, #FF7C35, #0A0A08',
+      estilo:         b.estilo || b.estilo_visual || 'Dark editorial, noise texture, typographic contrast',
+      rejeita:        b.rejeita || 'genérico, pastel, gradiente artificial',
+      trueline:       b.trueline || 'Você já tem o que precisa para ser reconhecido.',
+      manifesto_curto:b.manifesto_curto || 'A gente não cria quem você é. A gente mostra.',
+      voice_trait_01: b.voice_trait_01 || 'Organizadora de caos com calma',
+      gancho_01:      b.gancho_01 || 'Você é bom no que faz. Só falta aparecer do jeito certo.',
+      logo_b64:       b.logo_aprovada_base64 || '',
+    };
+    const status = document.getElementById('bdpBarStatus');
+    status.textContent = '✓ ' + input.files[0].name + ' carregado — prompt Gemini enriquecido com DNA da marca';
+    status.style.color = 'var(--lime)';
+    console.log('✅ BDP carregado:', BDP.nome);
+    renderLogo();
+  };
+  reader.readAsText(input.files[0]);
+}
+
+let S = { fixado: 0, modo: 0, slide: 0, fotos: [null,null,null], fotosGemini: [null,null,null], opacidades: [60,60,60] };
+
+// ── AUTO-LOAD KEY ───────────────────────────────────────────
+window.addEventListener('load', function(){
+  const k = localStorage.getItem('prisma_key_gemini');
+  if(k){ document.getElementById('apiKey').value=k; checkApi(); }
+});
+
+// ── API STATUS ──────────────────────────────────────────────
+function checkApi(){
+  const k = document.getElementById('apiKey').value.trim();
+  const el = document.getElementById('api-status');
+  if(k.startsWith('AIza')&&k.length>20){
+    el.textContent='✓ Key válida'; el.style.color='var(--ok)';
+  } else {
+    el.textContent='—'; el.style.color='';
+  }
+}
+
+// ── FIXADO ─────────────────────────────────────────────────
+function selecionarFixado(idx){
+  S.fixado = idx;
+  [0,1,2].forEach(i=>{
+    document.getElementById(`fb-${i}`).classList.toggle('ativo', i===idx);
+  });
+  const f = FIXADOS[idx];
+  document.getElementById('badge-fixado').textContent = `Fixado ${f.num}`;
+  renderSlides();
+}
+
+// ── MODO ───────────────────────────────────────────────────
+function selecionarModo(idx){
+  S.modo = idx;
+  [0,1,2].forEach(i=>{
+    document.getElementById(`mb-${i}`).classList.toggle('ativo', i===idx);
+  });
+  document.getElementById('badge-modo').textContent = `Modo ${idx+1}`;
+  document.getElementById('foto-area').classList.toggle('on', idx>=1);
+  document.getElementById('modo2-area').style.display = idx===1 ? 'block' : 'none';
+  document.getElementById('modo3-area').style.display = idx===2 ? 'block' : 'none';
+  if(idx>=1) buildSlideUploads();
+  renderSlides();
+}
+
+// ── BUILD UPLOAD/GEMINI POR SLIDE ──────────────────────────
+function buildSlideUploads(){
+  const slidesNomes = ['Slide 1 · Capa','Slide 2 · Dev','Slide 3 · CTA'];
+
+  // Modo 2 — upload manual por slide (sempre rebuild)
+  const list2 = document.getElementById('slides-upload-list');
+  if(list2){
+    list2.innerHTML = ''; // limpar sempre
+    slidesNomes.forEach((nome,i) => {
+      list2.innerHTML += `
+        <div style="background:var(--s2);border:1px solid var(--b2);padding:10px;">
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">${nome}</div>
+          <label style="display:block;background:rgba(200,242,58,.04);border:1px dashed rgba(200,242,58,.2);padding:8px;text-align:center;cursor:pointer;position:relative;margin-bottom:6px;">
+            <input type="file" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;" onchange="fotoManualSlide(this,${i})">
+            <span id="upload-lbl-${i}" style="font-size:10px;color:rgba(200,242,58,.5);">Upload foto</span>
+          </label>
+          <img id="prev-${i}" src="" style="width:100%;height:56px;object-fit:cover;display:none;background:var(--bg);">
+          <div id="op-row-${i}" style="display:none;align-items:center;gap:6px;margin-top:6px;">
+            <span style="font-size:9px;color:var(--muted);white-space:nowrap;">Opacidade</span>
+            <input type="range" min="5" max="100" value="60" style="flex:1;accent-color:var(--lime);" oninput="atualizarOpacidadeSlide(this.value,${i})">
+            <span id="op-val-${i}" style="font-size:10px;color:var(--lime);width:30px;text-align:right;">60%</span>
+          </div>
+        </div>`;
+    });
+  }
+
+  // Modo 3 — gemini por slide (sempre rebuild)
+  const list3 = document.getElementById('slides-gemini-list');
+  if(list3){
+    list3.innerHTML = ''; // limpar sempre
+    slidesNomes.forEach((nome,i) => {
+      list3.innerHTML += `
+        <div style="background:var(--s2);border:1px solid var(--b2);padding:10px;">
+          <div style="font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">${nome}</div>
+          <label style="display:block;background:rgba(200,242,58,.04);border:1px dashed rgba(200,242,58,.2);padding:8px;text-align:center;cursor:pointer;position:relative;margin-bottom:6px;">
+            <input type="file" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;" onchange="fotoGeminiSlide(this,${i})">
+            <span id="g-lbl-${i}" style="font-size:10px;color:rgba(200,242,58,.5);">Upload foto da cliente</span>
+          </label>
+          <img id="g-prev-${i}" src="" style="width:100%;height:56px;object-fit:cover;display:none;background:var(--bg);margin-bottom:6px;">
+          <button id="g-btn-${i}" onclick="processarGeminiSlide(${i})" disabled
+            style="width:100%;background:var(--rosa);color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1.5px;padding:9px;cursor:pointer;opacity:.4;transition:all .2s;">
+            ✦ GERAR COM GEMINI
+          </button>
+          <div id="g-status-${i}" style="font-size:10px;color:var(--lime);min-height:16px;margin-top:4px;"></div>
+        </div>`;
+    });
+  }
+}
+
+// ── FOTO MANUAL POR SLIDE ──────────────────────────────────
+function fotoManualSlide(input, idx){
+  if(!input.files||!input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    S.fotos[idx] = e.target.result;
+    const prev = document.getElementById(`prev-${idx}`);
+    if(prev){ prev.src=e.target.result; prev.style.display='block'; }
+    document.getElementById(`upload-lbl-${idx}`).textContent='✓ Foto carregada';
+    const opRow = document.getElementById(`op-row-${idx}`);
+    if(opRow) opRow.style.display='flex';
+    aplicarFotoSlide(idx);
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function atualizarOpacidadeSlide(val, idx){
+  S.opacidades[idx] = parseInt(val);
+  const valEl = document.getElementById(`op-val-${idx}`);
+  if(valEl) valEl.textContent = val+'%';
+  aplicarFotoSlide(idx);
+}
+
+function aplicarFotoSlide(idx){
+  const fotoEl = document.getElementById(`foto-${idx}`);
+  const overlayEl = document.getElementById(`overlay-${idx}`);
+  if(!fotoEl) return;
+  if(S.fotos[idx]){
+    const op = (S.opacidades[idx]||60) / 100;
+    fotoEl.style.backgroundImage = `url('${S.fotos[idx]}')`;
+    fotoEl.style.opacity = op;
+    if(overlayEl) overlayEl.style.display='block';
+  } else {
+    fotoEl.style.backgroundImage='';
+    if(overlayEl) overlayEl.style.display='none';
+  }
+}
+
+// ── FOTO GEMINI POR SLIDE ──────────────────────────────────
+function fotoGeminiSlide(input, idx){
+  if(!input.files||!input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    S.fotosGemini[idx] = e.target.result;
+    const prev = document.getElementById(`g-prev-${idx}`);
+    if(prev){ prev.src=e.target.result; prev.style.display='block'; }
+    document.getElementById(`g-lbl-${idx}`).textContent='✓ Foto carregada';
+    const btn = document.getElementById(`g-btn-${idx}`);
+    if(btn){ btn.disabled=false; btn.style.opacity='1'; }
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+async function processarGeminiSlide(idx){
+  const key = document.getElementById('apiKey').value.trim();
+  if(!key.startsWith('AIza')){ alert('Insira a Gemini API key.'); return; }
+  const foto = S.fotosGemini[idx];
+  if(!foto){ alert('Faça o upload da foto primeiro.'); return; }
+
+  const btn = document.getElementById(`g-btn-${idx}`);
+  const status = document.getElementById(`g-status-${idx}`);
+  btn.disabled=true; btn.textContent='⟳ Processando...';
+  status.textContent='Gemini compondo...';
+
+  const f = FIXADOS[S.fixado];
+  const prompt = f.gemini_prompt(idx);
+  const b64 = foto.split(',')[1];
+  const mime = foto.split(':')[1].split(';')[0];
+
+  try{
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${key}`,
+      {method:'POST',headers:{'Content-Type':'application/json'},
+       body:JSON.stringify({
+         contents:[{parts:[
+           {inline_data:{mime_type:mime,data:b64}},
+           {text:prompt}
+         ]}],
+         generationConfig:{responseModalities:['TEXT','IMAGE']}
+       })}
+    );
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    let imgData = null;
+    for(const p of (data.candidates?.[0]?.content?.parts||[])){
+      if(p.inlineData?.mimeType?.startsWith('image/')){ imgData=p.inlineData.data; break; }
+    }
+    if(!imgData) throw new Error('Sem imagem');
+
+    const url = `data:image/png;base64,${imgData}`;
+    // Garantir que o wrap do slide alvo está visível para aplicar a foto
+    const wrapAlvo = document.getElementById(`wrap-${idx}`);
+    const wrapOrigDisplay = wrapAlvo ? wrapAlvo.style.display : null;
+    if(wrapAlvo && wrapAlvo.style.display === 'none') wrapAlvo.style.display = 'flex';
+    const fotoEl = document.getElementById(`foto-${idx}`);
+    const overlayEl = document.getElementById(`overlay-${idx}`);
+    if(fotoEl){
+      fotoEl.style.backgroundImage=`url('${url}')`;
+      fotoEl.style.opacity='1';
+    }
+    if(overlayEl) overlayEl.style.display='block';
+    // Restaurar display do wrap
+    if(wrapAlvo && wrapOrigDisplay !== null) wrapAlvo.style.display = wrapOrigDisplay;
+    status.textContent='✓ Composição pronta';
+    btn.textContent='✦ REGERAR COM GEMINI';
+    btn.disabled=false;
+
+  } catch(e){
+    status.textContent='Erro: '+e.message;
+    btn.textContent='✦ GERAR COM GEMINI';
+    btn.disabled=false;
+  }
+}
+
+function atualizarOpacidade(val){ /* legado */ }
+
+// ── RENDER LOGO ────────────────────────────────────────────
+function renderLogo(){
+  const b64 = BDP.logo_b64;
+  const el = document.getElementById('ass-logo-slide2');
+  if(!el) return;
+  if(b64 && b64.length > 100){
+    el.src = 'data:image/png;base64,' + b64;
+    el.classList.add('on');
+  } else {
+    el.src = '';
+    el.classList.remove('on');
+  }
+}
+
+// ── RENDER SLIDES ──────────────────────────────────────────
+function renderSlides(){
+  const f = FIXADOS[S.fixado];
+
+  // Slide 0 — CAPA
+  document.getElementById('pretag-0').textContent = f.pretag;
+  document.getElementById('pretag-0').style.color = f.acento;
+  document.getElementById('capa-h-0').innerHTML = f.capa_h;
+  document.getElementById('capa-sub-0').innerHTML = f.capa_sub;
+
+  // Slide 1 — DEV
+  document.getElementById('dev-tag-1').innerHTML = f.dev_tag;
+  document.getElementById('dev-tag-1').style.color = f.acento;
+  document.getElementById('dev-h-1').innerHTML = f.dev_h;
+  document.getElementById('dev-sep-1').style.background = f.dev_sep;
+  document.getElementById('dev-body-1').innerHTML = f.dev_body;
+
+  // Slide 2 — CTA
+  document.getElementById('cta-h-2').innerHTML = f.cta_h;
+  document.getElementById('cta-body-2').innerHTML = f.cta_body;
+
+  // Modo 1: limpar fotos de fundo
+  if(S.modo===0){
+    [0,1,2].forEach(i => {
+      const fotoEl = document.getElementById(`foto-${i}`);
+      const overlayEl = document.getElementById(`overlay-${i}`);
+      if(fotoEl) fotoEl.style.backgroundImage='';
+      if(overlayEl) overlayEl.style.display='none';
+    });
+  }
+  // Modo 2: aplicar fotos individuais (chamado por aplicarFotoSlide)
+  // Modo 3: aplicado por processarGeminiSlide
+
+}
+
+// processarGemini() migrado para processarGeminiSlide(idx)
+
+// ── NAVEGAÇÃO DE SLIDE ─────────────────────────────────────
+function verSlide(idx){
+  S.slide = idx;
+  [0,1,2].forEach(i=>{
+    const wrap = document.getElementById(`wrap-${i}`);
+    const slide = document.getElementById(`slide-${i}`);
+    const isAtivo = i===idx;
+    // Esconder/mostrar wrapper
+    wrap.style.display = isAtivo ? 'flex' : 'none';
+    // Garantir isolamento total dos slides ocultos
+    if(slide){
+      slide.style.visibility = isAtivo ? 'visible' : 'hidden';
+      slide.style.zIndex = isAtivo ? '1' : '-1';
+    }
+    document.getElementById(`tab-${i}`).classList.toggle('ativo', isAtivo);
+  });
+}
+
+// ── EXPORT ─────────────────────────────────────────────────
+async function exportSlide(idx){
+  setStatus(`Gerando slide ${idx+1}...`, true);
+
+  // 1. Mostrar o wrap do slide alvo temporariamente
+  const wrap = document.getElementById(`wrap-${idx}`);
+  const wrapOrigDisplay = wrap.style.display;
+  wrap.style.display = 'flex';
+
+  // 2. Pegar o slide
+  const slide = document.getElementById(`slide-${idx}`);
+  if(!slide){ setStatus('Erro: slide não encontrado.', false); return; }
+
+  // 3. Clonar para captura limpa
+  const clone = slide.cloneNode(true);
+  clone.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:1080px;height:1350px;transform:none;overflow:hidden;';
+  document.body.appendChild(clone);
+
+  const canvas = await html2canvas(clone, {
+    width:1080, height:1350, scale:1,
+    useCORS:true, backgroundColor:'#0A0A08', logging:false
+  });
+
+  // 4. Limpar
+  document.body.removeChild(clone);
+  wrap.style.display = wrapOrigDisplay;
+  const f = FIXADOS[S.fixado];
+  const a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = `ggabi-fixado${f.num}-slide-${idx+1}.png`;
+  a.click();
+  setStatus(`✓ Slide ${idx+1} exportado (1080×1350px)`, false);
+  setTimeout(()=>setStatus('',false),3000);
+}
+
+async function exportTodos(){
+  for(let i=0;i<3;i++){
+    verSlide(i);
+    await new Promise(r=>setTimeout(r,400));
+    await exportSlide(i);
+    await new Promise(r=>setTimeout(r,600));
+  }
+}
+
+function setStatus(txt, loading){
+  document.getElementById('status-txt').textContent = txt;
+  document.getElementById('status-fill').style.width = loading ? '70%' : (txt?'100%':'0%');
+}
+
+// ── INIT ───────────────────────────────────────────────────
+renderSlides();
+renderLogo();
+</script>
+</body>
+</html>
