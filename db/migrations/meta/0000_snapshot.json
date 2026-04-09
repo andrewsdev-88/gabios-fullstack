@@ -1,0 +1,1652 @@
+{
+  "id": "b0bf5460-9b1b-4e6e-b01b-2bf1b90bb50b",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.brandkits": {
+      "name": "brandkits",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "client_id": {
+          "name": "client_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "versao": {
+          "name": "versao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'1.0'"
+        },
+        "status": {
+          "name": "status",
+          "type": "brandkit_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'aguardando_validacao'"
+        },
+        "data_aprovacao": {
+          "name": "data_aprovacao",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "aprovado_por": {
+          "name": "aprovado_por",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_primaria_nome": {
+          "name": "cor_primaria_nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_primaria_hex": {
+          "name": "cor_primaria_hex",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_primaria_rgb": {
+          "name": "cor_primaria_rgb",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_primaria_defesa": {
+          "name": "cor_primaria_defesa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_secundaria_nome": {
+          "name": "cor_secundaria_nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_secundaria_hex": {
+          "name": "cor_secundaria_hex",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_secundaria_rgb": {
+          "name": "cor_secundaria_rgb",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_secundaria_defesa": {
+          "name": "cor_secundaria_defesa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cores_suporte": {
+          "name": "cores_suporte",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_background_hex": {
+          "name": "cor_background_hex",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cor_muted_hex": {
+          "name": "cor_muted_hex",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_display_familia": {
+          "name": "font_display_familia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_display_peso": {
+          "name": "font_display_peso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_display_defesa": {
+          "name": "font_display_defesa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_body_familia": {
+          "name": "font_body_familia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_body_peso": {
+          "name": "font_body_peso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_body_defesa": {
+          "name": "font_body_defesa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_accent_familia": {
+          "name": "font_accent_familia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "font_accent_uso": {
+          "name": "font_accent_uso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "regras_hierarquia_tipografica": {
+          "name": "regras_hierarquia_tipografica",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "restricoes_visuais": {
+          "name": "restricoes_visuais",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_conceito_central": {
+          "name": "logo_conceito_central",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_forma": {
+          "name": "logo_forma",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_peso_visual": {
+          "name": "logo_peso_visual",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_comunicacao_1_segundo": {
+          "name": "logo_comunicacao_1_segundo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_nunca_parecer": {
+          "name": "logo_nunca_parecer",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "justificativa_estrategica": {
+          "name": "justificativa_estrategica",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bdp_xml_raw": {
+          "name": "bdp_xml_raw",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "glenda_aprovado": {
+          "name": "glenda_aprovado",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "glenda_aprovado_em": {
+          "name": "glenda_aprovado_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_base64": {
+          "name": "logo_base64",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_aprovada_nome": {
+          "name": "logo_aprovada_nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_aprovada_em": {
+          "name": "logo_aprovada_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "handoff_estrategico_md": {
+          "name": "handoff_estrategico_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "copy_forense_i_md": {
+          "name": "copy_forense_i_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "copy_forense_ii_md": {
+          "name": "copy_forense_ii_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tendencias_usadas": {
+          "name": "tendencias_usadas",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "brandkits_client_id_clients_id_fk": {
+          "name": "brandkits_client_id_clients_id_fk",
+          "tableFrom": "brandkits",
+          "tableTo": "clients",
+          "columnsFrom": [
+            "client_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.clients": {
+      "name": "clients",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "nome": {
+          "name": "nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "empresa": {
+          "name": "empresa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "segmento": {
+          "name": "segmento",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "telefone": {
+          "name": "telefone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "instagram_handle": {
+          "name": "instagram_handle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "funil_etapa": {
+          "name": "funil_etapa",
+          "type": "funil_etapa",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'etapa_00'"
+        },
+        "plano_contratado": {
+          "name": "plano_contratado",
+          "type": "plano_contratado",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ativo": {
+          "name": "ativo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "data_entrada": {
+          "name": "data_entrada",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_encerramento": {
+          "name": "data_encerramento",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notas_qualificacao": {
+          "name": "notas_qualificacao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.content_assets": {
+      "name": "content_assets",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "cycle_id": {
+          "name": "cycle_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "client_id": {
+          "name": "client_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "asset_tipo",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "formato": {
+          "name": "formato",
+          "type": "asset_formato",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'video'"
+        },
+        "numero_sequencia": {
+          "name": "numero_sequencia",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "letra_revelacao": {
+          "name": "letra_revelacao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "origem_roteiro": {
+          "name": "origem_roteiro",
+          "type": "origem_roteiro",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "roteiro_base": {
+          "name": "roteiro_base",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "roteiro_cinematografico": {
+          "name": "roteiro_cinematografico",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gancho_primeiros_3s": {
+          "name": "gancho_primeiros_3s",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cta_organico": {
+          "name": "cta_organico",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "direcao_camera": {
+          "name": "direcao_camera",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trilha_sugerida": {
+          "name": "trilha_sugerida",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "instrucao_legenda": {
+          "name": "instrucao_legenda",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "asset_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'roteiro_gerado'"
+        },
+        "deadline_aprovacao": {
+          "name": "deadline_aprovacao",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_aprovacao": {
+          "name": "data_aprovacao",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "aprovado_por": {
+          "name": "aprovado_por",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notas_rejeicao": {
+          "name": "notas_rejeicao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "numero_revisoes": {
+          "name": "numero_revisoes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "plataformas": {
+          "name": "plataformas",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_publicacao_prevista": {
+          "name": "data_publicacao_prevista",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_publicacao_real": {
+          "name": "data_publicacao_real",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "url_publicado": {
+          "name": "url_publicado",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "views": {
+          "name": "views",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "likes": {
+          "name": "likes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "comentarios": {
+          "name": "comentarios",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "compartilhamentos": {
+          "name": "compartilhamentos",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "saves": {
+          "name": "saves",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "taxa_engajamento": {
+          "name": "taxa_engajamento",
+          "type": "numeric(5, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "content_assets_cycle_id_content_cycles_id_fk": {
+          "name": "content_assets_cycle_id_content_cycles_id_fk",
+          "tableFrom": "content_assets",
+          "tableTo": "content_cycles",
+          "columnsFrom": [
+            "cycle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "content_assets_client_id_clients_id_fk": {
+          "name": "content_assets_client_id_clients_id_fk",
+          "tableFrom": "content_assets",
+          "tableTo": "clients",
+          "columnsFrom": [
+            "client_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.content_cycles": {
+      "name": "content_cycles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "client_id": {
+          "name": "client_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "brandkit_id": {
+          "name": "brandkit_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mes_referencia": {
+          "name": "mes_referencia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status_ciclo": {
+          "name": "status_ciclo",
+          "type": "ciclo_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'planejamento'"
+        },
+        "reels_contratados": {
+          "name": "reels_contratados",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 4
+        },
+        "stories_contratados": {
+          "name": "stories_contratados",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 20
+        },
+        "data_inicio": {
+          "name": "data_inicio",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_encerramento": {
+          "name": "data_encerramento",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "handoff_vertice_md": {
+          "name": "handoff_vertice_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tema_ancora_do_mes": {
+          "name": "tema_ancora_do_mes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "content_cycles_client_id_clients_id_fk": {
+          "name": "content_cycles_client_id_clients_id_fk",
+          "tableFrom": "content_cycles",
+          "tableTo": "clients",
+          "columnsFrom": [
+            "client_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "content_cycles_brandkit_id_brandkits_id_fk": {
+          "name": "content_cycles_brandkit_id_brandkits_id_fk",
+          "tableFrom": "content_cycles",
+          "tableTo": "brandkits",
+          "columnsFrom": [
+            "brandkit_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.espelho_logs": {
+      "name": "espelho_logs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "cycle_id": {
+          "name": "cycle_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "client_id": {
+          "name": "client_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_retrospectiva": {
+          "name": "data_retrospectiva",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gerado_por": {
+          "name": "gerado_por",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plan_metas": {
+          "name": "plan_metas",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plan_posts_previstos": {
+          "name": "plan_posts_previstos",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plan_reels_previstos": {
+          "name": "plan_reels_previstos",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plan_plataformas": {
+          "name": "plan_plataformas",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plan_frequencia_editorial": {
+          "name": "plan_frequencia_editorial",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "do_posts_publicados": {
+          "name": "do_posts_publicados",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "do_reels_publicados": {
+          "name": "do_reels_publicados",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "do_feedback_cliente": {
+          "name": "do_feedback_cliente",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "do_metricas_reais": {
+          "name": "do_metricas_reais",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "check_gap_execucao": {
+          "name": "check_gap_execucao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "check_top_content": {
+          "name": "check_top_content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "check_bottom_content": {
+          "name": "check_bottom_content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "check_letra_melhor_performance": {
+          "name": "check_letra_melhor_performance",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "check_tipo_conteudo_ressoou": {
+          "name": "check_tipo_conteudo_ressoou",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "check_analise_sistema": {
+          "name": "check_analise_sistema",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "check_desvio_de_voz": {
+          "name": "check_desvio_de_voz",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "check_bdp_needs_update": {
+          "name": "check_bdp_needs_update",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "act_ajustes_skill": {
+          "name": "act_ajustes_skill",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "act_ajustes_estrategia": {
+          "name": "act_ajustes_estrategia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "act_ajustes_producao": {
+          "name": "act_ajustes_producao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "act_atualizacao_bdp": {
+          "name": "act_atualizacao_bdp",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "act_tema_ancora_proximo_ciclo": {
+          "name": "act_tema_ancora_proximo_ciclo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "act_ajuste_prioritario_antes_de_reiniciar": {
+          "name": "act_ajuste_prioritario_antes_de_reiniciar",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "act_direcao_vertice_proximo_ciclo": {
+          "name": "act_direcao_vertice_proximo_ciclo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "relatorio_espelho_md": {
+          "name": "relatorio_espelho_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "espelho_logs_cycle_id_content_cycles_id_fk": {
+          "name": "espelho_logs_cycle_id_content_cycles_id_fk",
+          "tableFrom": "espelho_logs",
+          "tableTo": "content_cycles",
+          "columnsFrom": [
+            "cycle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "espelho_logs_client_id_clients_id_fk": {
+          "name": "espelho_logs_client_id_clients_id_fk",
+          "tableFrom": "espelho_logs",
+          "tableTo": "clients",
+          "columnsFrom": [
+            "client_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.idi_responses": {
+      "name": "idi_responses",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "client_id": {
+          "name": "client_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "aplicador": {
+          "name": "aplicador",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data_aplicacao": {
+          "name": "data_aplicacao",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "formato_input": {
+          "name": "formato_input",
+          "type": "idi_formato_input",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q1_ei": {
+          "name": "q1_ei",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q2_sn": {
+          "name": "q2_sn",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q3_tf": {
+          "name": "q3_tf",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q4_jp": {
+          "name": "q4_jp",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mbti_tipo": {
+          "name": "mbti_tipo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mbti_grupo": {
+          "name": "mbti_grupo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_fogo": {
+          "name": "energia_fogo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_terra": {
+          "name": "energia_terra",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_agua": {
+          "name": "energia_agua",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_ar": {
+          "name": "energia_ar",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_metal": {
+          "name": "energia_metal",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_dominante": {
+          "name": "energia_dominante",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_presente": {
+          "name": "energia_presente",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "energia_ausente": {
+          "name": "energia_ausente",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "c1_projeto": {
+          "name": "c1_projeto",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "c2_autoimagem": {
+          "name": "c2_autoimagem",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "c3_autoconhecimento": {
+          "name": "c3_autoconhecimento",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "c4_qi": {
+          "name": "c4_qi",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "c5_qe": {
+          "name": "c5_qe",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "c6_qs": {
+          "name": "c6_qs",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "c7_plenitude": {
+          "name": "c7_plenitude",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "camada_predominante": {
+          "name": "camada_predominante",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tensao_camadas": {
+          "name": "tensao_camadas",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q13_genialidade": {
+          "name": "q13_genialidade",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q14_mediocridade": {
+          "name": "q14_mediocridade",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q15_competencia": {
+          "name": "q15_competencia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q16_genialidade_oculta": {
+          "name": "q16_genialidade_oculta",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q17_ciclo": {
+          "name": "q17_ciclo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q18_b_dominante": {
+          "name": "q18_b_dominante",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q19_evento_injustica": {
+          "name": "q19_evento_injustica",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q20_gatilho": {
+          "name": "q20_gatilho",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q21_prontidao": {
+          "name": "q21_prontidao",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q22_visao_sucesso": {
+          "name": "q22_visao_sucesso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "perfil_identidade_md": {
+          "name": "perfil_identidade_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "manual_relacionamento_md": {
+          "name": "manual_relacionamento_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prompt_master_md": {
+          "name": "prompt_master_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "potencial_nao_realizado": {
+          "name": "potencial_nao_realizado",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "arquetipo_primario": {
+          "name": "arquetipo_primario",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "arquetipo_secundario": {
+          "name": "arquetipo_secundario",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "idi_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'bruto'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "idi_responses_client_id_clients_id_fk": {
+          "name": "idi_responses_client_id_clients_id_fk",
+          "tableFrom": "idi_responses",
+          "tableTo": "clients",
+          "columnsFrom": [
+            "client_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.studio_execucoes": {
+      "name": "studio_execucoes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "client_id": {
+          "name": "client_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "brandkit_id": {
+          "name": "brandkit_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "studio_numero": {
+          "name": "studio_numero",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "studio_nome": {
+          "name": "studio_nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "studio_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'pending'"
+        },
+        "output_url": {
+          "name": "output_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "output_base64": {
+          "name": "output_base64",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "output_md": {
+          "name": "output_md",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bloqueio_motivo": {
+          "name": "bloqueio_motivo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "canvas_tester_passou": {
+          "name": "canvas_tester_passou",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "canvas_tester_log": {
+          "name": "canvas_tester_log",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "glenda_aprovado": {
+          "name": "glenda_aprovado",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "glenda_aprovado_em": {
+          "name": "glenda_aprovado_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "glenda_observacoes": {
+          "name": "glenda_observacoes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tentativas": {
+          "name": "tentativas",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "iniciado_em": {
+          "name": "iniciado_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "concluido_em": {
+          "name": "concluido_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "studio_execucoes_client_id_clients_id_fk": {
+          "name": "studio_execucoes_client_id_clients_id_fk",
+          "tableFrom": "studio_execucoes",
+          "tableTo": "clients",
+          "columnsFrom": [
+            "client_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "studio_execucoes_brandkit_id_brandkits_id_fk": {
+          "name": "studio_execucoes_brandkit_id_brandkits_id_fk",
+          "tableFrom": "studio_execucoes",
+          "tableTo": "brandkits",
+          "columnsFrom": [
+            "brandkit_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.asset_formato": {
+      "name": "asset_formato",
+      "schema": "public",
+      "values": [
+        "video",
+        "imagem",
+        "carrossel"
+      ]
+    },
+    "public.asset_status": {
+      "name": "asset_status",
+      "schema": "public",
+      "values": [
+        "roteiro_gerado",
+        "aguardando_gravacao",
+        "gravado",
+        "em_edicao",
+        "aguardando_aprovacao",
+        "aprovado",
+        "rejeitado",
+        "publicado"
+      ]
+    },
+    "public.asset_tipo": {
+      "name": "asset_tipo",
+      "schema": "public",
+      "values": [
+        "reel",
+        "story",
+        "post_feed",
+        "post_carrossel"
+      ]
+    },
+    "public.brandkit_status": {
+      "name": "brandkit_status",
+      "schema": "public",
+      "values": [
+        "aguardando_validacao",
+        "aprovado",
+        "revisao",
+        "logo_gravada",
+        "arquivado"
+      ]
+    },
+    "public.ciclo_status": {
+      "name": "ciclo_status",
+      "schema": "public",
+      "values": [
+        "planejamento",
+        "producao",
+        "revisao",
+        "publicado",
+        "encerrado"
+      ]
+    },
+    "public.funil_etapa": {
+      "name": "funil_etapa",
+      "schema": "public",
+      "values": [
+        "etapa_00",
+        "etapa_01",
+        "etapa_02",
+        "etapa_03",
+        "etapa_04",
+        "etapa_05"
+      ]
+    },
+    "public.idi_formato_input": {
+      "name": "idi_formato_input",
+      "schema": "public",
+      "values": [
+        "texto_estruturado",
+        "texto_livre",
+        "anotacoes",
+        "upload_print"
+      ]
+    },
+    "public.idi_status": {
+      "name": "idi_status",
+      "schema": "public",
+      "values": [
+        "bruto",
+        "processado",
+        "finalizado"
+      ]
+    },
+    "public.origem_roteiro": {
+      "name": "origem_roteiro",
+      "schema": "public",
+      "values": [
+        "copy_forense_i",
+        "copy_forense_ii",
+        "revelacao"
+      ]
+    },
+    "public.plano_contratado": {
+      "name": "plano_contratado",
+      "schema": "public",
+      "values": [
+        "basico",
+        "intermediario",
+        "premium"
+      ]
+    },
+    "public.studio_numero_enum": {
+      "name": "studio_numero_enum",
+      "schema": "public",
+      "values": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "public.studio_status": {
+      "name": "studio_status",
+      "schema": "public",
+      "values": [
+        "pending",
+        "running",
+        "approved",
+        "blocked",
+        "failed",
+        "skipped"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
