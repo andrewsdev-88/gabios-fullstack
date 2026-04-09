@@ -17,15 +17,15 @@ export default function IDIDiagnosticForm() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-8 lg:p-12 bg-[#0D0D0B] text-[#F2EDE4] font-display min-h-screen">
-      <div className="mb-12 border-b border-[#F2EDE4]/10 pb-8">
-        <span className="inline-block px-3 py-1 border border-[#F2EDE4]/20 text-[#F2EDE4]/60 text-[10px] font-bold uppercase tracking-widest mb-4">
+    <div className="w-full max-w-4xl mx-auto p-8 lg:p-12 bg-prisma-bg text-prisma-fg font-display min-h-screen">
+      <div className="mb-12 border-b border-prisma-fg/10 pb-8">
+        <span className="inline-block px-3 py-1 border border-prisma-fg/20 text-prisma-fg/60 text-[10px] font-bold uppercase tracking-widest mb-4">
           Etapa 01
         </span>
         <h1 className="text-4xl lg:text-5xl font-black uppercase tracking-tight mb-4">
           Diagnóstico IDI
         </h1>
-        <p className="text-[#F2EDE4]/60 text-lg max-w-2xl">
+        <p className="text-prisma-fg/60 text-lg max-w-2xl">
           Instruções de formulário do protocolo de Investigação de Identidade.
           Estes dados alimentam a tabela idi_responses do ecossistema.
         </p>
@@ -34,30 +34,30 @@ export default function IDIDiagnosticForm() {
       <form onSubmit={handleSubmit} className="space-y-12">
         {/* Bloco 1 - MBTI e Cognição */}
         <div className="space-y-6">
-          <h2 className="text-xl font-bold uppercase tracking-widest border-b border-[#F2EDE4]/10 pb-2">
+          <h2 className="text-xl font-bold uppercase tracking-widest border-b border-prisma-fg/10 pb-2">
              Bloco 1 — MBTI e Cognição
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#F2EDE4]/60">MBTI Tipo</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-prisma-fg/60">MBTI Tipo</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-transparent border border-[#F2EDE4]/20 focus:border-[#F2EDE4] outline-none transition-all uppercase"
+                className="w-full px-4 py-3 bg-transparent border border-prisma-fg/20 focus:border-prisma-fg outline-none transition-all uppercase"
                 value={formData.mbti_tipo}
                 onChange={(e) => setFormData({ ...formData, mbti_tipo: e.target.value })}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#F2EDE4]/60">Ritmo de Trabalho</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-prisma-fg/60">Ritmo de Trabalho</label>
               <select
-                className="w-full px-4 py-3 bg-transparent border border-[#F2EDE4]/20 focus:border-[#F2EDE4] outline-none transition-all appearance-none rounded-none"
+                className="w-full px-4 py-3 bg-transparent border border-prisma-fg/20 focus:border-prisma-fg outline-none transition-all appearance-none rounded-none"
                 value={formData.ritmo_trabalho}
                 onChange={(e) => setFormData({ ...formData, ritmo_trabalho: e.target.value })}
               >
-                <option value="" className="bg-[#0D0D0B] text-[#F2EDE4]">Selecione...</option>
-                <option value="Acelerado" className="bg-[#0D0D0B] text-[#F2EDE4]">Acelerado / Batching</option>
-                <option value="Constante" className="bg-[#0D0D0B] text-[#F2EDE4]">Constante / Metódico</option>
-                <option value="Fluxo" className="bg-[#0D0D0B] text-[#F2EDE4]">Por fluxo / Inspiração</option>
+                <option value="" className="bg-prisma-bg text-prisma-fg">Selecione...</option>
+                <option value="Acelerado" className="bg-prisma-bg text-prisma-fg">Acelerado / Batching</option>
+                <option value="Constante" className="bg-prisma-bg text-prisma-fg">Constante / Metódico</option>
+                <option value="Fluxo" className="bg-prisma-bg text-prisma-fg">Por fluxo / Inspiração</option>
               </select>
             </div>
           </div>
@@ -65,24 +65,24 @@ export default function IDIDiagnosticForm() {
 
         {/* Bloco 6 - Contexto Operacional */}
         <div className="space-y-6">
-          <h2 className="text-xl font-bold uppercase tracking-widest border-b border-[#F2EDE4]/10 pb-2">
+          <h2 className="text-xl font-bold uppercase tracking-widest border-b border-prisma-fg/10 pb-2">
              Bloco 6 — Contexto Operacional
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#F2EDE4]/60">Nicho de Mercado</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-prisma-fg/60">Nicho de Mercado</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-transparent border border-[#F2EDE4]/20 focus:border-[#F2EDE4] outline-none transition-all"
+                className="w-full px-4 py-3 bg-transparent border border-prisma-fg/20 focus:border-prisma-fg outline-none transition-all"
                 value={formData.nicho_mercado}
                 onChange={(e) => setFormData({ ...formData, nicho_mercado: e.target.value })}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#F2EDE4]/60">Dor Principal do Cliente</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-prisma-fg/60">Dor Principal do Cliente</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-transparent border border-[#F2EDE4]/20 focus:border-[#F2EDE4] outline-none transition-all"
+                className="w-full px-4 py-3 bg-transparent border border-prisma-fg/20 focus:border-prisma-fg outline-none transition-all"
                 value={formData.dor_principal}
                 onChange={(e) => setFormData({ ...formData, dor_principal: e.target.value })}
               />
@@ -93,7 +93,7 @@ export default function IDIDiagnosticForm() {
         <div className="pt-8">
           <button
             type="submit"
-            className="w-full md:w-auto px-12 py-4 bg-[#F2EDE4] text-[#0D0D0B] font-black uppercase tracking-widest transition-all hover:bg-white"
+            className="w-full md:w-auto px-12 py-4 bg-prisma-fg text-prisma-surface font-black uppercase tracking-widest transition-all hover:bg-white"
           >
             Gerar Dossiê IDI
           </button>

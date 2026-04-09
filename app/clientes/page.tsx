@@ -14,15 +14,15 @@ export default async function ClientesPage() {
     .orderBy(desc(clients.createdAt));
 
   return (
-    <div className="min-h-screen bg-[#0D0D0B] text-[#F2EDE4] p-8 font-sans selection:bg-[#C8F23A] selection:text-[#0D0D0B]">
+    <div className="min-h-screen bg-prisma-bg text-prisma-fg p-8 font-sans selection:bg-prisma-accent selection:text-prisma-bg">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header PRISMA */}
-        <header className="flex items-end justify-between border-b-2 border-[#1E1E1C] pb-6">
+        <header className="flex items-end justify-between border-b-2 border-prisma-border pb-6">
           <div>
-            <h1 className="text-4xl font-light tracking-tight text-[#F2EDE4]">
+            <h1 className="text-4xl font-light tracking-tight text-prisma-fg">
               Clientes.
             </h1>
-            <p className="text-[#A19D94] mt-2 text-sm tracking-widest uppercase">
+            <p className="text-prisma-muted mt-2 text-sm tracking-widest uppercase">
               {allClients.length} Operações
             </p>
           </div>
@@ -31,11 +31,11 @@ export default async function ClientesPage() {
 
         {/* Empty State */}
         {allClients.length === 0 ? (
-          <div className="text-left py-16 border-l-2 border-[#1E1E1C] pl-8">
-            <h2 className="text-xl font-medium text-[#F2EDE4] mb-2">
+          <div className="text-left py-16 border-l-2 border-prisma-border pl-8">
+            <h2 className="text-xl font-medium text-prisma-fg mb-2">
               Nenhuma operação ativa.
             </h2>
-            <p className="text-[#A19D94] font-light max-w-md">
+            <p className="text-prisma-muted font-light max-w-md">
               Inicie um novo fluxo de inteligência de marca cadastrando o primeiro cliente na base do PRISMA.
             </p>
           </div>
