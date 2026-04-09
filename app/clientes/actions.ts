@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { db } from "@/db/client";
-import { clients, funilEtapaEnum } from "@/db/schema/clients";
+import { clients } from "@/db/schema/clients";
 import { idiResponses } from "@/db/schema/idi-responses";
 
 export async function createClientAction(formData: FormData) {
